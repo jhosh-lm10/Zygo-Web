@@ -228,7 +228,7 @@ const servicios = [
 
   .hero-section__title {
     font-family: 'Manrope', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 58px);
+    font-size: clamp(2.75rem, 6vw, 58px); /* Balanced size for mobile */
     font-weight: 500;
     line-height: 1.08;
     letter-spacing: -1.36px;
@@ -606,11 +606,12 @@ const servicios = [
   @media (max-width: 480px) {
     .hero-section {
       min-height: 300px;
-      padding: 3rem 1rem;
+      padding: 8rem 1rem 3rem;
     }
 
     .hero-section__title {
-      font-size: 28px;
+      font-size: 2.75rem; /* Balanced on mobile */
+      line-height: 1.1;
     }
 
     .services-section {
