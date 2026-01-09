@@ -115,7 +115,7 @@ export function initScrollytelling() {
   }
 
   // Reduced multipliers for more sensitivity (less scrolling required)
-  const scrollMultiplier = isMobile ? 50 : 75; // More sensitive: was 60/90
+  const scrollMultiplier = isMobile ? 35 : 75; // Even more sensitive for mobile
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -123,7 +123,7 @@ export function initScrollytelling() {
       trigger: wrapper,
       start: 'top top',
       end: `+=${total * scrollMultiplier}%`,
-      scrub: isMobile ? 0.5 : 0.8, // More sensitive: lower = faster response
+      scrub: isMobile ? 0.3 : 0.8, // Lower scrub = faster response on mobile
       pin: container,
       anticipatePin: 1,
       pinSpacing: true,
