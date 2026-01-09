@@ -1,0 +1,248 @@
+---
+/**
+ * ServicesWheel.astro
+ * Reusable component for the "Cuidado Obstétrico" services list + image interaction.
+ * Excat copy of index.astro section as of request.
+ */
+---
+<section class="section" style="background: var(--white);">
+  <div class="container">
+    <div class="split-section">
+      <!-- Columna Izquierda: Lista numerada -->
+      <div data-animate="pop">
+        <span style="display: inline-block; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-color); margin-bottom: 1.5rem; padding: 0.5rem 1rem; background: rgba(114, 47, 55, 0.08); border-radius: 2rem;">
+          # SERVICIOS
+        </span>
+        <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: var(--font-size-3xl); font-weight: 700; color: var(--primary-color); margin-bottom: 2.5rem; line-height: 1.2;">
+          Salud Sexual y Reproductiva para la Mujer
+        </h2>
+        
+        <ul class="numbered-list">
+          <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.1">
+            <a href="/servicios/card1" class="numbered-list-link">
+              <span class="numbered-list-number">01</span>
+              <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                  Descarte de Embarazo
+                </h3>
+                <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                  Pruebas rápidas y confidenciales con resultados precisos y acompañamiento profesional.
+                </p>
+              </div>
+            </a>
+          </li>
+
+          <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.2">
+            <a href="/servicios/card2" class="numbered-list-link">
+              <span class="numbered-list-number">02</span>
+              <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                  Despistaje ITS
+                </h3>
+                <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                  Evaluación completa para detectar tempranamente infecciones y proteger tu salud íntima.
+                </p>
+              </div>
+            </a>
+          </li>
+
+          <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.3">
+            <a href="/servicios/card3" class="numbered-list-link">
+              <span class="numbered-list-number">03</span>
+              <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                  Chequeo Femenino Anual
+                </h3>
+                <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                  Tu revisión ginecológica integral anual para prevenir enfermedades y mantener tu bienestar.
+                </p>
+              </div>
+            </a>
+          </li>
+
+          <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.4">
+            <a href="/servicios/card7" class="numbered-list-link">
+              <span class="numbered-list-number">04</span>
+              <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                  Prueba Molecular de VPH
+                </h3>
+                <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                  Detección avanzada del Virus del Papiloma Humano con tecnología de última generación.
+                </p>
+              </div>
+            </a>
+          </li>
+
+          <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.5">
+            <a href="/servicios/card6" class="numbered-list-link">
+              <span class="numbered-list-number">05</span>
+              <div>
+                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                  Anticoncepción
+                </h3>
+                <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                  Asesoría personalizada para elegir el método anticonceptivo ideal para tu estilo de vida.
+                </p>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Columna Derecha: Imagen con testimonio flotante desbordado -->
+      <div style="position: relative;" data-animate="pop" data-animate-delay="0.3">
+        <img 
+          src="/img/fotogrupal.webp" 
+          alt="Equipo profesional de Zygo"
+          class="imagen-cuidado"
+        />
+        
+        <!-- Tarjeta flotante con testimonio (desbordada) -->
+        <div class="testimonio-flotante">
+          <blockquote style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1rem; line-height: 1.5;">
+            "Excelente atención ginecológica. Me explicaron todo con paciencia y me sentí muy cómoda."
+          </blockquote>
+          <cite style="font-size: 0.95rem; font-weight: 600; font-style: normal;">
+            — Lucía M.
+          </cite>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Encapsulated styles matched EXACTLY from home usage context or globals */
+  /* Assuming global CSS handles .split-section, .numbered-list, etc. */
+  /* Re-adding the specific styles found in index.astro previous step if they were local there */
+  
+  /* ServicesWheel specific overrides or fallbacks matching global.css */
+  
+  .numbered-list-link {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    margin: -0.5rem;
+    border-radius: 0.75rem;
+  }
+
+  .numbered-list-link:hover {
+    transform: translateX(8px);
+    background: rgba(114, 47, 55, 0.03);
+  }
+
+  /* From global.css .numbered-list-number */
+  .numbered-list-number {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 4rem; /* Fixed: was 2rem */
+    font-weight: 700;
+    font-style: italic; /* Fixed: Added italic */
+    color: rgba(114, 47, 55, 0.15);
+    line-height: 1;
+    flex-shrink: 0;
+    letter-spacing: -0.02em;
+  }
+
+  @media (max-width: 767px) {
+    .numbered-list-link {
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+    
+    .numbered-list-number {
+      font-size: 2.5rem;
+      color: var(--cta-color);
+      opacity: 0.2;
+    }
+  }
+
+  .numbered-list-link:hover .numbered-list-number {
+    color: var(--cta-color);
+    transform: scale(1.05); /* Slight scale on hover */
+  }
+
+  .numbered-list-link:hover h3 {
+    color: var(--cta-color);
+  }
+  
+  /* Split Section Local overrides from index.astro */
+  /* Mobile styles */
+  @media (max-width: 767px) {
+    .split-section > div:first-child {
+      order: 2;
+    }
+    .split-section > div:last-child {
+      order: 1;
+      overflow: hidden;
+      padding: 0.5rem !important;
+    }
+    
+    .split-section > div:last-child img {
+      width: 100% !important;
+      max-width: 390px; /* Match index.astro */
+      height: auto !important;
+      object-fit: contain !important;
+      margin: 0 auto;
+      border-radius: 1.75rem !important; /* Match index.astro */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+  }
+
+  .imagen-cuidado {
+    width: 100%;
+    height: auto;
+    border-radius: 1.5rem;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+
+  /* From global.css .testimonio-flotante */
+  .testimonio-flotante {
+    position: absolute;
+    bottom: -2rem;
+    right: -2rem;
+    /* Degradado rosado como el footer */
+    background: linear-gradient(180deg, #FCE3F2 0%, #FCA4BD 100%);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 20px 25px -5px rgba(252, 164, 189, 0.4),
+      0 10px 10px -5px rgba(252, 164, 189, 0.2);
+    max-width: 350px;
+    z-index: 10;
+  }
+  
+  .testimonio-flotante blockquote {
+    font-family: 'Playfair Display', Georgia, serif; 
+    font-style: italic; 
+    font-size: 1.1rem; 
+    margin-bottom: 1rem; 
+    line-height: 1.5;
+    color: #8A0021 !important; /* Guinda text on pink */
+  }
+
+  .testimonio-flotante cite {
+    font-size: 0.95rem; 
+    font-weight: 600; 
+    font-style: normal;
+    color: #8A0021 !important; /* Guinda text on pink */
+  }
+
+  @media (max-width: 768px) {
+    .testimonio-flotante {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      margin-top: -3rem;
+      margin-left: auto;
+      margin-right: -1rem; /* Match global.css */
+      max-width: 80%; /* Match global.css */
+    }
+  }
+</style>

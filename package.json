@@ -1,0 +1,24 @@
+{
+  "name": "zygo-astro",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Sitio web de Zygo - Clínica Obstétrica de alto nivel, profesional y compasiva",
+  "author": "Zygo",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.6.0",
+    "astro": "^5.15.9",
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.16"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

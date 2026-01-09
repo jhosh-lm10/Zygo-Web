@@ -1,0 +1,260 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
+  canonical?: string;
+}
+
+const {
+  title,
+  description,
+  image = '/og-image.jpg',
+  type = 'website',
+  canonical,
+} = Astro.props;
+
+const site = Astro.site || 'https://zygo.com';
+const canonicalURL = canonical ? new URL(canonical, site) : new URL(Astro.url.pathname, site);
+const imageURL = new URL(image, site);
+
+// Schema.org structured data for MedicalBusiness
+const schemaOrgData = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalBusiness',
+  name: 'Zygo',
+  description:
+    'Centro especializado en salud femenina, sexual y reproductiva. Cuidado integral y experto en todas las etapas de la vida de la mujer.',
+  url: site,
+  logo: new URL('/img/Logo.webp', site).toString(),
+  image: imageURL.toString(),
+  telephone: '+51930928175',
+  email: 'zygo.gos@gmail.com',
+  address: [
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Chorrillos',
+      addressRegion: 'Lima',
+      addressCountry: 'PE',
+      streetAddress: 'Av. Defensores del Morro 611 - Oficina 301',
+    },
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Wanchaq',
+      addressRegion: 'Cusco',
+      addressCountry: 'PE',
+      streetAddress: 'Calle Nueva Nro 478, Segundo piso',
+    },
+  ],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '09:00',
+      closes: '14:00',
+    },
+  ],
+  sameAs: [
+    'https://www.facebook.com/profile.php?id=61564505164182',
+    'https://www.instagram.com/zygo.go/',
+    'https://www.tiktok.com/@zygo.go',
+  ],
+  medicalSpecialty: 'Obstetrics',
+  priceRange: '$$',
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- JS detection (prevents blank content if animations fail to init) -->
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageURL} />
+    <meta property="og:site_name" content="Zygo - Salud Femenina Integral" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={imageURL} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Preload Critical Resources (LCP Optimization) -->
+    <link rel="preload" href="/img/portadasinfondo.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preload" href="/img/Logo.webp" as="image" type="image/webp" />
+    <link rel="dns-prefetch" href="https://wa.me" />
+
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Manrope:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrgData)} />
+
+    <!-- View Transitions -->
+    <ViewTransitions />
+  </head>
+  <body>
+    <slot />
+    
+    <!-- Footer Global -->
+    <Footer />
+
+    <script>
+      import { initScrollAnimations, initSmoothScroll, cleanupAnimations } from '../scripts/scroll-animations';
+      import { initScrollytelling } from '../scripts/scrollytelling';
+      import { LenisSystem } from '../scripts/lenis-controller';
+      import gsap from 'gsap';
+      import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Global Scroll Management - Manual control to prevent browser interference
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+
+      function resetScroll() {
+        if (window.location.hash) return;
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+
+      function cleanup() {
+        ScrollTrigger.getAll().forEach(t => t.kill());
+        gsap.killTweensOf('*');
+        cleanupAnimations();
+        LenisSystem.destroy(); // KILL LENIS
+        // CRITICAL: Force native scroll to top immediately to prevent "sticky footer" on next page
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.querySelectorAll('.is-visible').forEach(el => el.classList.remove('is-visible'));
+      }
+
+      function initialize() {
+        LenisSystem.init(); // START LENIS
+        initScrollytelling();
+        initScrollAnimations();
+        // initSmoothScroll(); // DISABLED
+        ScrollTrigger.refresh();
+      }
+
+      // RESIZE HANDLER: Full reinit when crossing mobile/desktop threshold
+      let lastWasMobile = window.innerWidth < 768;
+      let resizeTimeout: ReturnType<typeof setTimeout>;
+      
+      function handleResize() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          const nowMobile = window.innerWidth < 768;
+          // Only reinit if we crossed the threshold
+          if (nowMobile !== lastWasMobile) {
+            // Viewport threshold crossed, reinitializing
+            lastWasMobile = nowMobile;
+            // Full cleanup and reinit - same as navigation
+            cleanup();
+            requestAnimationFrame(() => {
+              initialize();
+            });
+          }
+        }, 250);
+      }
+
+      window.addEventListener('resize', handleResize);
+
+      // Prevent duplicate event listeners with View Transitions
+      const win = window as typeof window & { __zygoInitialized?: boolean };
+      
+      if (!win.__zygoInitialized) {
+        win.__zygoInitialized = true;
+
+        document.addEventListener('astro:before-swap', (event: any) => {
+          // 1. Cleanup old state
+          cleanup();
+          
+          // 2. Ensure new page starts at top (Double tap: Immediate + Ready)
+          window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+          // Override View Transitions scroll behavior
+          event.viewTransition.ready.then(() => {
+            window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+          });
+        });
+
+        document.addEventListener('astro:after-swap', () => {
+           // Double-check scroll is at top after swap
+           window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+           resetScroll();
+        });
+
+        // First hard load - wait for everything to load
+        if (document.readyState === 'complete') {
+          requestAnimationFrame(initialize);
+        } else {
+          window.addEventListener('load', () => {
+            resetScroll();
+            requestAnimationFrame(initialize);
+          }, { once: true });
+        }
+
+        document.addEventListener('astro:page-load', () => {
+          resetScroll();
+          
+          // AGGRESSIVE SCROLL RESET LOOP
+          let attempts = 0;
+          const forceScroll = setInterval(() => {
+            if (window.scrollY > 0) {
+               window.scrollTo(0, 0);
+            }
+            attempts++;
+            if (attempts > 10) clearInterval(forceScroll);
+          }, 20);
+
+          // For View Transitions (navigation), reinit
+          // First load uses window.onload above
+          if ((window as any).__zygoFirstLoadDone) {
+            requestAnimationFrame(initialize);
+          } else {
+            (window as any).__zygoFirstLoadDone = true;
+          }
+        });
+      }
+
+      resetScroll();
+    </script>
+  </body>
+</html>

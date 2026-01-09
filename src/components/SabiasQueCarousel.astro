@@ -1,0 +1,582 @@
+---
+/**
+ * SabiasQueCarousel.astro
+ * 3D Coverflow carousel for "Sabías Que" images
+ * 
+ * OPTIMIZATION:
+ * - Uses IntersectionObserver to pause animation when not visible
+ * - Click to pause/resume animation
+ * - Drag to rotate manually
+ * - Back cards are faded for cleaner look
+ * - Unique prefix .sqc- to avoid CSS conflicts
+ * - Scoped styles (not in global.css) for View Transitions compatibility
+ * - requestAnimationFrame for smooth rotation
+ */
+
+const imagesSet1 = [
+  "/img/sabias-que-1.webp",
+  "/img/sabias-que-2.webp",
+  "/img/sabias-que-3.webp",
+  "/img/sabias-que-4.webp",
+  "/img/sabias-que-5.webp"
+];
+
+const imagesSet2 = [
+  "/img/sabias-que-6.webp",
+  "/img/sabias-que-7.webp",
+  "/img/sabias-que-8.webp",
+  "/img/sabias-que-9.webp",
+  "/img/sabias-que-10.webp"
+];
+---
+
+<section class="sqc-section" id="sabiasQueSection">
+  <div class="sqc-container">
+    <!-- Header -->
+    <div class="sqc-header" data-animate="pop">
+      <span class="sqc-badge"># SABÍAS QUE</span>
+      <h2 class="sqc-title">Datos Curiosos sobre <br/><strong>Salud Femenina</strong></h2>
+    </div>
+
+    <!-- Carousel Wrapper -->
+    <div class="sqc-carousel-wrapper" id="sqcWrapper">
+
+      <!-- Set 1 -->
+      <div class="sqc-carousel sqc-carousel--active" id="sqcCarousel1">
+        <div class="sqc-track" id="sqcTrack1">
+          {imagesSet1.map((img, i) => (
+            <div class="sqc-slide" data-index={i}>
+              <img src={img} alt={`Dato curioso ${i + 1}`} class="sqc-image" loading="lazy" decoding="async" draggable="false" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Set 2 -->
+      <div class="sqc-carousel" id="sqcCarousel2">
+        <div class="sqc-track" id="sqcTrack2">
+          {imagesSet2.map((img, i) => (
+            <div class="sqc-slide" data-index={i}>
+              <img src={img} alt={`Dato curioso ${i + 6}`} class="sqc-image" loading="lazy" decoding="async" draggable="false" />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button class="sqc-nav sqc-nav--prev" id="sqcPrev" aria-label="Anterior" disabled>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      <button class="sqc-nav sqc-nav--next" id="sqcNext" aria-label="Siguiente">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+
+      <!-- Dots Indicator -->
+      <div class="sqc-dots">
+        <button class="sqc-dot sqc-dot--active" data-set="0" aria-label="Set 1"></button>
+        <button class="sqc-dot" data-set="1" aria-label="Set 2"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .sqc-section {
+    background: linear-gradient(180deg, #FFFFFF 0%, #F8F9FA 100%);
+    padding: 5rem 0 6rem;
+    overflow: hidden;
+  }
+
+  .sqc-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .sqc-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .sqc-badge {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary-color, #722F37);
+    margin-bottom: 1rem;
+    padding: 0.4rem 0.9rem;
+    background: rgba(114, 47, 55, 0.08);
+    border-radius: 2rem;
+  }
+
+  .sqc-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 500;
+    color: var(--primary-color, #722F37);
+    line-height: 1.3;
+  }
+
+  .sqc-title strong {
+    font-weight: 700;
+    color: var(--zygo-guinda, #8A0021);
+  }
+
+  /* Carousel Wrapper */
+  .sqc-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    perspective: 1400px;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .sqc-carousel-wrapper:active {
+    cursor: grabbing;
+  }
+
+  /* Individual Carousel */
+  .sqc-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  .sqc-carousel--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Track - 3D Container */
+  .sqc-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    pointer-events: none; /* Prevent track from blocking nav buttons */
+  }
+
+  /* Individual Slides */
+  .sqc-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 320px;
+    height: 440px;
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%);
+    transition: transform 0.4s ease, opacity 0.4s ease, filter 0.4s ease;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+    /* Opacity and blur controlled by JS based on position */
+  }
+
+  .sqc-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1.25rem;
+    pointer-events: none;
+  }
+
+  /* Navigation Buttons */
+  .sqc-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999; /* Much higher than slide z-index (max ~1000) */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: none;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    color: var(--primary-color, #722F37);
+    pointer-events: auto; /* Ensure buttons are always clickable */
+  }
+
+  .sqc-nav:hover:not(:disabled) {
+    background: var(--primary-color, #722F37);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .sqc-nav:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .sqc-nav--prev {
+    left: 2rem;
+  }
+
+  .sqc-nav--next {
+    right: 2rem;
+  }
+
+  /* Dots */
+  .sqc-dots {
+    position: absolute;
+    bottom: -2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .sqc-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color, #722F37);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .sqc-dot--active {
+    background: var(--primary-color, #722F37);
+    transform: scale(1.2);
+  }
+
+  .sqc-dots {
+    pointer-events: auto; /* Ensure dots are clickable */
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .sqc-section {
+      padding: 3rem 0 4rem;
+    }
+
+    .sqc-carousel-wrapper {
+      height: 350px;
+    }
+
+    .sqc-slide {
+      width: 200px;
+      height: 280px;
+    }
+
+    .sqc-nav {
+      width: 40px;
+      height: 40px;
+    }
+
+    .sqc-nav--prev {
+      left: 0.25rem;
+    }
+
+    .sqc-nav--next {
+      right: 0.25rem;
+    }
+
+    .sqc-dots {
+      bottom: -1.5rem;
+    }
+  }
+
+  /* Reduced Motion */
+  @media (prefers-reduced-motion: reduce) {
+    .sqc-slide {
+      transition: none !important;
+    }
+    .sqc-track {
+      animation: none !important;
+    }
+  }
+</style>
+
+<script>
+  // IIFE to avoid global scope pollution
+  (function initSabiasQueCarousel() {
+    const section = document.getElementById('sabiasQueSection');
+    const wrapper = document.getElementById('sqcWrapper');
+    if (!section || !wrapper) return;
+
+    const carousel1 = document.getElementById('sqcCarousel1');
+    const carousel2 = document.getElementById('sqcCarousel2');
+    const track1 = document.getElementById('sqcTrack1');
+    const track2 = document.getElementById('sqcTrack2');
+    const prevBtn = document.getElementById('sqcPrev');
+    const nextBtn = document.getElementById('sqcNext');
+    const dots = section.querySelectorAll('.sqc-dot');
+
+    if (!carousel1 || !carousel2 || !track1 || !track2 || !prevBtn || !nextBtn) return;
+
+    let currentSet = 0;
+    let rotation1 = 0;
+    let rotation2 = 0;
+    let isVisible = false;
+    let isPaused = false;
+    let isDragging = false;
+    let dragStartX = 0;
+    let dragStartRotation = 0;
+    let animationId: number | null = null;
+
+    // Configuration
+    const ROTATION_SPEED = 0.05; // Slow auto-rotation
+    const DRAG_SENSITIVITY = 0.3; // How much rotation per pixel dragged
+    const SLIDE_COUNT = 5;
+    const ANGLE_PER_SLIDE = 360 / SLIDE_COUNT; // 72 degrees
+    // Responsive radius: smaller on mobile to prevent overflow
+    const isMobile = window.innerWidth < 768;
+    const RADIUS = isMobile ? 180 : 280;
+
+    // Get current track and rotation
+    function getCurrentTrack() {
+      return currentSet === 0 ? track1 : track2;
+    }
+
+    function getCurrentRotation() {
+      return currentSet === 0 ? rotation1 : rotation2;
+    }
+
+    function setCurrentRotation(value: number) {
+      if (currentSet === 0) {
+        rotation1 = value;
+      } else {
+        rotation2 = value;
+      }
+    }
+
+    // Position slides in 3D circle and update visibility based on angle
+    function positionSlides(track: HTMLElement, trackRotation: number = 0) {
+      const slides = track.querySelectorAll('.sqc-slide') as NodeListOf<HTMLElement>;
+
+      slides.forEach((slide, i) => {
+        const baseAngle = i * ANGLE_PER_SLIDE;
+        // Calculate visible angle (normalized to 0-360)
+        let visibleAngle = (baseAngle + trackRotation) % 360;
+        if (visibleAngle < 0) visibleAngle += 360;
+
+        // Determine if slide is in front or back
+        // Front: 270-360 and 0-90 degrees
+        // Back: 90-270 degrees
+        const isInFront = visibleAngle <= 90 || visibleAngle >= 270;
+        
+        // Calculate opacity/blur based on position
+        let opacity = 1;
+        let blur = 0;
+        
+        if (!isInFront) {
+          // Cards in back: subtle fade and light blur
+          const distanceFromFront = Math.min(
+            Math.abs(visibleAngle - 90),
+            Math.abs(visibleAngle - 270)
+          );
+          const fadeFactor = Math.min(distanceFromFront / 90, 1);
+          opacity = 0.6 + (0.4 * (1 - fadeFactor)); // Range: 60% to 100%
+          blur = fadeFactor * 2; // Max 2px blur
+        }
+
+        slide.style.transform = `
+          translate(-50%, -50%)
+          rotateY(${baseAngle}deg)
+          translateZ(${RADIUS}px)
+        `;
+        slide.style.opacity = String(opacity);
+        slide.style.filter = blur > 0 ? `blur(${blur}px)` : 'none';
+      });
+    }
+
+    // Rotate the track
+    function rotateTrack(track: HTMLElement, rotation: number) {
+      track.style.transform = `rotateY(${rotation}deg)`;
+      positionSlides(track, rotation);
+    }
+
+    // Animation loop - only runs when visible AND not paused AND not dragging
+    function animate() {
+      if (!isVisible || isPaused || isDragging) {
+        animationId = null;
+        return;
+      }
+
+      const currentRotation = getCurrentRotation() - ROTATION_SPEED;
+      setCurrentRotation(currentRotation);
+      rotateTrack(getCurrentTrack(), currentRotation);
+
+      animationId = requestAnimationFrame(animate);
+    }
+
+    // Start animation if conditions are met
+    function startAnimation() {
+      if (isVisible && !isPaused && !isDragging && !animationId) {
+        animate();
+      }
+    }
+
+    // Toggle pause on click
+    function togglePause() {
+      isPaused = !isPaused;
+      
+      if (!isPaused) {
+        startAnimation();
+      }
+    }
+
+    // Drag handlers
+    function handleDragStart(e: MouseEvent | TouchEvent) {
+      if ((e.target as HTMLElement).closest('.sqc-nav') || 
+          (e.target as HTMLElement).closest('.sqc-dot')) {
+        return;
+      }
+
+      isDragging = true;
+      isPaused = true;
+      
+      if (e instanceof MouseEvent) {
+        dragStartX = e.clientX;
+      } else {
+        dragStartX = e.touches[0].clientX;
+      }
+      dragStartRotation = getCurrentRotation();
+
+      // Prevent default to avoid text selection
+      e.preventDefault();
+    }
+
+    function handleDragMove(e: MouseEvent | TouchEvent) {
+      if (!isDragging) return;
+
+      let currentX: number;
+      if (e instanceof MouseEvent) {
+        currentX = e.clientX;
+      } else {
+        currentX = e.touches[0].clientX;
+      }
+
+      const deltaX = currentX - dragStartX;
+      const newRotation = dragStartRotation + (deltaX * DRAG_SENSITIVITY);
+      
+      setCurrentRotation(newRotation);
+      rotateTrack(getCurrentTrack(), newRotation);
+    }
+
+    function handleDragEnd(e: MouseEvent | TouchEvent) {
+      if (!isDragging) return;
+      
+      isDragging = false;
+      
+      // Check if it was just a click (no significant movement)
+      const wasClick = Math.abs(getCurrentRotation() - dragStartRotation) < 5;
+      
+      if (wasClick) {
+        // Toggle pause on simple click
+        isPaused = !isPaused;
+      } else {
+        // Resume animation after drag
+        isPaused = false;
+      }
+      
+      startAnimation();
+    }
+
+    // Switch between sets
+    function switchSet(setIndex: number) {
+      currentSet = setIndex;
+
+      // Toggle carousels
+      carousel1.classList.toggle('sqc-carousel--active', setIndex === 0);
+      carousel2.classList.toggle('sqc-carousel--active', setIndex === 1);
+
+      // Update buttons
+      prevBtn.disabled = setIndex === 0;
+      nextBtn.disabled = setIndex === 1;
+
+      // Update dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('sqc-dot--active', i === setIndex);
+      });
+
+      // Update slide visibility for new track
+      rotateTrack(getCurrentTrack(), getCurrentRotation());
+    }
+
+    // Event listeners - Drag
+    wrapper.addEventListener('mousedown', handleDragStart);
+    wrapper.addEventListener('touchstart', handleDragStart, { passive: false });
+    
+    document.addEventListener('mousemove', handleDragMove);
+    document.addEventListener('touchmove', handleDragMove, { passive: true });
+    
+    document.addEventListener('mouseup', handleDragEnd);
+    document.addEventListener('touchend', handleDragEnd);
+
+    // Navigation buttons
+    prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      switchSet(0);
+    });
+    
+    nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      switchSet(1);
+    });
+    
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        switchSet(i);
+      });
+    });
+
+    // IntersectionObserver for visibility-based animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          isVisible = entry.isIntersecting;
+          if (isVisible) {
+            startAnimation();
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: '0px' }
+    );
+
+    observer.observe(section);
+
+    // Initialize
+    positionSlides(track1, rotation1);
+    positionSlides(track2, rotation2);
+
+    // Cleanup for View Transitions
+    document.addEventListener('astro:before-swap', () => {
+      observer.disconnect();
+      document.removeEventListener('mousemove', handleDragMove);
+      document.removeEventListener('mouseup', handleDragEnd);
+      document.removeEventListener('touchmove', handleDragMove);
+      document.removeEventListener('touchend', handleDragEnd);
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = null;
+      }
+    });
+  })();
+
+  // Re-init after navigation
+  document.addEventListener('astro:after-swap', () => {
+    // The IIFE above will run again when the page loads
+  });
+</script>

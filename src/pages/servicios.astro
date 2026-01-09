@@ -1,0 +1,648 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import TeamCarousel from '../components/TeamCarousel.astro';
+
+// Services data for Zygo (Women's Health)
+const servicios = [
+  {
+    title: "Descarte de Embarazo",
+    description: "Pruebas rápidas y confidenciales para confirmar o descartar embarazo con resultados precisos y acompañamiento profesional.",
+    image: "/img/DescartedeEmbarazo.webp",
+    link: "/servicios/card1"
+  },
+  {
+    title: "Despistaje ITS",
+    description: "Evaluación completa para detectar tempranamente infecciones de transmisión sexual y proteger tu salud íntima.",
+    image: "/img/despistaje.webp",
+    link: "/servicios/card2"
+  },
+  {
+    title: "Chequeo Femenino Anual",
+    description: "Tu revisión ginecológica integral anual para prevenir enfermedades y mantener tu bienestar en óptimas condiciones.",
+    image: "/img/chequefemeninoAnual.webp",
+    link: "/servicios/card3"
+  },
+  {
+    title: "Verrugas Íntimas",
+    description: "Diagnóstico y tratamiento especializado para verrugas genitales con técnicas modernas, seguras y discretas.",
+    image: "/img/verrugasIntimas.webp",
+    link: "/servicios/card4"
+  },
+  {
+    title: "Infecciones Vaginales",
+    description: "Diagnóstico preciso y tratamiento efectivo para candidiasis, vaginosis y otras infecciones íntimas.",
+    image: "/img/Infecciones.webp",
+    link: "/servicios/card5"
+  },
+  {
+    title: "Anticoncepción",
+    description: "Asesoría personalizada para elegir el método anticonceptivo ideal para tu estilo de vida.",
+    image: "/img/Anticonceptivos.webp",
+    link: "/servicios/card6"
+  },
+  {
+    title: "Prueba Molecular de VPH",
+    description: "Detección avanzada del Virus del Papiloma Humano con tecnología molecular de última generación.",
+    image: "/img/PruebamoleculardeVPH.webp",
+    link: "/servicios/card7"
+  },
+  {
+    title: "Tratamiento VPH - Papilocare",
+    description: "Tratamiento exclusivo y especializado para el manejo del VPH con el innovador protocolo Papilocare.",
+    image: "/img/Papilocare –TratamientoexclusivoparaVPH.webp",
+    link: "/servicios/card8"
+  }
+];
+---
+
+<BaseLayout 
+  title="Servicios - Zygo Salud Femenina" 
+  description="Conoce nuestros servicios especializados en salud femenina, ginecología y bienestar sexual. Atención integral diseñada para ti."
+>
+  <Header />
+
+  <main class="services-page">
+    <!-- ============================================
+         SECTION 1: HERO
+         ============================================ -->
+    <section class="hero-section">
+      <div class="hero-section__content" data-animate>
+        <span class="badge-pill">#SERVICIOS</span>
+        <h1 class="hero-section__title">
+          Cuidado integral para tu<br/>
+          <span class="hero-section__title-italic">salud femenina</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 2: SERVICES GRID (4x2 with images)
+         ============================================ -->
+    <section class="services-section">
+      <div class="services-container">
+        <div class="services-grid">
+          {servicios.map((servicio, index) => (
+            <a href={servicio.link} class="service-card" data-animate="fade" data-animate-delay={String(index * 0.1)}>
+              <div class="service-card__image-wrapper">
+                <img src={servicio.image} alt={servicio.title} class="service-card__image" />
+              </div>
+              <div class="service-card__content">
+                <h3 class="service-card__title">{servicio.title}</h3>
+                <p class="service-card__description">{servicio.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: SPECIALISTS
+         ============================================ -->
+    <section class="specialists-section">
+      <div class="container">
+        <div class="specialists-section__header" data-animate>
+          <span class="badge-pill"># ESPECIALISTAS</span>
+          <h2 class="specialists-section__title">
+            Conoce a nuestras<br/>
+            <span class="specialists-section__title-italic">especialistas</span>
+          </h2>
+        </div>
+
+        <!-- Unified Carousel Component -->
+        <TeamCarousel />
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: CTA
+         ============================================ -->
+    <section class="cta-section">
+      <div class="cta-section__grid">
+        <!-- Left: Image with blob -->
+        <div class="cta-section__image-container" data-animate>
+          <div class="cta-section__blob"></div>
+          <img src="/img/experiencia.webp" alt="Profesional de Zygo" class="cta-section__image" />
+        </div>
+
+        <!-- Right: Content -->
+        <div class="cta-section__content" data-animate>
+          <h2 class="cta-section__title">
+            ¿Lista para priorizar<br/>tu bienestar?
+          </h2>
+          <p class="cta-section__desc">
+            No esperes más para darte el cuidado que mereces. Agenda tu consulta hoy y vive la experiencia Zygo: atención femenina personalizada, moderna y sin tabúes.
+          </p>
+
+          <div class="cta-section__phone">
+            <div class="cta-section__phone-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="cta-section__phone-text">
+              <span class="cta-section__phone-label">Llámanos</span>
+              <a href="tel:+51930928175" class="cta-section__phone-number">+51 930 928 175</a>
+            </div>
+          </div>
+
+          <a href="/contacto" class="btn-cta">
+            Agenda tu Cita
+            <span class="btn-cta__arrow">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Variables now centralized in global.css */
+
+  .services-page {
+    overflow-x: hidden;
+    background: white;
+  }
+
+  /* Badge Pill - ApexCare specs */
+  .badge-pill {
+    display: inline-block;
+    padding: 10px 16px; /* ApexCare: 10 16 */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* ApexCare */
+    border-radius: 24px; /* ApexCare: 24px */
+    font-size: 12px; /* ApexCare: 12px */
+    font-weight: 700; /* ApexCare: 700 */
+    line-height: 12px; /* ApexCare: 12px */
+    color: var(--zygo-guinda);
+    text-transform: uppercase;
+    letter-spacing: 1.68px; /* ApexCare: 1.68px */
+    background: white;
+  }
+
+  /* ============================================
+     SECTION 1: HERO (ApexCare: 1350x466)
+     ============================================ */
+  /* ============================================
+     SECTION 1: HERO (Matched visual height of Acerca De, no overlap)
+     ============================================ */
+  .hero-section {
+    position: relative;
+    padding: 12.4rem 0 8rem; /* User manual edit retained/adjusted slightly if needed, but keeping their latest */
+    /* Wait, the user manually edited padding to 12.4rem 0 8rem in the diff I received. 
+       I should respect those values in my context usually, but if I replace the whole block I might overwrite.
+       I'll verify the current file content first or use target content carefully.
+       Actually, the diff showed they changed it to:
+       padding: 12.4rem 0 8rem;
+       So I must preserve that.
+    */
+    padding: 12.4rem 0 8rem; 
+    text-align: center;
+    background: linear-gradient(-90deg, #FCA4BD 0%, #FCE3F2 50%, #ffffff 100%);
+  }
+
+  .hero-section__content {
+    position: relative;
+    z-index: 1;
+    max-width: 711px; /* Match width */
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Override badge pill in hero - Transparent per user request */
+  .hero-section .badge-pill {
+    background: transparent;
+    border: none;
+    padding: 0; /* Remove padding if it's just text now? Or keep spacing? */
+    /* User said "background... no este", usually border goes too. Keeping padding might look weird without bg. 
+       Let's keep padding slightly or remove it. "solo los titulos". 
+       Let's try standard transparent first. 
+    */
+    padding: 10px 16px; /* Keep spacing for alignment or remove? */
+    border: none;
+  }
+
+  .hero-section__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 58px);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: -1.36px;
+    color: var(--text-dark);
+    margin-top: 0.5rem; /* Reduced from 1.5rem to be closer to badge */
+  }
+
+  .hero-section__title-italic {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* ============================================
+     SECTION 2: SERVICES GRID (4x2, cards 306x400)
+     Container: 1300x825
+     ============================================ */
+  .services-section {
+    padding: 2rem 0 5rem; /* Standard padding */
+    background: white;
+    /* Removed overlap margin */
+  }
+
+  .services-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 20px; /* Gap between cards */
+  }
+
+  .service-card {
+    width: 100%;
+    max-width: 306px; /* ApexCare: 306px */
+    height: 400px; /* ApexCare: 400px */
+    background: linear-gradient(-90deg, #FCA4BD 0%, #FCE3F2 50%, #ffffff 100%); /* Guinda más fuerte */
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(114, 47, 55, 0.22);
+    background: linear-gradient(-90deg, #DE5B87 0%, #FCA4BD 100%); /* Más intenso en hover */
+  }
+
+  .service-card__image-wrapper {
+    width: 100%;
+    height: 200px; /* Half of card height for image */
+    overflow: hidden;
+  }
+
+  .service-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25%; /* Crop top to hide Gemini logo */
+    transform: scale(1.15); /* Zoom in to crop edges/logo */
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover .service-card__image {
+    transform: scale(1.2); /* More zoom on hover */
+  }
+
+  .service-card__content {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-card__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px; /* ApexCare: 18px */
+    font-weight: 600; /* ApexCare: 600 */
+    line-height: 24.66px; /* ApexCare: 24.66px */
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .service-card__description {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-gray);
+  }
+
+  /* ============================================
+     SECTION 3: SPECIALISTS
+     ============================================ */
+  .specialists-section {
+    padding: 5rem 0;
+    background: var(--bg-light);
+  }
+
+  .specialists-section__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .specialists-section__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 38px; /* ApexCare: 38px */
+    font-weight: 500; /* ApexCare: 500 */
+    line-height: 42.94px; /* ApexCare: 42.94px */
+    color: var(--text-dark);
+    margin-top: 1rem;
+    max-width: 300px; /* ApexCare: 300px */
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .specialists-section__title-italic {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Specialist/Team card styles are now in TeamCarousel.astro component */
+
+  /* ============================================
+     SECTION 4: CTA
+     ============================================ */
+  .cta-section {
+    padding: 70px 20px; /* ApexCare: 70px 20px */
+    background: white;
+  }
+
+  .cta-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1030px; /* ApexCare: 1030px */
+    margin: 0 auto;
+  }
+
+  .cta-section__image-container {
+    position: relative;
+    width: 100%;
+    max-width: 482px;
+    height: 482px;
+  }
+
+  .cta-section__blob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    background: linear-gradient(180deg, #c4888f 0%, #d9a5ab 100%);
+    border-radius: 16px;
+    z-index: 1;
+  }
+
+  .cta-section__image {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 482px;
+    object-fit: cover;
+    object-position: center 20%; /* Crop top to hide Gemini logo */
+    transform: scale(1.05); /* Slight zoom */
+    border-radius: 16px;
+  }
+
+  .cta-section__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .cta-section__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 38px; /* ApexCare: 38px */
+    font-weight: 500; /* ApexCare: 500 */
+    line-height: 42.94px; /* ApexCare: 42.94px */
+    color: var(--text-dark);
+    margin-bottom: 16px;
+    max-width: 400px; /* ApexCare: 400px */
+  }
+
+  .cta-section__desc {
+    font-size: 16px; /* ApexCare: 16px */
+    font-weight: 400; /* ApexCare: 400 */
+    color: var(--text-gray);
+    line-height: 25.6px; /* ApexCare: 25.6px */
+    margin-bottom: 24px;
+    max-width: 500px; /* ApexCare: 500px */
+  }
+
+  .cta-section__phone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .cta-section__phone-icon {
+    width: 64px; /* ApexCare: 64px */
+    height: 64px; /* ApexCare: 64px */
+    background: rgba(114, 47, 55, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--zygo-guinda);
+  }
+
+  .cta-section__phone-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cta-section__phone-label {
+    font-size: 16px; /* ApexCare: 16px */
+    font-weight: 400;
+    line-height: 25.6px; /* ApexCare: 25.6px */
+    color: var(--text-gray);
+  }
+
+  .cta-section__phone-number {
+    font-size: 18px; /* ApexCare: 18px */
+    font-weight: 500; /* ApexCare: 500 */
+    line-height: 20.34px; /* ApexCare: 20.34px */
+    color: var(--text-dark);
+    text-decoration: none;
+  }
+
+  .cta-section__phone-number:hover {
+    color: var(--zygo-guinda);
+  }
+
+  /* CTA Button - ApexCare specs */
+  .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--zygo-guinda);
+    color: white;
+    height: 58px; /* ApexCare: 58px */
+    padding: 0 24px;
+    border-radius: 63px; /* ApexCare: 63px */
+    font-weight: 500; /* ApexCare: 500 */
+    font-size: 16px; /* ApexCare: 16px */
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta:hover {
+    background: var(--zygo-guinda-dark);
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  .btn-cta__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    color: var(--zygo-guinda);
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 1300px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on smaller screens */
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      justify-items: center;
+    }
+
+    .cta-section__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .cta-section__image-container {
+      max-width: 100%;
+      height: 400px;
+      margin: 0 auto;
+    }
+
+    .cta-section__image {
+      height: 400px;
+    }
+
+    .specialists-grid {
+      gap: 24px;
+    }
+
+    .specialist-card {
+      width: 200px;
+    }
+
+    .specialist-card__image-wrapper {
+      width: 200px;
+      height: 210px;
+    }
+
+    .hero-section {
+      min-height: 350px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .service-card {
+      max-width: 100%;
+      height: 360px;
+      text-decoration: none; /* remove underline from link */
+    }
+
+    /* .service-card__arrow removed */
+
+    .service-card__image-wrapper {
+      height: 180px;
+    }
+
+    /* Ensure zoom effect is preserved on mobile */
+    .service-card__image {
+      transform: scale(1.15);
+    }
+
+    .hero-section__title {
+      font-size: 36px;
+      letter-spacing: -0.5px;
+    }
+
+    .specialists-section__title {
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .cta-section__title {
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .specialist-card {
+      width: 280px;
+    }
+
+    .specialist-card__image-wrapper {
+      width: 280px;
+      height: 300px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-section {
+      min-height: 300px;
+      padding: 3rem 1rem;
+    }
+
+    .hero-section__title {
+      font-size: 28px;
+    }
+
+    .services-section {
+      padding: 3rem 0 4rem;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      max-width: 100%;
+      height: auto;
+      min-height: 340px;
+    }
+
+    .specialists-section {
+      padding: 3rem 0;
+    }
+
+    .cta-section {
+      padding: 40px 20px;
+    }
+
+    .cta-section__image-container {
+      height: 320px;
+    }
+
+    .cta-section__image {
+      height: 320px;
+    }
+  }
+</style>

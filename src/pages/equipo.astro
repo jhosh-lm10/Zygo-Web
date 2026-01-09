@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import TeamStickySection from '../components/TeamStickySection.astro';
+---
+
+<BaseLayout
+  title="Nuestro Equipo - Zygo Clínica Obstétrica"
+  description="Conoce al equipo médico especializado de Zygo - Obstetras, ginecólogos y especialistas comprometidos con tu bienestar y el de tu bebé."
+>
+  <Header />
+
+  <main style="padding-top: 80px;">
+    <!-- Team Sticky Section -->
+    <TeamStickySection />
+
+    <!-- CTA Section -->
+    <section class="section" style="padding-top: 4rem; padding-bottom: 6rem; background: linear-gradient(to bottom, var(--white), rgba(114, 47, 55, 0.03));">
+      <div class="container">
+        <div class="text-center" data-animate>
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem, 4vw, 3rem); color: var(--primary-color); margin-bottom: 1rem; line-height: 1.2;">
+            ¿Quieres conocer a nuestro <span style="font-style: italic;">equipo</span>?
+          </h2>
+          <p
+            style="color: var(--text-light); margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto; font-size: 1.125rem; line-height: 1.7;"
+          >
+            Agenda una consulta y conoce personalmente a los especialistas que cuidarán de ti y tu
+            bebé durante esta etapa tan especial.
+          </p>
+          <a href="/contacto" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.125rem 2.75rem; border-radius: 9999px; font-size: 1.05rem;">
+            Agenda tu Consulta
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+              <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+

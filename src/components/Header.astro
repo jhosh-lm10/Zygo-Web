@@ -1,0 +1,586 @@
+---
+const currentPath = Astro.url.pathname;
+
+// Function to check if link is active
+function isActive(href: string) {
+  if (href === '/' && currentPath === '/') return true;
+  if (href !== '/' && currentPath.startsWith(href)) return true;
+  return false;
+}
+---
+
+<header class="header" id="header" transition:name="header" transition:animate="none">
+  <div class="container--header">
+    <div class="header__container">
+      <div class="header__left-group">
+        <a href="/" class="header__logo">
+          <img src="/img/Logo.webp" alt="Logo Zygo" class="logo-img" />
+          <span class="logo-text">
+            <span class="text-zy">Zy</span><span class="text-go">go</span>
+          </span>
+        </a>
+
+        <!-- Mobile Toggle (Hamburger) - Moved here next to logo -->
+        <button class="header__mobile-toggle" aria-label="Abrir menú móvil" id="mobile-toggle">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="32" height="32">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="header__nav">
+        <a href="/" class:list={['header__nav-link', { 'header__nav-link--active': isActive('/') }]}>
+          Inicio
+        </a>
+        <a
+          href="/servicios"
+          class:list={['header__nav-link', { 'header__nav-link--active': isActive('/servicios') }]}
+        >
+          Servicios
+        </a>
+        <a
+          href="/acerca-de"
+          class:list={['header__nav-link', { 'header__nav-link--active': isActive('/acerca-de') }]}
+        >
+          Acerca de
+        </a>
+        <a
+          href="/testimonios"
+          class:list={['header__nav-link', { 'header__nav-link--active': isActive('/testimonios') }]}
+        >
+          Testimonios
+        </a>
+        <a
+          href="/contacto"
+          class:list={['header__nav-link', { 'header__nav-link--active': isActive('/contacto') }]}
+        >
+          Contacto
+        </a>
+      </nav>
+
+      <div class="header__actions">
+        <div class="header__social">
+        <a
+          href="https://www.facebook.com/profile.php?id=61564505164182"
+          target="_blank"
+          rel="noopener"
+          aria-label="Facebook"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a
+          href="https://www.instagram.com/zygo.go/"
+          target="_blank"
+          rel="noopener"
+          aria-label="Instagram"
+        >
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="https://www.tiktok.com/@zygo.go" target="_blank" rel="noopener" aria-label="TikTok">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+          </svg>
+        </a>
+      </div>
+
+        <a href="/contacto" class="header__cta">
+          Agenda tu Cita
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="header__mobile-actions">
+        <!-- Social Icons for Mobile -->
+        <div class="header__mobile-social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61564505164182" target="_blank" rel="noopener" aria-label="Facebook">
+                <!-- Facebook (Circle style to match weight) -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+            <a href="https://www.instagram.com/zygo.go/" target="_blank" rel="noopener" aria-label="Instagram">
+                <!-- Instagram (Clean standard stroke) -->
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://www.tiktok.com/@zygo.go" target="_blank" rel="noopener" aria-label="TikTok">
+               <!-- TikTok (Clean stroke style) -->
+               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+            </a>
+        </div>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/51930928175" target="_blank" rel="noopener" class="header__mobile-call header__mobile-whatsapp" aria-label="Chat en WhatsApp">
+          <!-- WhatsApp (Clean stroke to match others) -->
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu - Static in HTML, hidden by default -->
+  <nav class="header__mobile-menu" id="mobileMenu">
+    <div class="header__mobile-content">
+      <div class="header__mobile-links">
+        <a href="/" class:list={[{ 'active': isActive('/') }]}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="nav-icon"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Inicio
+        </a>
+        <a href="/servicios" class:list={[{ 'active': isActive('/servicios') }]}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="nav-icon"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Servicios
+        </a>
+        <a href="/acerca-de" class:list={[{ 'active': isActive('/acerca-de') }]}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="nav-icon"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="16" x2="12" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="12" y1="8" x2="12.01" y2="8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Acerca de
+        </a>
+        <a href="/testimonios" class:list={[{ 'active': isActive('/testimonios') }]}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="nav-icon"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Testimonios
+        </a>
+        <a href="/contacto" class:list={[{ 'active': isActive('/contacto') }]}>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" class="nav-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Contacto
+        </a>
+      </div>
+
+      <div class="header__mobile-footer">
+        <a href="/contacto" class="header__mobile-cta">
+          Agenda tu Cita
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        
+        <div class="header__mobile-social">
+          <a href="https://www.facebook.com/profile.php?id=61564505164182" target="_blank" aria-label="Facebook">
+             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="https://www.instagram.com/zygo.go/" target="_blank" aria-label="Instagram">
+             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="https://www.tiktok.com/@zygo.go" target="_blank" aria-label="TikTok">
+             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  /* Mobile Actions Container */
+  .header__mobile-actions {
+    display: none; /* Hidden on desktop */
+    align-items: center;
+    gap: 0.8rem; 
+    margin-left: auto; /* Push to right */
+  }
+
+  .header__left-group {
+    display: contents; /* Desktop: Layout as normal */
+  }
+
+  .header__mobile-toggle {
+    color: #E40345; /* Brand Red */
+    display: none; /* Hidden on desktop */
+    align-items: center;
+  }
+
+  .header__mobile-social-icons {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+  }
+  
+  /* Uniform styles for ALL icons in the header actions */
+  .header__mobile-social-icons a,
+  .header__mobile-call {
+    color: #E40345 !important; /* Force Brand Red */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    background: none !important; /* Remove backgrounds */
+    box-shadow: none !important; /* Remove shadows */
+    width: auto !important;
+    height: auto !important;
+    transition: transform 0.2s;
+  }
+
+  /* Ensure all SVGs are exactly the same size */
+  .header__mobile-social-icons svg,
+  .header__mobile-call svg,
+  .header__mobile-toggle svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .header__mobile-social-icons a:hover,
+  .header__mobile-call:hover,
+  .header__mobile-toggle:hover {
+    transform: scale(1.1);
+    color: #DE5B87 !important; /* Pink on hover */
+  }
+
+  @media (max-width: 1024px) {
+      .header__actions {
+          display: none; /* Hide desktop social/CTA */
+      }
+      
+      .header__nav {
+          display: none; /* Hide desktop nav */
+      }
+
+      .header__mobile-actions {
+          display: flex;
+      }
+      
+      .header__mobile-toggle {
+          display: flex; /* Show only on mobile */
+      }
+
+      .header__left-group {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .header__logo {
+        font-size: 1.5rem; /* Slightly smaller to fit */
+      }
+      
+      .logo-img {
+          height: 40px; /* Slightly smaller */
+      }
+  }
+
+  .header__mobile-call:active {
+    transform: scale(0.95);
+  }
+
+  @media (max-width: 768px) {
+    .header__mobile-actions {
+      display: flex;
+    }
+  }
+
+  /* Mobile menu - hidden by default */
+  .header__mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: linear-gradient(180deg, #FCE3F2 0%, #FCA4BD 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: var(--shadow-lg);
+    padding: 0; /* Reset padding to use flex container */
+    z-index: 999;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    height: calc(100vh - 80px); /* Full height minus header */
+    overflow-y: auto;
+  }
+
+  /* Content Wrapper */
+  .header__mobile-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 2rem;
+  }
+
+  .header__mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* When open, show it */
+  .header__mobile-menu--open {
+    display: block !important;
+    animation: slideDown 0.3s ease-out;
+  }
+
+  .header__logo {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 2rem;
+    font-weight: 800;
+    text-decoration: none;
+    letter-spacing: -0.05em;
+  }
+
+  .logo-text {
+    display: flex;
+  }
+
+  .text-zy {
+    color: #E40345;
+  }
+
+  .text-go {
+    color: #DE5B87;
+  }
+
+  .logo-img {
+    height: 54px;
+    width: auto;
+  }
+
+  .header__mobile-menu a.header__mobile-cta {
+    border-bottom: none; /* No border for button */
+  }
+
+  .header__mobile-menu a:not(.header__mobile-cta):not(.header__mobile-social a) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1rem; /* Bigger touch target */
+    border-bottom: 1px solid rgba(138, 0, 33, 0.1);
+    color: #8A0021;
+    font-weight: 600;
+    font-size: 1.1rem; /* Larger text */
+    transition: all 0.2s ease;
+  }
+
+  .nav-icon {
+    opacity: 0.8;
+  }
+
+  .header__mobile-menu a:not(.header__mobile-cta):not(.header__mobile-social a):last-child {
+    border-bottom: none;
+  }
+
+  .header__mobile-menu a:not(.header__mobile-cta):not(.header__mobile-social a):hover {
+    color: #D32F2F;
+    padding-left: 1.5rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+  }
+
+  /* Mobile Footer Area */
+  .header__mobile-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(138, 0, 33, 0.1);
+    padding-top: 2rem;
+  }
+
+  /* Mobile CTA Button */
+  .header__mobile-cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    background: #8A0021;
+    color: white !important;
+    padding: 1rem;
+    border-radius: 99px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(138, 0, 33, 0.2);
+    transition: transform 0.2s;
+  }
+
+  .header__mobile-cta:hover {
+    transform: scale(1.02);
+    background: #72001b;
+  }
+
+  /* Social Icons */
+  .header__mobile-social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .header__mobile-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background: white;
+    border-radius: 50%;
+    color: #8A0021;
+    box-shadow: 0 2px 10px rgba(138, 0, 33, 0.1);
+    transition: transform 0.2s;
+    border: none !important; /* Override default border */
+  }
+
+  .header__mobile-social a:hover {
+    transform: translateY(-3px);
+    background: #8A0021;
+    color: white;
+  }
+
+  /* HIDE mobile menu on desktop completely */
+  @media (min-width: 768px) {
+    .header__mobile-menu,
+    .header__mobile-menu--open {
+      display: none !important;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Header scroll behavior
+  function initHeader() {
+    const header = document.querySelector('.header');
+    if (!header) return;
+
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll > 100) {
+        header.classList.add('header--scrolled');
+      } else {
+        header.classList.remove('header--scrolled');
+      }
+    });
+  }
+
+  // Mobile menu toggle - GSAP Refactored
+  import gsap from 'gsap';
+
+  function initMobileMenu() {
+    const toggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (!toggle || !mobileMenu) return;
+
+    // Prevent duplicate listeners
+    const newToggle = toggle.cloneNode(true) as HTMLElement;
+    toggle.parentNode?.replaceChild(newToggle, toggle);
+
+    // Estado inicial visual
+    gsap.set(mobileMenu, { display: 'none', y: -20, opacity: 0 });
+
+    let isOpen = false;
+    let mm = gsap.matchMedia();
+
+    newToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      isOpen = !isOpen;
+
+      mm.add("(max-width: 768px)", () => {
+        if (isOpen) {
+          // Open animation (Bouncy!)
+          gsap.to(mobileMenu, { 
+            display: 'block', 
+            y: 0, 
+            opacity: 1, 
+            duration: 0.8, 
+            ease: "elastic.out(1, 0.75)",
+            overwrite: true 
+          });
+          mobileMenu.classList.add('header__mobile-menu--open'); // Keep for safety/styling
+        } else {
+          // Close animation
+          gsap.to(mobileMenu, { 
+            y: -20, 
+            opacity: 0, 
+            duration: 0.4, 
+            ease: "power2.in",
+            onComplete: () => gsap.set(mobileMenu, { display: 'none' }),
+            overwrite: true
+          });
+          mobileMenu.classList.remove('header__mobile-menu--open');
+        }
+      });
+
+      // Update Icon
+      newToggle.innerHTML = isOpen
+        ? '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>'
+        : '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>';
+    });
+
+    // Close on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        isOpen = false;
+        gsap.to(mobileMenu, { 
+          y: -20, 
+          opacity: 0, 
+          duration: 0.3, 
+          onComplete: () => gsap.set(mobileMenu, { display: 'none' }) 
+        });
+        mobileMenu.classList.remove('header__mobile-menu--open');
+        // Reset icon
+        newToggle.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>';
+      });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (isOpen && !mobileMenu.contains(e.target as Node) && !newToggle.contains(e.target as Node)) {
+        isOpen = false;
+        gsap.to(mobileMenu, { 
+          y: -20, 
+          opacity: 0, 
+          duration: 0.3,
+          onComplete: () => gsap.set(mobileMenu, { display: 'none' })
+        });
+        mobileMenu.classList.remove('header__mobile-menu--open');
+        newToggle.innerHTML = '<svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>';
+      }
+    });
+  }
+
+  initHeader();
+  initMobileMenu();
+
+  document.addEventListener('astro:page-load', () => {
+    initHeader();
+    initMobileMenu();
+  });
+</script>

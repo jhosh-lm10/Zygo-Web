@@ -1,0 +1,859 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import TeamCarousel from '../components/TeamCarousel.astro';
+---
+
+<BaseLayout 
+  title="Acerca de Zygo - Nuestra Misión y Visión" 
+  description="Conoce más sobre Zygo, nuestra misión de brindar cuidado obstétrico compasivo y nuestra visión para el futuro de la salud femenina."
+>
+  <Header />
+
+  <main class="about-page">
+    <!-- ============================================
+         SECTION 1: HERO with vibrant gradient
+         ============================================ -->
+    <section class="hero-section">
+      <div class="hero-section__content" data-animate>
+        <span class="badge-pill">#SOBRE NOSOTROS</span>
+        <h1 class="hero-section__title">
+          Comprometidos con tu
+          <span class="hero-section__title-italic">salud femenina integral</span>
+        </h1>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 2: MISSION & VISION
+         Image + Cards same height
+         ============================================ -->
+    <section class="mission-section">
+      <div class="container mission-section__grid">
+        <!-- Left: Image -->
+        <div class="mission-section__image-wrapper" data-animate>
+          <img src="/img/Mision.webp" alt="Equipo médico de Zygo" class="mission-section__image" />
+        </div>
+
+        <!-- Right: Cards (same total height as image) -->
+        <div class="mission-section__cards">
+          <!-- Main Mission Card -->
+          <div class="mission-section__card" data-animate>
+            <div class="mission-section__card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M2 17L12 22L22 17M2 12L12 17L22 12M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2 class="mission-section__card-title">Nuestra Misión y Visión</h2>
+            <p class="mission-section__card-text">
+              En Zygo, nos dedicamos a brindar atención integral en salud femenina, sexual y reproductiva. Nuestro objetivo es acompañarte en cada etapa de tu vida, construyendo relaciones duraderas basadas en confianza, respeto y excelencia médica sin juicios.
+            </p>
+          </div>
+
+          <!-- Avatars Card -->
+          <div class="mission-section__avatars-card" data-animate>
+            <div class="mission-section__avatars">
+              <img src="/img/giorgia.webp" alt="Dra. Giorgia" />
+              <img src="/img/ivethObs.webp" alt="Lic. Iveth" />
+              <img src="/img/katt.webp" alt="Lic. Katherine" />
+            </div>
+            <div class="mission-section__join-text">
+              <span class="mission-section__join-number">Más de 5,000+</span>
+              <span class="mission-section__join-label">pacientes confían en nosotras</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 3: JOURNEY
+         ============================================ -->
+    <section class="journey-section">
+      <div class="container journey-section__grid">
+        <h2 class="journey-section__title" data-animate>
+          Un espacio seguro para<br/>tu salud íntima
+        </h2>
+        <p class="journey-section__text" data-animate>
+          Zygo nació con la visión de crear un espacio donde la salud femenina sea tratada con la naturalidad y profesionalismo que merece. Somos una clínica integral reconocida por combinar atención experta en ginecología y sexualidad con un ambiente cálido y juvenil.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 4: INNOVATION (Image taller)
+         ============================================ -->
+    <section class="innovation-section">
+      <div class="container innovation-section__grid">
+        <!-- Left: Taller Image -->
+        <div class="innovation-section__image-wrapper" data-animate>
+          <img src="/img/innovador.webp" alt="Tecnología innovadora en Zygo" class="innovation-section__image" />
+        </div>
+
+        <!-- Right: Content -->
+        <div class="innovation-section__content" data-animate>
+          <span class="badge-pill"># ACERCA DE ZYGO</span>
+          <h2 class="innovation-section__title">
+            Tecnología y confort en un solo lugar
+          </h2>
+          <p class="innovation-section__desc">
+            Creemos que la tecnología de vanguardia y un ambiente acogedor son esenciales. Nuestra clínica está equipada para garantizar diagnósticos precisos en salud reproductiva y tratamientos efectivos en una experiencia relajada y libre de estrés.
+          </p>
+
+          <ul class="innovation-section__checklist">
+            <li>
+              <span class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Ecografías ginecológicas de alta precisión
+            </li>
+            <li>
+              <span class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Chequeos preventivos integrales
+            </li>
+            <li>
+              <span class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Atención personalizada y sin tabúes
+            </li>
+            <li>
+              <span class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Consultorios modernos "como en casa"
+            </li>
+            <li>
+              <span class="check-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              Privacidad y comodidad garantizadas
+            </li>
+          </ul>
+
+          <a href="/contacto" class="btn-dark">
+            Agenda tu Visita
+            <span class="btn-dark__arrow">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 5: TEAM
+         ============================================ -->
+    <section class="team-section">
+      <div class="container">
+        <div class="team-section__header" data-animate>
+          <span class="badge-pill"># NUESTRO EQUIPO</span>
+          <h2 class="team-section__title">
+            Tus especialistas<br/>
+            <span class="team-section__title-italic">de confianza</span>
+          </h2>
+        </div>
+
+        <!-- Unified Carousel Component -->
+        <TeamCarousel />
+      </div>
+    </section>
+
+    <!-- ============================================
+         SECTION 6: FINAL CTA (Bigger image, centered)
+         ============================================ -->
+    <section class="cta-section">
+      <div class="cta-section__grid">
+        <!-- Left: Bigger image with blob -->
+        <div class="cta-section__image-container" data-animate>
+          <div class="cta-section__blob"></div>
+          <img src="/img/experiencia.webp" alt="Profesional de Zygo" class="cta-section__image" />
+        </div>
+
+        <!-- Right: Content centered -->
+        <div class="cta-section__content" data-animate>
+          <h2 class="cta-section__title">
+            ¿Lista para transformar<br/>tu salud y bienestar?
+          </h2>
+          <p class="cta-section__desc">
+            No esperes más para darte el cuidado que mereces. Agenda tu consulta hoy y vive la experiencia Zygo: atención integral femenina, moderna y cercana diseñada para ti.
+          </p>
+
+          <div class="cta-section__phone">
+            <div class="cta-section__phone-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="cta-section__phone-text">
+              <span class="cta-section__phone-label">Llámanos</span>
+              <a href="tel:+51930928175" class="cta-section__phone-number">+51 930 928 175</a>
+            </div>
+          </div>
+
+          <a href="/contacto" class="btn-dark">
+            Agenda tu Visita
+            <span class="btn-dark__arrow">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  /* Variables now centralized in global.css */
+
+  .about-page {
+    overflow-x: hidden;
+    background: white;
+  }
+
+  /* Badge Pill - ApexCare exact specs */
+  .badge-pill {
+    display: inline-block;
+    padding: 10px 16px; /* ApexCare: 10 16 */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* ApexCare */
+    border-radius: 24px; /* ApexCare: 24px */
+    font-size: 12px; /* ApexCare: 12px */
+    font-weight: 700; /* ApexCare: 700 */
+    line-height: 12px; /* ApexCare: 12px */
+    color: var(--zygo-guinda);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: white;
+  }
+
+  /* Guinda Button - ApexCare exact specs */
+  .btn-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--zygo-guinda);
+    color: white;
+    height: 58px; /* ApexCare: 58px */
+    padding: 0 24px;
+    border-radius: 63px; /* ApexCare: 63px */
+    font-weight: 500; /* ApexCare: 500 */
+    font-size: 16px; /* ApexCare: 16px */
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .btn-dark:hover {
+    background: var(--zygo-guinda-dark);
+    transform: translateY(-2px);
+    color: white;
+  }
+
+  .btn-dark__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: white;
+    border-radius: 50%;
+    color: var(--zygo-guinda);
+  }
+
+  /* ============================================
+     SECTION 1: HERO with vibrant gradient (left to right)
+     ============================================ */
+  .hero-section {
+    position: relative;
+    padding: 10rem 0 11.7rem;
+    text-align: center;
+    background: linear-gradient(-90deg, #FCA4BD 0%, #FCE3F2 50%, #ffffff 100%); /* New vibrant/youthful gradient */
+  }
+
+  .hero-section__content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Override badge pill in hero - Transparent per user request */
+  .hero-section .badge-pill {
+    background: transparent;
+    border: none;
+  }
+
+  .hero-section__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 48px); /* Larger for hero */
+    font-weight: 500; /* ApexCare: 500 */
+    line-height: 1.13; /* ApexCare ratio */
+    color: var(--text-dark);
+    margin-top: 0.5rem; /* Reduced from 1.25rem */
+  }
+
+  .hero-section__title-italic {
+    display: block;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* ============================================
+     SECTION 2: MISSION & VISION
+     Image and cards SAME HEIGHT (ApexCare specs)
+     ============================================ */
+  .mission-section {
+    margin-top: -6rem; /* Less aggressive overlap (was -12rem) */
+    position: relative;
+    z-index: 10;
+    padding-bottom: 4rem;
+  }
+
+  .mission-section__grid {
+    display: flex;
+    flex-direction: row;
+    gap: 25px; /* ApexCare: 25px gap */
+    align-items: center;
+  }
+
+  .mission-section__image-wrapper {
+    flex: 1.3;
+    border-radius: 16px; /* ApexCare: 16px */
+    overflow: hidden;
+    box-shadow: 10px 10px 40px rgba(7, 0, 108, 0.07); /* ApexCare shadow */
+  }
+
+  .mission-section__image {
+    width: 100%;
+    height: 560px; /* ApexCare: 560px */
+    object-fit: cover;
+    object-position: center center; /* No crop */
+    transform: scale(1); /* No zoom */
+    transition: transform 0.5s ease;
+  }
+
+  .mission-section__image-wrapper:hover .mission-section__image {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 767px) {
+    .mission-section__image {
+      transform: scale(1.15) !important; /* Crop watermark on mobile */
+      object-position: center 30%; /* Adjust position if needed */
+    }
+  }
+
+  .mission-section__cards {
+    flex: 0.7;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* ApexCare: 20px */
+    height: 560px; /* Match image height */
+  }
+
+  .mission-section__card {
+    background: rgba(255, 255, 255, 0.86); /* ApexCare glassmorphism */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 40px; /* ApexCare: 40px */
+    border-radius: 16px; /* ApexCare: 16px */
+    box-shadow: 10px 10px 40px rgba(7, 0, 108, 0.07); /* ApexCare shadow */
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px; /* ApexCare: 20px internal gap */
+  }
+
+  .mission-section__card-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--zygo-guinda-light);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--zygo-guinda);
+  }
+
+  .mission-section__card-title {
+    font-size: 1.5rem; /* Larger title */
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .mission-section__card-text {
+    font-size: 1.05rem; /* Larger text */
+    color: var(--text-gray);
+    line-height: 1.75;
+  }
+
+  /* Avatars Card - ApexCare style */
+  .mission-section__avatars-card {
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 24px 32px;
+    border-radius: 16px;
+    box-shadow: 10px 10px 40px rgba(7, 0, 108, 0.07);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .mission-section__avatars {
+    display: flex;
+  }
+
+  .mission-section__avatars img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-left: -10px;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .mission-section__avatars img:first-child {
+    margin-left: 0;
+  }
+
+  .mission-section__join-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mission-section__join-number {
+    font-size: 1.1rem; /* Larger */
+    font-weight: 700;
+    color: var(--text-dark);
+  }
+
+  .mission-section__join-label {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+  }
+
+  /* ============================================
+     SECTION 3: JOURNEY
+     ============================================ */
+  .journey-section {
+    padding: 2rem 0; /* Balanced padding: 2rem top and 2rem bottom */
+    background: white;
+  }
+
+  .journey-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* ApexCare: equal columns */
+    gap: 2rem;
+    align-items: flex-start;
+    max-width: 1300px; /* ApexCare: 1300px */
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .journey-section__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 38px; /* ApexCare: 38px */
+    font-weight: 600; /* More bold as requested */
+    line-height: 42.94px; /* ApexCare: 42.94px */
+    color: var(--text-dark);
+    max-width: 632px; /* ApexCare: 632.5px */
+  }
+
+  .journey-section__text {
+    font-size: 16px; /* ApexCare: 16px */
+    font-weight: 400; /* ApexCare: 400 */
+    color: var(--text-gray);
+    line-height: 25.6px; /* ApexCare: 25.6px */
+    max-width: 632px; /* ApexCare: 632.5px */
+  }
+
+  /* ============================================
+     SECTION 4: INNOVATION - ApexCare exact dimensions
+     Container: 1300x585, Image: 617x582, Content: 617x585
+     ============================================ */
+  .innovation-section {
+    padding: 5rem 0;
+    background: white;
+  }
+
+  .innovation-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+    max-width: 1300px;
+    min-height: 585px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .innovation-section__image-wrapper {
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--zygo-rose-light);
+    max-width: 617px;
+    height: 582px;
+  }
+
+  .innovation-section__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%; /* Crop top (hides Gemini logo) */
+    transform: scale(1.1); /* Zoom in to crop edges */
+  }
+
+  .innovation-section__content {
+    padding-left: 1rem;
+  }
+
+  .innovation-section__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 38px; /* ApexCare: 38px */
+    font-weight: 500; /* ApexCare: 500 */
+    line-height: 42.94px; /* ApexCare: 42.94px (~1.13) */
+    color: var(--text-dark);
+    margin: 1rem 0;
+  }
+
+  .innovation-section__desc {
+    font-size: 16px; /* ApexCare: 16px */
+    font-weight: 400; /* ApexCare: 400 */
+    color: var(--text-gray);
+    line-height: 25.6px; /* ApexCare: 25.6px (1.6) */
+    margin: 10px 0 24px; /* ApexCare: margin 10px 0 */
+  }
+
+  .innovation-section__checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* ApexCare: 10px gap */
+  }
+
+  .innovation-section__checklist li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px; /* ApexCare: 16px */
+    font-weight: 500; /* ApexCare: 500 */
+    line-height: 25.6px; /* ApexCare: 25.6px */
+    color: var(--text-dark);
+  }
+
+  .check-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; /* Slightly larger than ApexCare 15px for visibility */
+    height: 16px;
+    color: var(--zygo-guinda);
+    flex-shrink: 0;
+  }
+
+  /* ============================================
+     SECTION 5: TEAM
+     ============================================ */
+  .team-section {
+    padding: 5rem 0;
+    background: var(--bg-light);
+  }
+
+  .team-section__header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .team-section__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 38px; /* ApexCare: 38px */
+    font-weight: 500; /* ApexCare: 500 */
+    line-height: 42.94px; /* ApexCare: 42.94px */
+    color: var(--text-dark);
+    margin-top: 1rem;
+  }
+
+  .team-section__title-italic {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Team card styles are now in TeamCarousel.astro component */
+
+  /* ============================================
+     SECTION 6: FINAL CTA - ApexCare exact dimensions
+     Image: 482x482 (square), Content: 482x402
+     ============================================ */
+  .cta-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white; /* Changed to WHITE as per user request */
+    padding: 5rem 0;
+  }
+
+  .cta-section__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1030px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .cta-section__image-container {
+    position: relative;
+    width: 100%;
+    max-width: 482px;
+    height: 482px; /* Square like ApexCare */
+  }
+
+  .cta-section__blob {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    background: linear-gradient(180deg, #c4888f 0%, #d9a5ab 100%);
+    border-radius: 16px;
+    z-index: 1;
+  }
+
+  .cta-section__image {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 482px; /* Square */
+    object-fit: cover;
+    object-position: center 20%; /* Crop top (hides Gemini logo) */
+    transform: scale(1.05); /* Slight zoom to crop edges */
+    border-radius: 16px;
+  }
+
+  .cta-section__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .cta-section__content .btn-dark {
+    width: auto;
+  }
+
+  .cta-section__title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 38px; /* ApexCare: 38px */
+    font-weight: 500; /* ApexCare: 500 */
+    line-height: 42.94px; /* ApexCare: 42.94px */
+    color: var(--text-dark);
+    margin-bottom: 16px;
+  }
+
+  .cta-section__desc {
+    font-size: 16px; /* ApexCare: 16px */
+    font-weight: 400; /* ApexCare: 400 */
+    color: var(--text-gray);
+    line-height: 25.6px; /* ApexCare: 25.6px */
+    margin-bottom: 24px;
+    max-width: 500px; /* ApexCare: 500px width */
+  }
+
+  .cta-section__phone {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px; /* ApexCare: 16px */
+    margin-bottom: 24px;
+  }
+
+  .cta-section__phone-icon {
+    width: 64px; /* ApexCare: 64px */
+    height: 64px; /* ApexCare: 64px */
+    background: rgba(114, 47, 55, 0.05); /* ApexCare: 5% opacity */
+    border-radius: 50%; /* ApexCare: 50% */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--zygo-guinda);
+  }
+
+  .cta-section__phone-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cta-section__phone-label {
+    font-size: 16px; /* ApexCare: 16px */
+    font-weight: 400; /* ApexCare: 400 */
+    line-height: 25.6px; /* ApexCare: 25.6px */
+    color: var(--text-gray);
+  }
+
+  .cta-section__phone-number {
+    font-size: 18px; /* ApexCare: 18px */
+    font-weight: 500; /* ApexCare: 500 */
+    line-height: 20.34px; /* ApexCare: 20.34px */
+    color: var(--text-dark);
+    text-decoration: none;
+  }
+
+  .cta-section__phone-number:hover {
+    color: var(--zygo-guinda);
+  }
+
+  /* ============================================
+     RESPONSIVE
+     ============================================ */
+  @media (max-width: 1024px) {
+    .mission-section__grid {
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .journey-section__grid,
+    .innovation-section__grid,
+    .cta-section__grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .team-section__grid {
+      gap: 1.5rem;
+    }
+
+    .team-card {
+      width: 240px;
+    }
+
+    .journey-section__grid {
+      max-width: 100%;
+    }
+
+    .hero-section {
+      padding: 6rem 0 12rem;
+    }
+
+    .mission-section {
+      margin-top: -8rem;
+    }
+
+    .mission-section__image {
+      height: 400px;
+      /* Keep zoom effect for cropping - don't reset to scale(1) */
+    }
+
+    .mission-section__cards {
+      height: auto;
+      width: 100%;
+    }
+
+    .mission-section__card {
+      padding: 24px;
+    }
+
+    .innovation-section__grid {
+      max-width: 100%;
+      min-height: auto;
+    }
+
+    .innovation-section__image-wrapper {
+      max-width: 100%;
+      height: 400px;
+    }
+
+    .cta-section__grid {
+      max-width: 100%;
+    }
+
+    .cta-section__image-container {
+      max-width: 100%;
+      height: 400px;
+    }
+
+    .cta-section__image {
+      height: 400px;
+    }
+
+    .cta-section__blob {
+      width: 92%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .team-card {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .hero-section {
+      padding: 5rem 0 10rem;
+      background: linear-gradient(180deg, var(--zygo-rose) 0%, var(--zygo-rose-light) 60%, white 100%); /* Vertical on mobile */
+    }
+
+    .journey-section__title {
+      font-size: 28px;
+    }
+
+    .mission-section {
+      margin-top: -6rem;
+    }
+
+    .mission-section__image {
+      height: 320px;
+    }
+
+    .mission-section__card {
+      padding: 20px;
+    }
+
+    .journey-section,
+    .innovation-section,
+    .team-section,
+    .cta-section {
+      padding: 3rem 0;
+    }
+
+    .innovation-section__image-wrapper {
+      height: 320px;
+    }
+
+    .cta-section__image-container {
+      height: 320px;
+    }
+
+    .cta-section__image {
+      height: 320px;
+    }
+
+    .cta-section__blob {
+      width: 90%;
+    }
+  }
+</style>

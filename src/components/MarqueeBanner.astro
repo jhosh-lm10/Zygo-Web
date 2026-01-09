@@ -1,0 +1,69 @@
+---
+// MarqueeBanner - Infinite scrolling text animation (CSS-only, more reliable)
+interface Props {
+  text?: string;
+}
+
+const { text = "ZYGO" } = Astro.props;
+
+// Create repeated text for seamless loop
+const repeatedText = Array(12).fill(`${text} • `).join('');
+---
+
+<section class="marquee-banner">
+  <div class="marquee-track">
+    <span class="marquee-text">{repeatedText}</span>
+    <span class="marquee-text" aria-hidden="true">{repeatedText}</span>
+  </div>
+</section>
+
+<style>
+  .marquee-banner {
+    overflow: hidden;
+    padding: 1.5rem 0;
+    background-color: var(--white); /* Updated to match Insights section */
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 30s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-text {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1rem, 3vw, 1.75rem); /* Smaller */
+    font-weight: 700;
+    font-style: italic;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(114, 47, 55, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+    user-select: none;
+    padding-right: 0;
+  }
+
+  /* Hover effect - text becomes more visible */
+  .marquee-banner:hover .marquee-text {
+    -webkit-text-stroke: 1px rgba(114, 47, 55, 0.6);
+  }
+
+  @media (max-width: 767px) {
+    .marquee-banner {
+      padding: 1rem 0;
+    }
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+---
+
+<BaseLayout
+  title="Página no encontrada - Zygo"
+  description="La página que buscas no existe o ha sido movida."
+>
+  <Header />
+
+  <main style="padding-top: 80px;">
+    <section class="section" style="min-height: 60vh; display: flex; align-items: center;">
+      <div class="container">
+        <div class="text-center" style="max-width: 600px; margin: 0 auto;" data-animate>
+          <div
+            style="font-size: 8rem; font-weight: 900; color: var(--accent-color); line-height: 1; margin-bottom: 1rem;"
+          >
+            404
+          </div>
+          <h1 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 2.5rem;">
+            Página no encontrada
+          </h1>
+          <p style="color: var(--text-light); font-size: 1.125rem; margin-bottom: 2rem;">
+            Lo sentimos, la página que buscas no existe o ha sido movida. Pero no te preocupes,
+            estamos aquí para ayudarte a encontrar lo que necesitas.
+          </p>
+
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="/" class="btn btn--primary"> Volver al Inicio </a>
+            <a href="/contacto" class="btn btn--secondary"> Contáctanos </a>
+          </div>
+
+          <div style="margin-top: 3rem;">
+            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Enlaces útiles:</h3>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem; align-items: center;">
+              <a
+                href="/servicios"
+                style="color: var(--cta-color); font-weight: 500; text-decoration: underline;"
+              >
+                Nuestros Servicios
+              </a>
+              <a
+                href="/equipo"
+                style="color: var(--cta-color); font-weight: 500; text-decoration: underline;"
+              >
+                Conoce a Nuestro Equipo
+              </a>
+              <a
+                href="/contacto"
+                style="color: var(--cta-color); font-weight: 500; text-decoration: underline;"
+              >
+                Agenda tu Cita
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+

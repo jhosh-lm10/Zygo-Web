@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get obstetric services
+const servicios = await getCollection('servicios', ({ data }) => {
+  return data.category === 'obstetrico';
+});
+
+const serviciosOrdenados = servicios.sort((a, b) => a.data.order - b.data.order);
+---
+
+<BaseLayout
+  title="Servicios Obstétricos - Zygo"
+  description="Paquetes y servicios obstétricos de Zygo. Control prenatal, parto, monitoreo fetal, alto riesgo y más."
+>
+  <Header />
+
+  <main style="padding-top: 80px;">
+    <section class="section">
+      <div class="container">
+        <header class="section__header" data-animate>
+          <h1 class="section__title">Servicios Obstétricos</h1>
+          <p class="section__description">
+            Acompañamiento integral durante el embarazo, parto y postparto con la más alta calidad de
+            atención.
+          </p>
+        </header>
+
+        <div class="grid grid--3">
+          {
+            serviciosOrdenados.map((servicio) => (
+              <ServiceCard
+                icon={servicio.data.icon}
+                title={servicio.data.title}
+                description={servicio.data.description}
+              />
+            ))
+          }
+        </div>
+
+        <div class="text-center" style="margin-top: 3rem;" data-animate>
+          <a href="/contacto" class="btn btn--primary btn--large"> Agenda tu Consulta </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+

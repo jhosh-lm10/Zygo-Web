@@ -1,0 +1,18 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<article class="card" data-animate>
+  <div class="card__content">
+    <div class="card__icon" set:html={icon} />
+    <h3 class="card__title">{title}</h3>
+    <p class="card__description">{description}</p>
+  </div>
+</article>
+

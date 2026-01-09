@@ -1,0 +1,169 @@
+---
+import { getCollection } from 'astro:content';
+
+const equipo = await getCollection('equipo');
+const equipoOrdenado = equipo.sort((a, b) => a.data.order - b.data.order);
+---
+
+<div class="team-carousel-wrapper">
+  <!-- Left Button -->
+  <button class="team-carousel__btn team-carousel__btn--prev" aria-label="Previous slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+  </button>
+
+  <!-- Scroll Container -->
+  <div class="team-carousel__container">
+    {
+      equipoOrdenado.map((miembro, index) => (
+        <div 
+          class="team-card" 
+          data-animate="scale" 
+          data-animate-delay={String(index * 0.1)}
+        >
+          <div class="team-card__image-wrapper">
+            <img 
+              src={miembro.data.image} 
+              alt={miembro.data.name}
+              class="team-card__image"
+            />
+          </div>
+          <h3 class="team-card__name">{miembro.data.name}</h3>
+          <p class="team-card__role">{miembro.data.specialty}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- Right Button -->
+  <button class="team-carousel__btn team-carousel__btn--next" aria-label="Next slide">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+  </button>
+</div>
+
+<style>
+  /* Unified Team Card */
+  .team-card {
+    text-align: left;
+    width: 280px; /* Fixed width */
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    background: transparent;
+  }
+
+  .team-card__image-wrapper {
+    background: #e8e8e8;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 1 / 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .team-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .team-card__name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+  }
+
+  .team-card__role {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+  }
+
+  /* Carousel Styles */
+  .team-carousel-wrapper {
+    position: relative;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 5rem; /* Increased padding for more space */
+  }
+
+  .team-carousel__container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .team-carousel__container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .team-carousel__btn {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.1);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+  }
+
+  .team-carousel__btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .team-carousel__btn--prev { left: 0.5rem; } /* Moved slightly inward from edge */
+  .team-carousel__btn--next { right: 0.5rem; }
+
+  @media (max-width: 767px) {
+    .team-carousel-wrapper { padding: 0; }
+    .team-carousel__btn { display: none; }
+    .team-carousel__container { padding: 0 1.5rem 1.5rem; gap: 1.5rem; }
+    .team-card { width: 260px; }
+  }
+</style>
+
+<script>
+  function initCarousels() {
+    document.querySelectorAll('.team-carousel-wrapper').forEach(wrapper => {
+      const container = wrapper.querySelector('.team-carousel__container');
+      const prevBtn = wrapper.querySelector('.team-carousel__btn--prev');
+      const nextBtn = wrapper.querySelector('.team-carousel__btn--next');
+
+      if (container && prevBtn && nextBtn) {
+        // Remove old listeners to prevent duplicates
+        const newPrevBtn = prevBtn.cloneNode(true);
+        const newNextBtn = nextBtn.cloneNode(true);
+        prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+        nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+
+        newNextBtn.addEventListener('click', () => {
+          container.scrollBy({ left: 300, behavior: 'smooth' });
+        });
+
+        newPrevBtn.addEventListener('click', () => {
+          container.scrollBy({ left: -300, behavior: 'smooth' });
+        });
+      }
+    });
+  }
+
+  // Run on initial load
+  initCarousels();
+
+  // Re-run after View Transitions navigation
+  document.addEventListener('astro:page-load', initCarousels);
+</script>

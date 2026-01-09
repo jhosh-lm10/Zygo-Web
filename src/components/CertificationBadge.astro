@@ -1,0 +1,105 @@
+---
+// Certification Badge - Ultra Premium Minimalist Design
+---
+
+<div class="badge-container">
+  <!-- Glass Background Layer -->
+  <div class="badge-glass"></div>
+  
+  <!-- Rotating Content -->
+  <div class="badge-rotating">
+    <svg viewBox="0 0 200 200" class="badge-svg">
+      <defs>
+        <path id="textCircle" d="M 100,100 m -85,0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0" />
+      </defs>
+      
+      <text class="badge-text">
+        <textPath href="#textCircle" startOffset="0%">
+          CERTIFICADO POR EL COLEGIO DE OBSTETRAS DEL PERÚ •
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <!-- Static Center -->
+  <div class="badge-center">
+    <span class="badge-initial">Z</span>
+  </div>
+</div>
+
+<style>
+  .badge-container {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Capa de vidrio sutil (Frosty Lite) */
+  .badge-glass {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6); /* Más transparente */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 
+      0 10px 40px -10px rgba(0,0,0,0.08), /* Sombra suave y difusa */
+      inset 0 0 0 1px rgba(255,255,255,0.5); /* Inner stroke sutil */
+    z-index: 1;
+  }
+
+  /* Contenido rotatorio */
+  .badge-rotating {
+    position: absolute;
+    inset: 5px; /* Un poco más adentro del borde */
+    z-index: 2;
+    animation: rotate-badge 25s linear infinite;
+  }
+
+  .badge-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .badge-text {
+    font-family: 'Outfit', sans-serif; /* Fuente moderna sans-serif para legibilidad */
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    fill: #2A2A2A; /* Gris muy oscuro, no negro puro (más elegante) */
+    text-transform: uppercase;
+  }
+
+  /* Centro estático */
+  .badge-center {
+    position: absolute;
+    z-index: 3;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Pequeño círculo central decorativo opcional */
+    /* background: white; 
+    border-radius: 50%; */
+  }
+
+  .badge-initial {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: #1a1a2e;
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  @keyframes rotate-badge {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+</style>

@@ -1,0 +1,669 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import HeroModern from '../components/HeroModern.astro';
+import FloatingCards from '../components/FloatingCards.astro';
+import CertificationBadge from '../components/CertificationBadge.astro';
+import Insights from '../components/Insights.astro';
+import MarqueeBanner from '../components/MarqueeBanner.astro';
+import TeamCarousel from '../components/TeamCarousel.astro';
+import SabiasQueCarousel from '../components/SabiasQueCarousel.astro';
+
+
+// Home Page Reviews Data
+const reviewsHome = [
+  {
+    initial: 'M',
+    name: 'María G.',
+    review: 'La atención fue increíble. Me sentí escuchada y respetada en todo momento. ¡Gracias Zygo!'
+  },
+  {
+    initial: 'L',
+    name: 'Lucía P.',
+    review: 'Excelente equipo de profesionales. Resolvieron todas mis dudas con paciencia y claridad.'
+  },
+  {
+    initial: 'A',
+    name: 'Ana R.',
+    review: 'El ambiente es súper acogedor y seguro. Definitivamente mi lugar de confianza.'
+  },
+  {
+    initial: 'C',
+    name: 'Carla T.',
+    review: 'Me encantó la puntualidad y el trato humano. Se nota que les importa sus pacientes.'
+  },
+  {
+    initial: 'S',
+    name: 'Sofía M.',
+    review: 'Tecnología de primera y un trato muy cálido. Recomiendo Zygo a todas mis amigas.'
+  },
+  {
+    initial: 'V',
+    name: 'Valeria J.',
+    review: 'Gracias por acompañarme en mi embarazo con tanto cariño y profesionalismo.'
+  }
+];
+---
+
+<BaseLayout
+  title="Zygo Salud Femenina | Cuidado Integral, Sexual y Reproductivo"
+  description="Zygo: Clínica especializada en salud femenina, sexual y reproductiva. Ginecología, fertilidad y prevención con un enfoque humano y tecnología avanzada."
+>
+  <Header />
+
+  <main>
+    <!-- Hero Section -->
+    <HeroModern
+      title="Cuidamos tu salud femenina, sexual y reproductiva"
+      subtitle="#1 CLÍNICA DE SALUD INTEGRAL"
+      description="Atención ginecológica y obstétrica experta. Te acompañamos en cada etapa de tu vida con un enfoque humano, tecnología moderna y el respeto que mereces."
+      ctaText="Agenda tu Cita"
+      ctaLink="/contacto"
+      badge="TU BIENESTAR ES NUESTRA PRIORIDAD"
+    >
+      <span slot="title">
+        Cuidamos tu salud <span class="hero-modern__title-accent">femenina</span>, <span class="hero-modern__title-accent">sexual</span> y reproductiva
+      </span>
+    </HeroModern>
+
+    <!-- Floating Cards -->
+    <FloatingCards />
+
+    <!-- About Section: Tus socias de confianza - Con Scrollytelling GSAP -->
+    <div class="scrollytelling-wrapper" id="scrollytellingWrapper" style="background: var(--white);">
+      <div class="scrollytelling-container" id="scrollytellingContainer">
+        <!-- Palabras animadas que aparecen con el scroll -->
+        <div class="scrollytelling-words-container">
+          <div class="scrollytelling-word" id="word-0">Confianza</div>
+          <div class="scrollytelling-word" id="word-1">Atención</div>
+          <div class="scrollytelling-word" id="word-2">Cuidado</div>
+          <div class="scrollytelling-word" id="word-3">Expertas</div>
+        </div>
+
+        <!-- Contenido real de la sección (oculto inicialmente) -->
+        <div class="scrollytelling-content" id="scrollytellingContent" style="padding: clamp(2rem, 5vw, 4rem) 0;">
+          <div class="container">
+            <!-- VISTA ESCRITORIO (Original) -->
+            <div class="split-section desktop-view">
+              <!-- Columna Izquierda: Texto -->
+              <div>
+                <span style="display: inline-block; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-color); margin-bottom: 1.5rem; padding: 0.5rem 1rem; background: rgba(114, 47, 55, 0.08); border-radius: 2rem;">
+                  # SOBRE NOSOTROS
+                </span>
+                <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: var(--font-size-3xl); font-weight: 700; color: var(--primary-color); margin-bottom: 1.5rem; line-height: 1.2;">
+                  Tus aliadas en salud integral femenina
+                </h2>
+                <p style="font-size: 1.25rem; color: var(--text-light); line-height: 1.75; margin-bottom: 2.5rem;">
+                  En Zygo, entendemos que la salud de la mujer va más allá de la maternidad. Ofrecemos un espacio seguro y confidencial para el cuidado de tu salud sexual, reproductiva y ginecológica. Nuestro equipo combina experiencia médica con una atención cálida y libre de juicios.
+                </p>
+                <a href="/equipo" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; border-radius: 9999px;">
+                  Conoce al equipo
+                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+                    <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Columna Derecha: Imagen -->
+              <div style="position: relative; padding: 2rem 1rem;">
+                <!-- Decoración: Línea curva diagonal simple -->
+                <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;" viewBox="0 0 500 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                  <path d="M 50 50 Q 200 250, 450 550" stroke="var(--primary-color)" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+                  <path d="M 40 60 Q 190 260, 440 560" stroke="var(--cta-color)" stroke-width="2" stroke-linecap="round" opacity="0.2"/>
+                </svg>
+                
+                <div style="position: relative; z-index: 1; transform: perspective(1000px) rotateY(-2deg);">
+                  <img 
+                    src="/img/SegundaImg.webp" 
+                    alt="Obstetras y ginecólogas especializadas del equipo Zygo en Lima"
+                    loading="lazy"
+                    decoding="async"
+                    style="
+                      width: 95%; 
+                      height: auto; 
+                      display: block;
+                      margin: 0 auto;
+                      filter: drop-shadow(20px 25px 35px rgba(114, 47, 55, 0.25)) 
+                              drop-shadow(10px 15px 20px rgba(114, 47, 55, 0.15))
+                              drop-shadow(5px 8px 10px rgba(0, 0, 0, 0.1));
+                      position: relative;
+                      z-index: 2;
+                    "
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- VISTA MÓVIL (Flip Card) -->
+            <div class="mobile-flip-scene">
+              <div class="mobile-flip-card">
+                <!-- Frente: Imagen -->
+                <div class="mobile-flip-face mobile-flip-front">
+                  <img src="/img/SegundaImg.webp" alt="Equipo médico de Zygo" class="mobile-flip-image" loading="lazy" decoding="async" />
+                </div>
+                
+                <!-- Dorso: Contenido -->
+                <div class="mobile-flip-face mobile-flip-back">
+                  <div class="flip-content">
+                    <span class="badges-small"># SOBRE NOSOTROS</span>
+                    <h3 class="flip-title">Tus aliadas en salud</h3>
+                    <p class="flip-desc">
+                      Cuidado integral de tu salud femenina, sexual y reproductiva. Un espacio seguro, confidencial y sin juicios para ti.
+                    </p>
+                    <a href="/equipo" class="btn btn--white btn--sm">
+                      Conoce al equipo
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- Scrollytelling is now initialized from BaseLayout via scrollytelling.ts -->
+
+    <!-- Cuidado Ginecológico Integral Section -->
+    <section class="section" style="background: var(--white);">
+      <div class="container">
+        <div class="split-section">
+          <!-- Columna Izquierda: Lista numerada -->
+          <div data-animate="pop">
+            <div style="margin-bottom: 2rem;">
+              <span style="display: inline-block; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-color); margin-bottom: 1.5rem; padding: 0.5rem 1rem; background: rgba(114, 47, 55, 0.08); border-radius: 2rem;">
+                # SERVICIOS
+              </span>
+              <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: var(--font-size-3xl); font-weight: 700; color: var(--primary-color); margin-bottom: 2.5rem; line-height: 1.2;">
+                Cuidado Integral para tu Salud Sexual y Femenina
+              </h2>
+            </div>
+            
+            <ul class="numbered-list">
+              <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.1">
+                <a href="/servicios" class="numbered-list-link">
+                  <span class="numbered-list-number">01</span>
+                  <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                      Ginecología General
+                    </h3>
+                    <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                      Chequeos preventivos, Papanicolau, y tratamiento de afecciones ginecológicas comunes.
+                    </p>
+                  </div>
+                </a>
+              </li>
+
+              <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.2">
+                <a href="/servicios" class="numbered-list-link">
+                  <span class="numbered-list-number">02</span>
+                  <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                      Salud Sexual y Reproductiva
+                    </h3>
+                    <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                      Planificación familiar, métodos anticonceptivos y consejería experta y confidencial.
+                    </p>
+                  </div>
+                </a>
+              </li>
+
+              <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.3">
+                <a href="/servicios" class="numbered-list-link">
+                  <span class="numbered-list-number">03</span>
+                  <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                      Ecografías Especializadas
+                    </h3>
+                    <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                      Diagnóstico por imágenes de alta resolución para monitoreo de salud pélvica.
+                    </p>
+                  </div>
+                </a>
+              </li>
+
+              <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.4">
+                <a href="/servicios" class="numbered-list-link">
+                  <span class="numbered-list-number">04</span>
+                  <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                      Infecciones (ITS)
+                    </h3>
+                    <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                      Diagnóstico, tratamiento y prevención de infecciones de transmisión sexual en un entorno seguro.
+                    </p>
+                  </div>
+                </a>
+              </li>
+
+              <li class="numbered-list-item clickable-item" data-animate="pop" data-animate-delay="0.5">
+                <a href="/servicios" class="numbered-list-link">
+                  <span class="numbered-list-number">05</span>
+                  <div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 0.5rem;">
+                      Menopausia y Climaterio
+                    </h3>
+                    <p style="font-size: 1rem; color: var(--text-light); line-height: 1.6;">
+                      Acompañamiento integral para gestionar cambios hormonales y mejorar tu calidad de vida.
+                    </p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Columna Derecha: Imagen con testimonio flotante desbordado -->
+          <div style="position: relative;" data-animate="pop" data-animate-delay="0.3">
+            <img 
+              src="/img/fotogrupal.webp" 
+              alt="Ginecólogas y obstetras del equipo Zygo brindando atención integral"
+              class="imagen-cuidado"
+              loading="lazy"
+              decoding="async"
+            />
+            
+            <!-- Tarjeta flotante con testimonio (desbordada) -->
+            <div class="testimonio-flotante">
+              <blockquote style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1rem; line-height: 1.5;">
+                "Mejor experiencia obstétrica de mi vida. Personal amigable y atención sin dolor."
+              </blockquote>
+              <cite style="font-size: 0.95rem; font-weight: 600; font-style: normal;">
+                — María G.
+              </cite>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Staff Profesional Section -->
+    <section class="section" style="background: linear-gradient(to bottom, var(--white), rgba(114, 47, 55, 0.02));">
+      <div class="container">
+        <header class="section__header" data-animate="pop" style="text-align: center; max-width: 800px; margin: 0 auto 4rem;">
+          <span style="display: inline-block; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-color); margin-bottom: 1.5rem; padding: 0.5rem 1rem; background: rgba(114, 47, 55, 0.08); border-radius: 2rem;">
+            # NUESTRO EQUIPO
+          </span>
+          <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: var(--font-size-3xl); font-weight: 700; color: var(--primary-color); margin-bottom: 1rem; line-height: 1.2;">
+            Conoce a los profesionales que cuidarán de ti
+          </h2>
+          <p style="font-size: 1.125rem; color: var(--text-light); line-height: 1.7;">
+            Nuestro equipo está conformado por obstetras altamente calificadas y certificadas, con años de experiencia en el cuidado maternal. Cada profesional aporta su expertise especializada para brindarte una atención integral, personalizada y de excelencia en cada etapa de tu embarazo y más allá.
+          </p>
+        </header>
+
+        <TeamCarousel />
+
+        <div class="text-center" style="margin-top: 3.5rem;" data-animate="pop">
+          <a href="/equipo" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.125rem 2.75rem; border-radius: 9999px;">
+            Ver todo el equipo
+            <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+              <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Client Reviews Section (Static Grid) -->
+    <section class="section" style="background: var(--secondary-color);">
+      <div class="container">
+        <!-- Header -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; gap: 2rem; flex-wrap: wrap;">
+          <div data-animate="pop" style="flex: 1; min-width: 300px;">
+            <span style="display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary-color); margin-bottom: 1rem; padding: 0.4rem 0.9rem; background: rgba(114, 47, 55, 0.08); border-radius: 2rem;">
+              # TESTIMONIOS
+            </span>
+            <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: var(--font-size-2xl); font-weight: 700; color: var(--primary-color); line-height: 1.25; max-width: 500px;">
+              Lo que nuestras pacientes dicen de nosotros
+            </h2>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 1.5rem; flex-shrink: 0;" data-animate="pop">
+            <CertificationBadge />
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+              <a href="/testimonios" style="font-size: 1rem; font-weight: 600; color: var(--cta-color); text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: all 0.3s ease;">
+                Ver más historias
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Static 3x2 Grid -->
+        <div class="reviews-grid">
+          {reviewsHome.map((review, index) => (
+            <a 
+              href="/testimonios"
+              class="review-card" 
+              data-animate="pop" 
+              data-animate-delay={index * 0.1}
+            >
+              <div class="review-card__icon">
+                <span class="review-card__initial">{review.initial}</span>
+              </div>
+              <h3 class="review-card__name">{review.name}</h3>
+              <p class="review-card__text">"{review.review}"</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Sabías Que Section - Datos Curiosos -->
+    <SabiasQueCarousel />
+
+    <!-- Insights Section (Blog) - From ApexCare Adaptation -->
+    <Insights />
+
+    <!-- Marquee Banner - Animated ZYGO text -->
+    <MarqueeBanner text="ZYGO" speed={25} />
+
+    <style>
+      .reviews-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      @media (min-width: 640px) {
+        .reviews-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .reviews-grid {
+          grid-template-columns: repeat(3, 1fr); /* 3x2 grid for 6 items */
+        }
+      }
+
+      .review-card {
+        background: var(--white);
+        padding: 2.5rem 2rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-decoration: none; /* Remove underline from link */
+        color: inherit; /* Inherit text color */
+        cursor: pointer;
+      }
+
+      .review-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px -10px rgba(114, 47, 55, 0.1);
+      }
+
+      .review-card__icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--primary-color), var(--zygo-guinda));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 5px 15px -5px rgba(114, 47, 55, 0.3);
+      }
+
+      .review-card__initial {
+        color: white;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .review-card__name {
+        font-family: 'Manrope', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .review-card__text {
+        font-size: 0.95rem;
+        color: var(--text-gray);
+        line-height: 1.6;
+        font-style: italic;
+        flex: 1; /* Match height */
+      }
+    </style>
+
+    <style>
+      /* Animación de rotación lenta para el badge de certificación */
+      @keyframes spin-slow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .certification-badge svg {
+        animation: spin-slow 20s linear infinite;
+      }
+
+      /* Estilos para ítems clicables de la lista numerada */
+      .numbered-list-link {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+        padding: 0.5rem;
+        margin: -0.5rem;
+        border-radius: 0.75rem;
+      }
+
+      .numbered-list-link:hover {
+        transform: translateX(8px);
+        background: rgba(114, 47, 55, 0.03);
+      }
+
+      @media (max-width: 767px) {
+        .numbered-list-link {
+          flex-direction: column;
+          gap: 1rem;
+          background: var(--white);
+          border: 1px solid rgba(0,0,0,0.05);
+          box-shadow: var(--shadow-sm);
+        }
+        
+        .numbered-list-number {
+          font-size: 2rem;
+          color: var(--cta-color);
+          opacity: 0.2;
+        }
+      }
+
+      .numbered-list-link:hover .numbered-list-number {
+        color: var(--cta-color);
+        transform: scale(1.05);
+      }
+
+      .numbered-list-link:hover h3 {
+        color: var(--cta-color);
+      }
+
+      /* Hover para el enlace "Agenda tu Cita" en la certificación */
+      .certification-badge + div a:hover {
+        color: var(--primary-color) !important;
+        transform: translateX(4px);
+      }
+
+      /* Mobile styles */
+      @media (max-width: 767px) {
+        /* Reduce top spacing on the testimonial/image section */
+        .section:has(.split-section) {
+          padding-top: 1rem !important;
+        }
+        
+        .split-section > div:first-child {
+          order: 2;
+        }
+        .split-section > div:last-child {
+          order: 1;
+          overflow: hidden;
+        }
+        
+        /* Reducir padding decorativo en móvil */
+        .split-section > div:last-child {
+          padding: 0.5rem !important;
+        }
+        
+        /* Ocultar SVG decorativo en móvil */
+        .split-section > div:last-child > svg {
+          display: none !important;
+        }
+        
+        /* Imagen en móvil */
+        .split-section > div:last-child img {
+          width: 100% !important;
+          max-width: 390px
+          height: auto !important;
+          object-fit: contain !important;
+          margin: 0 auto;
+          border-radius: 1.75rem !important;
+          display: block;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        /* Remover transformación 3D en móvil y superponer tarjeta */
+        .split-section > div:last-child > div {
+          transform: none !important;
+          margin-top: -3rem; /* Superponer sobre la imagen */
+        }
+      }
+
+      /* Desktop */
+
+
+      /* Flip Card Styles */
+      .mobile-flip-scene {
+        display: none;
+      }
+      /* Desktop View: Default to visible, let original styles control display. 
+         ONLY hide on mobile. Do NOT force display: flex. */
+      
+      @media (max-width: 767px) {
+        .desktop-view {
+          display: none !important;
+        }
+        .mobile-flip-scene {
+          display: block;
+          width: 100%;
+          min-height: 500px;
+          perspective: 2000px; /* Mayor perspectiva para menos distorsión */
+          margin-top: 2rem;
+        }
+        .mobile-flip-card {
+           position: relative;
+           width: 100%;
+           height: 100%; /* Contenedor simple */
+        }
+        
+        .mobile-flip-face {
+           width: 100%;
+           height: 100%;
+           border-radius: 1.5rem;
+           overflow: hidden;
+           backface-visibility: hidden;
+           -webkit-backface-visibility: hidden;
+           transition: none; /* GSAP controla todo */
+           box-shadow: var(--shadow-xl);
+        }
+        
+        .mobile-flip-front {
+           position: relative; 
+           background: var(--white);
+           z-index: 2;
+           transform: perspective(1000px) rotateY(0deg);
+           opacity: 1;
+           /* transition removed */
+        }
+        
+        .mobile-flip-back {
+           position: absolute; 
+           top: 0;
+           left: 0;
+           background: linear-gradient(180deg, #FCE3F2 0%, #FCA4BD 100%);
+           color: var(--primary-color);
+           transform: perspective(1000px) rotateY(-180deg);
+           opacity: 0; 
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           padding: 2rem;
+           text-align: center;
+           /* transition removed */
+        }
+
+        /* Estado ACTIVADO por JS (GSAP handled now) */
+        /* Eliminamos .mobile-flip-scene.is-flipped CSS logic porque GSAP controlará inline styles */
+        
+        .mobile-flip-image {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+        }
+        .flip-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.75rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: white;
+        }
+        .flip-desc {
+          font-size: 1rem;
+          line-height: 1.6;
+          opacity: 0.9;
+          margin-bottom: 2rem;
+        }
+        .badges-small {
+          display: inline-block;
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          background: rgba(255,255,255,0.1);
+          padding: 0.3rem 0.8rem;
+          border-radius: 1rem;
+          margin-bottom: 1rem;
+        }
+        .btn--white {
+           background: white;
+           color: var(--primary-color);
+           padding: 0.75rem 1.5rem;
+           border-radius: 2rem;
+           font-weight: 600;
+           text-decoration: none;
+           box-shadow: var(--shadow-lg);
+        }
+        
+        .reason-card__image {
+           transform: scale(1.15) !important;
+           transform-origin: center center;
+        }
+        
+        /* imagen-cuidado should NOT be scaled on mobile - breaks border-radius */
+        .imagen-cuidado {
+           transform: none !important;
+        }
+      }
+    </style>
+    
+</main>
+  
+  <!-- SCRIPT ELIMINADO: La lógica de animación se maneja centralizadamente en BaseLayout/scroll-animations.ts -->
+</BaseLayout>
+

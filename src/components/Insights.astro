@@ -1,0 +1,300 @@
+---
+---
+<section class="insights-section">
+  <div class="container">
+    <!-- Header: Flex Row con Botón a la derecha -->
+    <div class="header-row" data-animate>
+      <div class="header-text">
+        <span class="insight-pill"># INSIGHTS</span>
+        <h2 class="section-title">De nuestro blog: consejos y conocimientos para una maternidad saludable</h2>
+      </div>
+      <a href="/blog" class="cta-button">
+        Ver todos los artículos 
+        <span class="icon-circle">↗</span>
+      </a>
+    </div>
+
+    <!-- Grid: 2 Columnas -->
+    <div class="insights-grid">
+      <!-- Card 1 (Horizontal) - Left Entry -->
+      <article class="insight-card" data-animate="left" data-animate-delay="0.1">
+        <div class="card-image-wrapper">
+          <img src="/img/empatia.webp" alt="Cuidados en el primer trimestre" class="card-image"/>
+        </div>
+        <div class="card-content">
+          <div class="text-wrapper">
+            <span class="card-date">12 Oct, 2024</span>
+            <h3 class="card-title">
+              <a href="#">Cuidados esenciales durante el primer trimestre</a>
+            </h3>
+            <p class="card-excerpt">
+              Guía completa sobre nutrición, vitaminas y primeros chequeos.
+            </p>
+          </div>
+          <a href="#" class="arrow-btn" aria-label="Leer más">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2 (Horizontal) - Right Entry -->
+      <article class="insight-card" data-animate="right" data-animate-delay="0.2">
+        <div class="card-image-wrapper">
+          <img src="/img/atencion.webp" alt="Nutrición Post-Parto" class="card-image"/>
+        </div>
+        <div class="card-content">
+          <div class="text-wrapper">
+            <span class="card-date">28 Nov, 2024</span>
+            <h3 class="card-title">
+               <a href="#">Recuperación y nutrición en el post-parto</a>
+            </h3>
+            <p class="card-excerpt">
+              Guía práctica para retomar tu energía y bienestar físico.
+            </p>
+          </div>
+          <a href="#" class="arrow-btn" aria-label="Leer más">
+             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .insights-section {
+    background-color: var(--white);
+    padding: 4rem 2rem 8rem 2rem; /* Reduced Title Padding from 8rem to 4rem */
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  /* HEADER LAYOUT */
+  .header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end; 
+    margin-bottom: 5rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .header-text {
+    max-width: 600px;
+  }
+
+  /* ... (Pill and Section Title kept same) ... */
+  .insight-pill {
+    display: inline-block;
+    background: #F3F4F6;
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  /* CTA BUTTON DEL HEADER */
+  .cta-button {
+    background-color: var(--primary-color) !important; /* Force override if needed */
+    color: white !important;
+    padding: 0.75rem 0.75rem 0.75rem 2rem; 
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    height: fit-content;
+    box-shadow: 0 4px 12px rgba(159, 18, 57, 0.2);
+    border: none;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); /* Reducido de 2.5-3.5 a 2-3 para no gritar tanto */
+    color: var(--primary-color);
+    line-height: 1.1;
+    max-width: 600px; /* Reducido para forzar 2 líneas agresivamente */
+  }
+
+  /* ... */
+
+  /* GRID */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 4rem; 
+  }
+
+  /* HORIZONTAL CARD LAYOUT EXACT DIMENSIONS */
+  .insight-card {
+    display: flex; 
+    flex-direction: row;
+    align-items: stretch; 
+    gap: 36px; 
+    text-decoration: none;
+    height: 396px; 
+  }
+
+  /* ... */
+  
+  .card-image-wrapper {
+    flex: 0 0 322px; 
+    width: 322px;
+    height: 100%; 
+    border-radius: 40px; /* Bordes mucho más 'circulares' / redondeados */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1); /* Zoom permanente "un poco de zoom" */
+    transition: transform 0.5s ease;
+  }
+
+  .insight-card:hover .card-image {
+    transform: scale(1.15); /* Zoom extra al hover */
+  }
+
+  .card-content {
+    flex: 0 0 258px; /* ANCHO TOTAL COLUMNA DERECHA */
+    width: 258px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar todo el contenido verticalmente */
+    padding: 0;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Nuevo Wrapper para agrupar texto y replicar altura de 275px */
+  /* Texto centrado visualmente respecto a la imagen */
+  .text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrar contenido interno */
+    height: auto; /* Dejar que fluya para centrarse */
+    margin-top: auto;
+    margin-bottom: auto; /* Truco Flex: Centrado Vertical */
+    padding-bottom: 4rem; /* Espacio para no chocar con el botón */
+  }
+
+  .card-date {
+    font-size: 0.9rem;
+    color: var(--text-light, #666);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    margin-top: 0;
+  }
+
+  .card-title a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card-excerpt {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--text-light, #555);
+    margin-bottom: 0;
+  }
+
+  /* Arrow Circle Button (Bottom) */
+  .arrow-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color); 
+    transition: all 0.3s ease;
+    /* Margin top auto ya no es necesario si usamos space-between en el padre, 
+       pero lo mantenemos por seguridad */
+    margin-top: auto; 
+  }
+
+  .arrow-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) { /* Tablet Portrait adjust */
+    .insights-grid {
+       gap: 2rem;
+    }
+    .insight-card {
+       gap: 1.5rem;
+       height: auto; /* Relax height on smaller screens */
+       align-items: flex-start;
+    }
+    .card-image-wrapper {
+       width: 280px;
+       flex: 0 0 280px;
+       height: 340px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .insights-grid {
+      grid-template-columns: 1fr; /* 1 Columna */
+      gap: 4rem;
+    }
+    .card-image-wrapper {
+       width: 322px; /* Restore width */
+       flex: 0 0 322px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .insight-card {
+      flex-direction: column; 
+      gap: 1.5rem;
+      height: auto;
+    }
+
+    .card-image-wrapper {
+      width: 100%;
+      flex: none;
+      aspect-ratio: 4/3;
+      height: auto;
+    }
+
+    .header-row {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .section-title {
+      font-size: 2.25rem;
+    }
+  }
+</style>

@@ -1,0 +1,440 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ServicesWheel from '../../components/ServicesWheel.astro';
+// Footer removed (in BaseLayout)
+
+---
+
+<BaseLayout 
+  title="Descarte de Embarazo | Zygo" 
+  description="Pruebas rápidas y confidenciales para confirmar o descartar embarazo. Resultados precisos y acompañamiento profesional."
+>
+  <Header />
+
+  <main class="service-detail-page">
+    
+    <!-- HEADER SECTION -->
+    <section class="service-header">
+      <div class="service-header__container">
+        <span class="service-header__pill">#DETALLE DEL SERVICIO</span>
+        <h1 class="service-header__title">Descarte de Embarazo</h1>
+      </div>
+    </section>
+
+    <!-- INTRO SECTION (3 Columns) -->
+    <section class="service-intro">
+      <div class="service-intro__container">
+        <!-- Col 1: Image -->
+        <div class="service-intro__col-img" data-animate="scale">
+          <img src="/img/DescartedeEmbarazo.webp" alt="Descarte de Embarazo Zygo" />
+        </div>
+
+        <!-- Col 2: Description -->
+        <div class="service-intro__col-desc" data-animate="soft-slide" data-animate-delay="0.1">
+          <h2>¿Tienes dudas? <br/><strong>Confirmamos contigo</strong></h2>
+          <p>
+            Entendemos que la incertidumbre puede ser abrumadora. En Zygo te ofrecemos pruebas de embarazo rápidas, precisas y en un ambiente de total confidencialidad.
+            <br/><br/>
+            Nuestras obstetras te acompañan antes, durante y después del resultado, brindándote orientación profesional sin juicios.
+          </p>
+        </div>
+
+        <!-- Col 3: Benefits -->
+        <div class="service-intro__col-benefits" data-animate="soft-slide" data-animate-delay="0.2">
+          <h3>Beneficios Clave</h3>
+          <ul class="benefit-list">
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Resultados rápidos y precisos</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Ambiente confidencial y seguro</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Orientación profesional post-resultado</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Atención sin juicios ni tabúes</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES WHEEL SECTION -->
+    <!-- Removed from middle -->
+
+    <!-- BLOCKS SECTION (Alternating) -->
+    <section class="service-blocks">
+      
+      <!-- Block 1: Asesoría Anticonceptiva (Replaces Control Prenatal) -->
+      <div class="service-block__container">
+        <div class="service-block__col-text" data-animate="soft-slide">
+          <span class="block-tag">#PLANIFICACIÓN</span>
+          <h2>Métodos Anticonceptivos</h2>
+          <p>
+            No existe un método "universal". Evaluamos tu historial médico y estilo de vida para recomendarte la mejor opción: desde píldoras e inyecciones hasta métodos de larga duración como el DIU o el Implante Subdérmico. Colocación segura y seguimiento garantizado.
+          </p>
+          <a href="/contacto" class="btn-book">Agendar Asesoría</a>
+        </div>
+        <div class="service-block__col-img" data-animate="scale">
+          <img src="/img/AnticoncepcionPlanificacion.webp" alt="Anticonceptivos" />
+        </div>
+      </div>
+
+      <!-- Block 2: Fertilidad y Pre-Concepción (Replaces Plan de Parto) -->
+      <div class="service-block__container reverse">
+        <div class="service-block__col-text" data-animate="soft-slide">
+          <span class="block-tag">#FUTURO</span>
+          <h2>Consulta de Fertilidad</h2>
+          <p>
+            Si estás planeando un embarazo o quieres conocer tu estado fértil, realizamos evaluaciones integrales. Te orientamos sobre preservación de fertilidad y optimización de tu salud antes de la concepción (consulta pre-concepcional).
+          </p>
+          <a href="/contacto" class="btn-book">Consultar Especialista</a>
+        </div>
+        <div class="service-block__col-img" data-animate="scale">
+          <img src="/img/consulta.webp" alt="Fertilidad" />
+        </div>
+      </div>
+
+      <!-- Block 3: Salud Menstrual (Replaces Lactancia) -->
+      <div class="service-block__container">
+        <div class="service-block__col-text" data-animate="soft-slide">
+          <span class="block-tag">#BIENESTAR</span>
+          <h2>Salud Menstrual</h2>
+          <p>
+            Tu ciclo menstrual es un signo vital. Tratamos irregularidades, dolor pélvico (dismenorrea), ovario poliquístico (SOP) y endometriosis con un enfoque integral que busca mejorar tu calidad de vida mes a mes.
+          </p>
+          <a href="/contacto" class="btn-book">Más Información</a>
+        </div>
+        <div class="service-block__col-img" data-animate="scale">
+          <img src="/img/BIENESTAR – Salud Menstrual.webp" alt="Salud Menstrual" />
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SERVICES WHEEL -->
+    <ServicesWheel />
+
+  </main>
+</BaseLayout>
+
+<style>
+  /* GLOBAL LAYOUT */
+  .service-detail-page {
+    background: #F8F9FA; /* Global light gray background */
+    overflow-x: hidden;
+  }
+  
+  /* Override for ServicesWheel component to separate it from its default white bg */
+  :global(.service-detail-page section[style*="background"]) {
+    background: transparent !important;
+  }
+  :global(.service-detail-page .section) {
+    background: transparent !important;
+  }
+
+  /* HEADER (Full Width) */
+  .service-header {
+    width: 100%;
+    height: 466px; /* Fixed height */
+    background: linear-gradient(135deg, #E8EFFD 0%, #F5E8EA 100%); /* Full width gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center content vertically */
+    margin-top: 80px; /* Keep spacing from fixed nav if needed, or remove if nav is transparent overlay */
+    border-radius: 0; /* Full bleed */
+  }
+
+  .service-header__container {
+    width: 100%;
+    max-width: 1330px;
+    height: 100%; /* Fill parent */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1.5rem; /* Ensure text doesn't touch edges on mobile */
+  }
+
+  .service-header__pill {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-dark); /* Ensure visibility on light bg */
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .service-header__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  /* INTRO SECTION */
+  .service-intro {
+    padding: 3rem 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .service-intro__container {
+    width: 100%;
+    max-width: 1300px;
+    display: grid;
+    /* Fixed widths as requested: 376 | 470 | 357 */
+    grid-template-columns: 376px 470px 357px; 
+    gap: 2rem;
+    align-items: end; /* Align columns to the bottom ("parte inferior misma recta") */
+    justify-content: space-between;
+  }
+
+  .service-intro__col-img {
+    overflow: hidden;
+    border-radius: 1.5rem;
+  }
+
+  .service-intro__col-img img {
+    width: 100%;
+    height: 479px; /* Tallest (Left) */
+    object-fit: cover;
+    border-radius: 1.5rem;
+    transform: scale(1.15); /* Zoom effect to crop edges/logo */
+  }
+
+  .service-intro__col-desc {
+    height: 445px; /* Middle height */
+    padding: 0; /* Remove padding to sit flush on bottom */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align text content to the bottom */
+  }
+
+  /* Title Size */
+  .service-intro__col-desc h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    line-height: 1.2;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+  }
+
+  .service-intro__col-desc p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+
+  /* BENEFITS COLUMN -> Staircase lowest step */
+  .service-intro__col-benefits {
+    height: 286px; /* Shortest (Right) */
+    /* Removed white card styles */
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align list content to the bottom */
+  }
+
+  /* Title Size */
+  .service-intro__col-benefits h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .benefit-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem; /* Tighter gap for smaller height */
+  }
+
+  .benefit-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+  }
+
+  .check-icon {
+    color: var(--zygo-guinda);
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* ALTERNATING BLOCKS */
+  .service-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem; /* Add clear separation between blocks */
+    padding: 3rem 0;
+  }
+
+  .service-block {
+    padding: 0 1.5rem; /* Only horizontal padding */
+  }
+
+  .service-block.bg-alternate {
+    /* Background unchanged (inherited) */
+  }
+
+  .service-block__container {
+    width: 100%; /* Ensure it fills parent */
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    
+    /* CARD STYLE */
+    background: white;
+    padding: 3rem; /* Internal spacing */
+    border-radius: 24px;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+  }
+
+  .service-block__container.reverse {
+    flex-direction: row-reverse;
+  }
+
+  /* TEXT COL: 586x281 requested */
+  .service-block__col-text {
+    flex: 1 1 0px; /* Force equal width ignoring content */
+    max-width: 586px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* height: 281px; intentionally let it grow */
+  }
+
+  .block-tag {
+    font-size: 0.8rem;
+    font-weight: 500; /* Distinctive but not bold "no negrita" */
+    color: var(--zygo-guinda); /* Brand color instead of blue */
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em; /* Adding slight spacing for "distintivo" look */
+  }
+
+  .service-block__col-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--primary-color); /* Midnight Blue in screenshot, using primary */
+    margin-bottom: 1.5rem;
+  }
+
+  .service-block__col-text p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .btn-book {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 2rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+
+  .btn-book:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  /* IMAGE COL: 586x506 requested */
+  .service-block__col-img {
+    flex: 1 1 0px; /* Force equal width ignoring content */
+    max-width: 586px;
+    overflow: hidden;
+    border-radius: 1.5rem;
+  }
+
+  .service-block__col-img img {
+    width: 100%;
+    height: 506px; /* Fixed height requested */
+    object-fit: cover;
+    border-radius: 1.5rem;
+    transform: scale(1.15); /* Zoom effect to crop edges/logo */
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .service-intro__container {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+    
+    .service-intro__col-img {
+      overflow: hidden;
+      border-radius: 1.5rem;
+      max-width: 400px;
+      width: 100%; /* REQUIRED: Force width so grid doesn't collapse it to 0 */
+      height: 300px; /* Fixed height enables overflow:hidden cropping */
+    }
+    
+    .service-intro__col-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.15); /* Zoom effect */
+    }
+
+    /* Reset fixed heights on mobile */
+    .service-intro__col-desc,
+    .service-intro__col-benefits {
+      height: auto;
+    }
+
+    .service-block__container,
+    .service-block__container.reverse {
+      flex-direction: column;
+      text-align: center;
+      width: 100%; /* Ensure container aligns within viewport */
+    }
+
+    .service-block__col-text {
+        align-items: center;
+    }
+
+    .service-block__col-img {
+        overflow: hidden;
+        border-radius: 1.5rem;
+        height: 280px; /* Fixed height enables overflow:hidden cropping */
+        width: 100%; /* REQUIRED: Force width */
+        max-width: 100%;
+        flex: none; /* REQUIRED: Reset desktop flex:1 1 0px which collapses in column mode */
+    }
+
+    .service-block__col-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.15); /* Zoom effect */
+    }
+
+    .service-header__title {
+        font-size: 2.5rem;
+    }
+  }
+</style>

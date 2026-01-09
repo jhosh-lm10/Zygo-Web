@@ -1,0 +1,23 @@
+# Zygo - robots.txt
+# https://zygo.com
+
+# Allow all search engines
+User-agent: *
+Allow: /
+Disallow: /.astro/
+
+# Block AI training crawlers (optional - content protection)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://zygo.com/sitemap-index.xml

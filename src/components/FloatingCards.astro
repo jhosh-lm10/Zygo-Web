@@ -1,0 +1,297 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+// Obtener miembros del equipo para los avatares
+const equipo = await getCollection('equipo');
+// Tomamos 3 miembros para los avatares
+const avatares = equipo.slice(0, 3);
+---
+
+<section class="floating-cards">
+  <div class="floating-cards__container">
+    
+    <!-- Tarjeta 1: Información Principal -->
+    <div data-hero-animate style="height: 100%; width: 100%;">
+      <article class="floating-card floating-card--info">
+        <div class="floating-card__content">
+          <div class="floating-card__icon-wrapper">
+             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+            </svg>
+          </div>
+          <h3 class="floating-card__title">Cuidado Obstétrico</h3>
+          <p class="floating-card__description">
+            Tu salud y la de tu bebé son nuestra prioridad absoluta. Atención experta y compasiva en cada etapa.
+          </p>
+          <a href="/servicios" class="floating-card__link">
+            Explorar más
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </article>
+    </div>
+
+    <!-- Tarjeta 2: Prueba Social + Testimonio (Combinada) -->
+    <div data-hero-animate style="height: 100%; width: 100%;" class="floating-card--combined-wrapper">
+      <article class="floating-card floating-card--combined">
+        <div class="floating-card__content floating-card__combined-content">
+          <!-- Left: Social Proof -->
+          <div class="combined-left">
+            <div class="floating-card__icon-wrapper floating-card__icon-wrapper--blue">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                 <circle cx="9" cy="7" r="4"></circle>
+                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                 <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="floating-card__stats">
+              <h3 class="floating-card__title">Únete a 1,000+</h3>
+              <p class="floating-card__subtitle">Familias confiando en nosotros</p>
+            </div>
+            <div class="floating-card__avatars">
+              {avatares.map((miembro) => (
+                <div class="avatar-ring">
+                  <Image 
+                    src={miembro.data.image} 
+                    alt={miembro.data.name}
+                    width={48}
+                    height={48}
+                    class="avatar-img"
+                  />
+                </div>
+              ))}
+              <div class="avatar-ring avatar-more">
+                <span>+</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Divider -->
+          <div class="combined-divider"></div>
+          
+          <!-- Right: Testimonial -->
+          <div class="combined-right">
+            <div class="floating-card__icon-wrapper floating-card__icon-wrapper--gold">
+               <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="none">
+                <path d="M2 4l3 12h14l3-12-6 7-4-13-4 13-6-7zm3 16h14"/>
+              </svg>
+            </div>
+            <blockquote class="floating-card__quote">
+              "Mejor experiencia obstétrica de mi vida. Personal amigable y atención sin dolor."
+            </blockquote>
+            <cite class="floating-card__author">— María G.</cite>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .floating-cards {
+    position: relative;
+    margin-top: -5rem; /* Flotar sobre el hero */
+    z-index: 50;
+    padding: 0 var(--spacing-lg);
+    margin-bottom: 2rem;
+  }
+
+  .floating-cards__container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 968px) {
+    .floating-cards__container {
+      grid-template-columns: 1fr 1.5fr; /* Card 1 smaller, Combined card larger */
+      gap: 1.5rem;
+    }
+  }
+
+  /* Combined Card Wrapper */
+  .floating-card--combined-wrapper {
+    grid-column: span 1;
+  }
+
+  /* Combined Card Internal Layout */
+  .floating-card__combined-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .floating-card__combined-content {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+
+  .combined-left, .combined-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .combined-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(114, 47, 55, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .combined-divider {
+      width: 1px;
+      height: auto;
+      margin: 0 1rem;
+    }
+  }
+
+  /* Estilos Generales de Tarjeta */
+  .floating-card {
+    background: var(--white);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 12px 25px -8px rgba(114, 47, 55, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    height: 100%;
+    min-height: 220px;
+  }
+
+  /* Iconos */
+  .floating-card__icon-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    background: rgba(114, 47, 55, 0.05);
+    border-radius: 50%;
+    padding: 8px;
+  }
+
+  /* Textos */
+  .floating-card__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .floating-card__description {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+  }
+  
+  .floating-card__subtitle {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 1.25rem;
+  }
+
+  /* Avatares Section */
+  .floating-card__avatars {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    padding-left: 0.5rem;
+  }
+
+  .avatar-ring {
+    width: 40px; /* Avatares más pequeños */
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    overflow: hidden;
+    margin-left: -12px;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  }
+
+  /* Quote Section */
+  .floating-card__quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem; /* Cita más pequeña */
+    line-height: 1.5;
+    color: var(--primary-color);
+    margin: 0 0 1rem 0;
+  }
+
+  .floating-card__author {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-light);
+    font-style: normal;
+    display: block;
+    margin-top: auto;
+  }
+
+  /* Link */
+  .floating-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    transition: all var(--transition-smooth);
+    margin-top: auto;
+  }
+
+  .floating-card__link svg {
+    transition: transform 0.3s ease;
+  }
+
+  .floating-card__link:hover {
+    color: var(--cta-color);
+    gap: 0.75rem;
+  }
+
+  .floating-card__link:hover svg {
+    transform: translate(3px, -3px);
+  }
+
+  /* Ajustes Responsive */
+  @media (max-width: 767px) {
+    .floating-cards {
+      margin-top: -3rem;
+    }
+    
+    .floating-card {
+      padding: 1.25rem;
+      border-radius: 1.25rem;
+      min-height: 200px;
+    }
+    
+    .floating-card__title {
+      font-size: 1.1rem;
+    }
+
+    .floating-card__description,
+    .floating-card__subtitle,
+    .floating-card__quote {
+      font-size: 0.85rem;
+    }
+  }
+</style>
