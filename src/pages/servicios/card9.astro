@@ -1,0 +1,421 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ServicesWheel from '../../components/ServicesWheel.astro';
+---
+
+<BaseLayout 
+  title="Chequeo Esencial | Zygo" 
+  description="Tu control ginecológico básico con consulta, ecografía transvaginal, cultivo de secreción y despistaje de ITS. Prevención rápida y efectiva."
+>
+  <Header />
+
+  <main class="service-detail-page">
+    
+    <!-- HEADER SECTION -->
+    <section class="service-header">
+      <div class="service-header__container">
+        <span class="service-header__pill">#PAQUETE ESENCIAL</span>
+        <h1 class="service-header__title">Chequeo Esencial</h1>
+      </div>
+    </section>
+
+    <!-- INTRO SECTION (3 Columns) -->
+    <section class="service-intro">
+      <div class="service-intro__container">
+        <!-- Col 1: Image -->
+        <div class="service-intro__col-img" data-animate="scale">
+          <img src="/img/nuevo1.jpg" alt="Chequeo Esencial Zygo" />
+        </div>
+
+        <!-- Col 2: Description -->
+        <div class="service-intro__col-desc" data-animate="soft-slide" data-animate-delay="0.1">
+          <h2>Prevención Básica <br/><strong>Rápida y Efectiva</strong></h2>
+          <p>
+            El Chequeo Esencial está diseñado para un control ginecológico rutinario y rápido. Ideal si buscas una revisión preventiva básica con los exámenes más importantes para tu salud íntima.
+            <br/><br/>
+            Incluye consulta especializada, ecografía transvaginal, cultivo de secreción vaginal y un despistaje básico de ITS (VIH, Sífilis, Hepatitis B).
+          </p>
+        </div>
+
+        <!-- Col 3: Benefits -->
+        <div class="service-intro__col-benefits" data-animate="soft-slide" data-animate-delay="0.2">
+          <h3>¿Qué Incluye?</h3>
+          <ul class="benefit-list">
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Consulta ginecológica especializada</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Ecografía transvaginal</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Cultivo y pruebas de ITS básicas</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Examen de orina y clínico</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Seguimiento WhatsApp (días 3 y 7)</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Control final incluido</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCKS SECTION (Alternating) -->
+    <section class="service-blocks">
+      
+      <!-- Block 1: Despistaje ITS -->
+      <div class="service-block__container">
+        <div class="service-block__col-text" data-animate="soft-slide">
+          <span class="block-tag">#PREVENCIÓN</span>
+          <h2>Despistaje Básico de ITS</h2>
+          <p>
+            Incluye las 3 pruebas esenciales para detectar infecciones de transmisión sexual: VIH, Sífilis y Hepatitis B. Resultados rápidos y confidenciales para tu tranquilidad.
+          </p>
+          <a href="/contacto" class="btn-book">Agendar Cita</a>
+        </div>
+        <div class="service-block__col-img" data-animate="scale">
+          <img src="/img/despistaje.webp" alt="Despistaje ITS" />
+        </div>
+      </div>
+
+      <!-- Block 2: Ecografía Transvaginal -->
+      <div class="service-block__container reverse">
+        <div class="service-block__col-text" data-animate="soft-slide">
+          <span class="block-tag">#DIAGNÓSTICO</span>
+          <h2>Ecografía Transvaginal</h2>
+          <p>
+            Visualización detallada de tu útero, ovarios y estructuras pélvicas. Permite detectar quistes, miomas, endometriosis y otras condiciones de manera temprana y precisa.
+          </p>
+          <a href="/contacto" class="btn-book">Consultar</a>
+        </div>
+        <div class="service-block__col-img" data-animate="scale">
+          <img src="/img/consulta.webp" alt="Ecografía" />
+        </div>
+      </div>
+
+      <!-- Block 3: Seguimiento -->
+      <div class="service-block__container">
+        <div class="service-block__col-text" data-animate="soft-slide">
+          <span class="block-tag">#ACOMPAÑAMIENTO</span>
+          <h2>Seguimiento Personalizado</h2>
+          <p>
+            No te dejamos sola. Incluimos seguimiento por WhatsApp en los días 3 y 7 post-consulta, más un control final para revisar resultados y resolver todas tus dudas.
+          </p>
+          <a href="/contacto" class="btn-book">Más Información</a>
+        </div>
+        <div class="service-block__col-img" data-animate="scale">
+          <img src="/img/BIENESTAR – Salud Menstrual.webp" alt="Seguimiento" />
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SERVICES WHEEL -->
+    <ServicesWheel />
+
+  </main>
+</BaseLayout>
+
+<style>
+  /* GLOBAL LAYOUT */
+  .service-detail-page {
+    background: #F8F9FA;
+    overflow-x: hidden;
+  }
+  
+  :global(.service-detail-page section[style*="background"]) {
+    background: transparent !important;
+  }
+  :global(.service-detail-page .section) {
+    background: transparent !important;
+  }
+
+  /* HEADER */
+  .service-header {
+    width: 100%;
+    height: 466px;
+    background: linear-gradient(135deg, #FCE3F2 0%, #FCA4BD 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    border-radius: 0;
+  }
+
+  .service-header__container {
+    width: 100%;
+    max-width: 1330px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .service-header__pill {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+
+  .service-header__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  /* INTRO SECTION */
+  .service-intro {
+    padding: 3rem 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .service-intro__container {
+    width: 100%;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: 376px 470px 357px; 
+    gap: 2rem;
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .service-intro__col-img {
+    overflow: hidden;
+    border-radius: 1.5rem;
+  }
+
+  .service-intro__col-img img {
+    width: 100%;
+    height: 479px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+  }
+
+  .service-intro__col-desc {
+    height: 445px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .service-intro__col-desc h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    line-height: 1.2;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+  }
+
+  .service-intro__col-desc p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+
+  .service-intro__col-benefits {
+    height: 350px;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .service-intro__col-benefits h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .benefit-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .benefit-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    font-size: 1rem;
+    color: var(--text-dark);
+  }
+
+  .check-icon {
+    color: var(--zygo-guinda);
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  /* ALTERNATING BLOCKS */
+  .service-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding: 3rem 0;
+  }
+
+  .service-block__container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    background: white;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+  }
+
+  .service-block__container.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .service-block__col-text {
+    flex: 1 1 0px;
+    max-width: 586px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .block-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--zygo-guinda);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .service-block__col-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .service-block__col-text p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .btn-book {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 2rem;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: fit-content;
+  }
+
+  .btn-book:hover {
+    background: var(--primary-color);
+    color: white;
+  }
+
+  .service-block__col-img {
+    flex: 1 1 0px;
+    max-width: 586px;
+    overflow: hidden;
+    border-radius: 1.5rem;
+  }
+
+  .service-block__col-img img {
+    width: 100%;
+    height: 506px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    transform: scale(1.15);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .service-intro__container {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+    
+    .service-intro__col-img {
+      overflow: hidden;
+      border-radius: 1.5rem;
+      max-width: 400px;
+      width: 100%;
+      height: 300px;
+    }
+    
+    .service-intro__col-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .service-intro__col-desc,
+    .service-intro__col-benefits {
+      height: auto;
+    }
+
+    .service-block__container,
+    .service-block__container.reverse {
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+    }
+
+    .service-block__col-text {
+        align-items: center;
+    }
+
+    .service-block__col-img {
+        overflow: hidden;
+        border-radius: 1.5rem;
+        height: 280px;
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+    }
+
+    .service-block__col-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.15);
+    }
+
+    .service-header__title {
+        font-size: 2.5rem;
+    }
+  }
+</style>

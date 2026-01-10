@@ -308,11 +308,15 @@ const imagesSet2 = [
 </style>
 
 <script>
-  // IIFE to avoid global scope pollution
-  (function initSabiasQueCarousel() {
+  // Named function for initialization (can be called multiple times)
+  function initSabiasQueCarousel() {
     const section = document.getElementById('sabiasQueSection');
     const wrapper = document.getElementById('sqcWrapper');
     if (!section || !wrapper) return;
+
+    // Prevent double initialization
+    if ((wrapper as any).__sqcInitialized) return;
+    (wrapper as any).__sqcInitialized = true;
 
     const carousel1 = document.getElementById('sqcCarousel1');
     const carousel2 = document.getElementById('sqcCarousel2');
@@ -335,15 +339,13 @@ const imagesSet2 = [
     let animationId: number | null = null;
 
     // Configuration
-    const ROTATION_SPEED = 0.05; // Slow auto-rotation
-    const DRAG_SENSITIVITY = 0.3; // How much rotation per pixel dragged
+    const ROTATION_SPEED = 0.05;
+    const DRAG_SENSITIVITY = 0.3;
     const SLIDE_COUNT = 5;
-    const ANGLE_PER_SLIDE = 360 / SLIDE_COUNT; // 72 degrees
-    // Responsive radius: smaller on mobile to prevent overflow
+    const ANGLE_PER_SLIDE = 360 / SLIDE_COUNT;
     const isMobile = window.innerWidth < 768;
     const RADIUS = isMobile ? 180 : 280;
 
-    // Get current track and rotation
     function getCurrentTrack() {
       return currentSet === 0 ? track1 : track2;
     }
@@ -360,34 +362,27 @@ const imagesSet2 = [
       }
     }
 
-    // Position slides in 3D circle and update visibility based on angle
     function positionSlides(track: HTMLElement, trackRotation: number = 0) {
       const slides = track.querySelectorAll('.sqc-slide') as NodeListOf<HTMLElement>;
 
       slides.forEach((slide, i) => {
         const baseAngle = i * ANGLE_PER_SLIDE;
-        // Calculate visible angle (normalized to 0-360)
         let visibleAngle = (baseAngle + trackRotation) % 360;
         if (visibleAngle < 0) visibleAngle += 360;
 
-        // Determine if slide is in front or back
-        // Front: 270-360 and 0-90 degrees
-        // Back: 90-270 degrees
         const isInFront = visibleAngle <= 90 || visibleAngle >= 270;
         
-        // Calculate opacity/blur based on position
         let opacity = 1;
         let blur = 0;
         
         if (!isInFront) {
-          // Cards in back: subtle fade and light blur
           const distanceFromFront = Math.min(
             Math.abs(visibleAngle - 90),
             Math.abs(visibleAngle - 270)
           );
           const fadeFactor = Math.min(distanceFromFront / 90, 1);
-          opacity = 0.6 + (0.4 * (1 - fadeFactor)); // Range: 60% to 100%
-          blur = fadeFactor * 2; // Max 2px blur
+          opacity = 0.6 + (0.4 * (1 - fadeFactor));
+          blur = fadeFactor * 2;
         }
 
         slide.style.transform = `
@@ -400,13 +395,11 @@ const imagesSet2 = [
       });
     }
 
-    // Rotate the track
     function rotateTrack(track: HTMLElement, rotation: number) {
       track.style.transform = `rotateY(${rotation}deg)`;
       positionSlides(track, rotation);
     }
 
-    // Animation loop - only runs when visible AND not paused AND not dragging
     function animate() {
       if (!isVisible || isPaused || isDragging) {
         animationId = null;
@@ -420,23 +413,12 @@ const imagesSet2 = [
       animationId = requestAnimationFrame(animate);
     }
 
-    // Start animation if conditions are met
     function startAnimation() {
       if (isVisible && !isPaused && !isDragging && !animationId) {
         animate();
       }
     }
 
-    // Toggle pause on click
-    function togglePause() {
-      isPaused = !isPaused;
-      
-      if (!isPaused) {
-        startAnimation();
-      }
-    }
-
-    // Drag handlers
     function handleDragStart(e: MouseEvent | TouchEvent) {
       if ((e.target as HTMLElement).closest('.sqc-nav') || 
           (e.target as HTMLElement).closest('.sqc-dot')) {
@@ -452,8 +434,6 @@ const imagesSet2 = [
         dragStartX = e.touches[0].clientX;
       }
       dragStartRotation = getCurrentRotation();
-
-      // Prevent default to avoid text selection
       e.preventDefault();
     }
 
@@ -474,47 +454,39 @@ const imagesSet2 = [
       rotateTrack(getCurrentTrack(), newRotation);
     }
 
-    function handleDragEnd(e: MouseEvent | TouchEvent) {
+    function handleDragEnd() {
       if (!isDragging) return;
       
       isDragging = false;
       
-      // Check if it was just a click (no significant movement)
       const wasClick = Math.abs(getCurrentRotation() - dragStartRotation) < 5;
       
       if (wasClick) {
-        // Toggle pause on simple click
         isPaused = !isPaused;
       } else {
-        // Resume animation after drag
         isPaused = false;
       }
       
       startAnimation();
     }
 
-    // Switch between sets
     function switchSet(setIndex: number) {
       currentSet = setIndex;
 
-      // Toggle carousels
       carousel1.classList.toggle('sqc-carousel--active', setIndex === 0);
       carousel2.classList.toggle('sqc-carousel--active', setIndex === 1);
 
-      // Update buttons
       prevBtn.disabled = setIndex === 0;
       nextBtn.disabled = setIndex === 1;
 
-      // Update dots
       dots.forEach((dot, i) => {
         dot.classList.toggle('sqc-dot--active', i === setIndex);
       });
 
-      // Update slide visibility for new track
       rotateTrack(getCurrentTrack(), getCurrentRotation());
     }
 
-    // Event listeners - Drag
+    // Event listeners
     wrapper.addEventListener('mousedown', handleDragStart);
     wrapper.addEventListener('touchstart', handleDragStart, { passive: false });
     
@@ -524,7 +496,6 @@ const imagesSet2 = [
     document.addEventListener('mouseup', handleDragEnd);
     document.addEventListener('touchend', handleDragEnd);
 
-    // Navigation buttons
     prevBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       switchSet(0);
@@ -542,7 +513,7 @@ const imagesSet2 = [
       });
     });
 
-    // IntersectionObserver for visibility-based animation
+    // IntersectionObserver for visibility
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -557,12 +528,12 @@ const imagesSet2 = [
 
     observer.observe(section);
 
-    // Initialize
+    // Initialize slides
     positionSlides(track1, rotation1);
     positionSlides(track2, rotation2);
 
-    // Cleanup for View Transitions
-    document.addEventListener('astro:before-swap', () => {
+    // Cleanup function for View Transitions
+    const cleanupHandler = () => {
       observer.disconnect();
       document.removeEventListener('mousemove', handleDragMove);
       document.removeEventListener('mouseup', handleDragEnd);
@@ -572,11 +543,16 @@ const imagesSet2 = [
         cancelAnimationFrame(animationId);
         animationId = null;
       }
-    });
-  })();
+      // Reset initialization flag so it can reinit on next page load
+      (wrapper as any).__sqcInitialized = false;
+    };
 
-  // Re-init after navigation
-  document.addEventListener('astro:after-swap', () => {
-    // The IIFE above will run again when the page loads
-  });
+    document.addEventListener('astro:before-swap', cleanupHandler, { once: true });
+  }
+
+  // Initialize on first load
+  initSabiasQueCarousel();
+
+  // Re-initialize after View Transitions navigation
+  document.addEventListener('astro:page-load', initSabiasQueCarousel);
 </script>

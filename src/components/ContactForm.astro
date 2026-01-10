@@ -178,13 +178,40 @@
 
       if (hasErrors) return;
 
-      // Simulate form submission
-      showFormLoading();
+      // Get form values
+      const name = (document.getElementById('name') as HTMLInputElement).value.trim();
+      const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+      const phone = (document.getElementById('phone') as HTMLInputElement).value.trim();
+      const subjectEl = document.getElementById('subject') as HTMLSelectElement;
+      const subject = subjectEl.options[subjectEl.selectedIndex].text;
+      const message = (document.getElementById('message') as HTMLTextAreaElement).value.trim();
 
+      // Build WhatsApp message
+      const whatsappMessage = `¡Hola! 👋
+
+Me llamo *${name}* y me gustaría comunicarme con ustedes.
+
+📋 *Asunto:* ${subject}
+📧 *Mi correo:* ${email}
+📱 *Mi teléfono:* ${phone}
+
+💬 *Mensaje:*
+${message}
+
+_Enviado desde el formulario web de Zygo_`;
+
+      // Encode and open WhatsApp
+      const encodedMessage = encodeURIComponent(whatsappMessage);
+      const whatsappUrl = `https://wa.me/51930928175?text=${encodedMessage}`;
+      
+      // Show success and redirect
+      showFormLoading();
+      
       setTimeout(() => {
         showFormSuccess();
         form.reset();
-      }, 2000);
+        window.open(whatsappUrl, '_blank');
+      }, 500);
     });
   }
 

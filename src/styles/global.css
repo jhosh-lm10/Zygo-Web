@@ -589,26 +589,19 @@ main {
 }
 
 .header__social a {
-  width: 44px;
-  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: rgba(114, 47, 55, 0.08);
-  color: var(--primary-color);
-  transition: all var(--transition-smooth);
+  transition: transform var(--transition-smooth);
 }
 
 .header__social a svg {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
 }
 
 .header__social a:hover {
-  background: var(--primary-color);
-  color: var(--white);
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.1);
 }
 
 .header__mobile-toggle {

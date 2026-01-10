@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/Footer.astro';
+import WhatsAppFAB from '../components/WhatsAppFAB.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -135,6 +136,9 @@ const schemaOrgData = {
     
     <!-- Footer Global -->
     <Footer />
+    
+    <!-- Floating WhatsApp Button -->
+    <WhatsAppFAB />
 
     <script>
       import { initScrollAnimations, initSmoothScroll, cleanupAnimations } from '../scripts/scroll-animations';

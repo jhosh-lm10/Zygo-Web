@@ -29,7 +29,7 @@ export function initScrollytelling() {
   }
 
   // ============================================
-  // STEP 0: FULL RESET - Clear everything
+  // RESET - Clear everything
   // ============================================
   wordsContainer.classList.remove('is-ready');
   wordsContainer.style.cssText = '';
@@ -46,56 +46,29 @@ export function initScrollytelling() {
   gsap.set(content, { clearProps: 'all' });
 
   // ============================================
-  // STEP 1: Setup container (invisible initially)
+  // INITIAL SETUP
   // ============================================
   wordsContainer.style.display = 'flex';
   wordsContainer.style.opacity = '0';
   wordsContainer.style.visibility = 'visible';
 
-  // ============================================
-  // STEP 2: Activate words visibility via CSS class
-  // ============================================
-  // words.forEach(word => word?.classList.add('is-active')); // REMOVED: Managed by GSAP internally
+  // Content starts VISIBLE
+  gsap.set(content, { autoAlpha: 1 });
 
-  // ============================================
-  // STEP 3: Apply GSAP initial states with INLINE STYLES
-  // First word visible, others hidden
-  // ============================================
-
-  // First word: Start HIDDEN to prevent flash on load
-  // Will be revealed in onEnter
-  gsap.set(words[0], {
-    opacity: 0,
-    visibility: 'hidden',
-    scale: 1,
-    filter: 'blur(0px)'
-  });
-
-  // Other words: hidden
-  for (let i = 1; i < words.length; i++) {
-    gsap.set(words[i], {
+  // All words hidden initially
+  words.forEach(word => {
+    gsap.set(word, {
       opacity: 0,
       visibility: 'visible',
       scale: 0.8,
       filter: 'blur(20px)'
     });
-  }
-
-  // Content: hidden
-  gsap.set(content, {
-    autoAlpha: 0, // Using autoAlpha for consistency
-    // Removed scale/blur initial state
   });
 
-  // ============================================
-  // STEP 4: Reveal container - REMOVED TO PREVENT GHOSTING
-  // We let ScrollTrigger control visibility to avoid seeing static element before pinning
-  // ============================================
-  // wordsContainer.style.opacity = '1';
   wordsContainer.classList.add('is-ready');
 
   // ============================================
-  // STEP 5: Create ScrollTrigger timeline
+  // TIMELINE CONFIGURATION
   // ============================================
   const enter = 0.25;
   const hold = 0.4;
@@ -103,19 +76,23 @@ export function initScrollytelling() {
   const gap = 0.15;
   const cycle = enter + hold + exit + gap;
 
-  // Reduce scroll distance on mobile
   const isMobile = window.innerWidth < 768;
+  const flipScene = document.querySelector('.mobile-flip-scene');
+  const flipFront = document.querySelector('.mobile-flip-front');
+  const flipBack = document.querySelector('.mobile-flip-back');
+  const hasMobileFlip = isMobile && flipScene && flipFront && flipBack;
 
   // Calculate total duration
-  let total = words.length * cycle + 0.8;
+  const contentFadeDuration = 0.5;
+  const flipDuration = hasMobileFlip ? 1.0 : 0;
+  const flipHold = hasMobileFlip ? 0.3 : 0;
+  const fullCycles = (words.length - 1) * cycle;
+  const lastWordTime = enter + hold;
 
-  // Extend timeline space for Mobile Flip sequence if it exists
-  if (isMobile && document.querySelector('.mobile-flip-scene')) {
-    total += 2.5; // Add cycles for the flip animation
-  }
+  let total = contentFadeDuration + flipDuration + flipHold + fullCycles + lastWordTime;
 
-  // Reduced multipliers for more sensitivity (less scrolling required)
-  const scrollMultiplier = isMobile ? 35 : 75; // Even more sensitive for mobile
+  // Smaller multiplier = less scroll needed = faster animation
+  const scrollMultiplier = isMobile ? 20 : 50;
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -123,33 +100,76 @@ export function initScrollytelling() {
       trigger: wrapper,
       start: 'top top',
       end: `+=${total * scrollMultiplier}%`,
-      scrub: isMobile ? 0.3 : 0.8, // Lower scrub = faster response on mobile
+      scrub: isMobile ? 0.2 : 0.8,
       pin: container,
       anticipatePin: 1,
       pinSpacing: true,
       onEnter: () => {
-        // Show container ONLY when we enter the section
         wordsContainer.style.opacity = '1';
       },
       onLeaveBack: () => {
-        // HIDE container completely when above the section
         wordsContainer.style.opacity = '0';
-
-        // Force hide content to prevent any flicker/leak at the start
-        gsap.set(content, { autoAlpha: 0 });
       }
     }
   });
 
   // ============================================
-  // Animate words
+  // MOBILE: Flip sequence FIRST, then words
   // ============================================
-  words.forEach((word, i) => {
-    const start = i * cycle;
+  let wordsStartTime = contentFadeDuration + 0.1;
 
-    // Entrance (Apply to ALL words, including the first one)
+  if (hasMobileFlip) {
+    // Setup flip card initial state
+    gsap.set(flipFront, { rotationY: 0, opacity: 1, zIndex: 2 });
+    gsap.set(flipBack, { rotationY: -180, opacity: 0, zIndex: 1 });
+
+    // Flip happens first (after a brief hold on image)
+    const flipStart = 0.2;
+
+    tl.to(flipFront, {
+      rotationY: 180,
+      opacity: 0,
+      duration: flipDuration,
+      ease: 'power1.inOut'
+    }, flipStart)
+      .to(flipBack, {
+        rotationY: 0,
+        opacity: 1,
+        duration: flipDuration,
+        ease: 'power1.inOut'
+      }, flipStart);
+
+    // After flip completes, fade out content to show words
+    const contentFadeStart = flipStart + flipDuration + flipHold;
+
+    tl.to(content, {
+      autoAlpha: 0,
+      duration: contentFadeDuration,
+      ease: 'power2.in'
+    }, contentFadeStart);
+
+    wordsStartTime = contentFadeStart + contentFadeDuration + 0.1;
+  } else {
+    // Desktop: Just fade out content directly
+    tl.to(content, {
+      autoAlpha: 0,
+      duration: contentFadeDuration,
+      ease: 'power2.in'
+    }, 0);
+  }
+
+  // ============================================
+  // WORDS ANIMATION
+  // ============================================
+  const lastWordIndex = words.length - 1;
+
+  words.forEach((word, i) => {
+    const start = wordsStartTime + (i * cycle);
+    const isLastWord = (i === lastWordIndex);
+
+    // Entrance
     tl.to(word, {
-      autoAlpha: 1, // Handles opacity AND visibility
+      autoAlpha: 1,
       scale: 1,
       filter: 'blur(0px)',
       duration: enter,
@@ -164,69 +184,15 @@ export function initScrollytelling() {
       duration: hold
     }, start + enter);
 
-    // Exit
-    tl.to(word, {
-      autoAlpha: 0, // Sets visibility: hidden at end
-      scale: 0.6,
-      filter: 'blur(15px)',
-      duration: exit,
-      ease: 'power1.in'
-    }, start + enter + hold - 0.1);
-  });
-
-  // ============================================
-  // Final transition - smooth crossfade
-  // ============================================
-  const final = words.length * cycle;
-  const crossfadeDuration = 0.6;
-
-  // Start showing content BEFORE hiding words for smooth crossfade
-  tl.to(content, {
-    autoAlpha: 1, // Handles opacity and visibility perfectly
-    duration: crossfadeDuration,
-    ease: 'power2.out'
-  }, final);
-
-  // Fade out words container simultaneously
-  tl.to(wordsContainer, {
-    opacity: 0,
-    duration: crossfadeDuration,
-    ease: 'power2.in'
-  }, final);
-
-  // ============================================
-  // MOBILE FLIP CARD SEQUENCE (Optimized Unified Timeline)
-  // ============================================
-  if (isMobile) {
-    const flipScene = document.querySelector('.mobile-flip-scene');
-    const flipFront = document.querySelector('.mobile-flip-front');
-    const flipBack = document.querySelector('.mobile-flip-back');
-
-    if (flipScene && flipFront && flipBack) {
-      // 1. Initial State (Nuclear Setup)
-      gsap.set(flipFront, { rotationY: 0, opacity: 1, zIndex: 2 });
-      gsap.set(flipBack, { rotationY: -180, opacity: 0, zIndex: 1 });
-
-      // 2. Add extra scroll distance for the flip interaction
-      // The flip happens AFTER content is revealed
-      const flipStart = final + crossfadeDuration + 0.2; // Small pause to see the image
-      const flipDuration = 1.5; // Duration relative to scroll distance
-
-      // 3. FLIP Animation linked to scroll (Scrubbed)
-      // Visual feedback: Image Front -> Image Back
-      tl.to(flipFront, {
-        rotationY: 180,
-        opacity: 0, // Crossfade opacity for robustness
-        duration: flipDuration,
-        ease: 'power1.inOut'
-      }, flipStart)
-        .to(flipBack, {
-          rotationY: 0,
-          opacity: 1,
-          duration: flipDuration,
-          ease: 'power1.inOut'
-        }, flipStart);
+    // Exit - SKIP for last word
+    if (!isLastWord) {
+      tl.to(word, {
+        autoAlpha: 0,
+        scale: 0.6,
+        filter: 'blur(15px)',
+        duration: exit,
+        ease: 'power1.in'
+      }, start + enter + hold - 0.1);
     }
-  }
+  });
 }
-

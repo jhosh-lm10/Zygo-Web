@@ -1,0 +1,430 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ServicesWheel from '../../components/ServicesWheel.astro';
+---
+
+<BaseLayout 
+  title="Chequeo VIP | Zygo" 
+  description="Paquete Premium con Citología en base líquida, Prueba Molecular de VPH (35 genotipos) y 5 pruebas de ITS específicas. Alta tecnología para tu salud."
+>
+  <Header />
+
+  <main class="service-detail-page">
+    
+    <!-- HEADER SECTION -->
+    <section class="service-header">
+      <div class="service-header__container">
+        <span class="service-header__pill">#PAQUETE VIP</span>
+        <h1 class="service-header__title">Chequeo VIP</h1>
+      </div>
+    </section>
+
+    <!-- INTRO SECTION (3 Columns) -->
+    <section class="service-intro">
+      <div class="service-intro__container">
+        <!-- Col 1: Image -->
+        <div class="service-intro__col-img" data-animate="scale">
+          <img src="/img/nuevo3.jpg" alt="Chequeo VIP Zygo" />
+        </div>
+
+        <!-- Col 2: Description -->
+        <div class="service-intro__col-desc" data-animate="soft-slide" data-animate-delay="0.1">
+          <h2>Alta Tecnología <br/><strong>Detección Molecular</strong></h2>
+          <p>
+            El Chequeo VIP es nuestro paquete Premium que combina la más alta tecnología médica con un enfoque integral. Incluye Citología en base líquida (más precisa que el Papanicolaou tradicional) y Prueba Molecular de VPH que detecta 35 genotipos del virus.
+            <br/><br/>
+            Además, realizamos 5 pruebas específicas de ITS: VIH, Sífilis, Hepatitis B, Herpes y Clamidia. La detección más completa y avanzada para tu tranquilidad total.
+          </p>
+        </div>
+
+        <!-- Col 3: Benefits -->
+        <div class="service-intro__col-benefits" data-animate="soft-slide" data-animate-delay="0.2">
+          <h3>¿Qué Incluye?</h3>
+          <ul class="benefit-list">
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Consulta especializada VIP</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Ecografía transvaginal HD</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Citología en base líquida</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Prueba Molecular VPH (35 genotipos)</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>5 ITS: VIH, Sífilis, Hepatitis B, Herpes, Clamidia</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Cultivo de secreción</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Seguimiento premium extendido</span>
+            </li>
+            <li>
+              <span class="check-icon">✔</span>
+              <span>Control final + consulta adicional</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOCKS SECTION -->
+    <section class="service-blocks">
+      
+      <!-- Block 1: Prueba Molecular VPH -->
+      <div class="service-block__container">
+        <div class="service-block__col-text" data-animate="soft-slide">
+          <span class="block-tag">#TECNOLOGÍA DE PUNTA</span>
+          <h2>Prueba Molecular de VPH</h2>
+          <p>
+            Detectamos 35 genotipos del Virus del Papiloma Humano mediante tecnología molecular de última generación. Este examen de alto valor permite identificar cepas de alto riesgo antes de que causen lesiones, dándote una ventaja crucial en la prevención del cáncer cervical.
+          </p>
+          <a href="/contacto" class="btn-book">Agendar Cita VIP</a>
+        </div>
+        <div class="service-block__col-img" data-animate="scale">
+          <img src="/img/PruebamoleculardeVPH.webp" alt="Prueba Molecular VPH" />
+        </div>
+      </div>
+
+      <!-- Block 2: Citología en Base Líquida -->
+      <div class="service-block__container reverse">
+        <div class="service-block__col-text" data-animate="soft-slide">
+          <span class="block-tag">#PRECISIÓN SUPERIOR</span>
+          <h2>Citología en Base Líquida</h2>
+          <p>
+            Más precisa que el Papanicolaou tradicional. La citología en base líquida reduce los falsos negativos y permite identificar células anormales con mayor exactitud. El estándar de oro para la detección temprana de lesiones cervicales.
+          </p>
+          <a href="/contacto" class="btn-book">Consultar</a>
+        </div>
+        <div class="service-block__col-img" data-animate="scale">
+          <img src="/img/chequefemeninoAnual.webp" alt="Citología" />
+        </div>
+      </div>
+
+      <!-- Block 3: 5 ITS Específicas -->
+      <div class="service-block__container">
+        <div class="service-block__col-text" data-animate="soft-slide">
+          <span class="block-tag">#DETECCIÓN COMPLETA</span>
+          <h2>5 Pruebas de ITS Específicas</h2>
+          <p>
+            Nuestro panel VIP incluye las 5 pruebas de ITS más importantes: VIH, Sífilis, Hepatitis B, Herpes y Clamidia. Cobertura total para tu salud sexual con resultados precisos y confidenciales.
+          </p>
+          <a href="/contacto" class="btn-book">Más Información</a>
+        </div>
+        <div class="service-block__col-img" data-animate="scale">
+          <img src="/img/despistaje.webp" alt="ITS Completo" />
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SERVICES WHEEL -->
+    <ServicesWheel />
+
+  </main>
+</BaseLayout>
+
+<style>
+  .service-detail-page {
+    background: #F8F9FA;
+    overflow-x: hidden;
+  }
+  
+  :global(.service-detail-page section[style*="background"]) {
+    background: transparent !important;
+  }
+  :global(.service-detail-page .section) {
+    background: transparent !important;
+  }
+
+  .service-header {
+    width: 100%;
+    height: 466px;
+    background: linear-gradient(135deg, #FDF2E9 0%, #FCE3F2 50%, #E8D4F0 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    border-radius: 0;
+  }
+
+  .service-header__container {
+    width: 100%;
+    max-width: 1330px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .service-header__pill {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #8A0021;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #D4AF37, #B8860B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .service-header__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  .service-intro {
+    padding: 3rem 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .service-intro__container {
+    width: 100%;
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: 376px 470px 357px; 
+    gap: 2rem;
+    align-items: end;
+    justify-content: space-between;
+  }
+
+  .service-intro__col-img {
+    overflow: hidden;
+    border-radius: 1.5rem;
+  }
+
+  .service-intro__col-img img {
+    width: 100%;
+    height: 479px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+  }
+
+  .service-intro__col-desc {
+    height: 480px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .service-intro__col-desc h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    line-height: 1.2;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+  }
+
+  .service-intro__col-desc p {
+    font-size: 1.05rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+  }
+
+  .service-intro__col-benefits {
+    height: 450px;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .service-intro__col-benefits h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .benefit-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .benefit-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    font-size: 0.9rem;
+    color: var(--text-dark);
+  }
+
+  .check-icon {
+    color: #D4AF37;
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
+  .service-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding: 3rem 0;
+  }
+
+  .service-block__container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+    background: white;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px -10px rgba(0,0,0,0.08);
+  }
+
+  .service-block__container.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .service-block__col-text {
+    flex: 1 1 0px;
+    max-width: 586px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .block-tag {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #D4AF37;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .service-block__col-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+  }
+
+  .service-block__col-text p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .btn-book {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border: 1px solid #D4AF37;
+    border-radius: 2rem;
+    text-decoration: none;
+    color: #8A0021;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: fit-content;
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), rgba(184, 134, 11, 0.1));
+  }
+
+  .btn-book:hover {
+    background: linear-gradient(90deg, #D4AF37, #B8860B);
+    color: white;
+    border-color: #D4AF37;
+  }
+
+  .service-block__col-img {
+    flex: 1 1 0px;
+    max-width: 586px;
+    overflow: hidden;
+    border-radius: 1.5rem;
+  }
+
+  .service-block__col-img img {
+    width: 100%;
+    height: 506px;
+    object-fit: cover;
+    border-radius: 1.5rem;
+    transform: scale(1.15);
+  }
+
+  @media (max-width: 1024px) {
+    .service-intro__container {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+    }
+    
+    .service-intro__col-img {
+      overflow: hidden;
+      border-radius: 1.5rem;
+      max-width: 400px;
+      width: 100%;
+      height: 300px;
+    }
+    
+    .service-intro__col-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .service-intro__col-desc,
+    .service-intro__col-benefits {
+      height: auto;
+    }
+
+    .service-block__container,
+    .service-block__container.reverse {
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+    }
+
+    .service-block__col-text {
+        align-items: center;
+    }
+
+    .service-block__col-img {
+        overflow: hidden;
+        border-radius: 1.5rem;
+        height: 280px;
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+    }
+
+    .service-block__col-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1.15);
+    }
+
+    .service-header__title {
+        font-size: 2.5rem;
+    }
+  }
+</style>
