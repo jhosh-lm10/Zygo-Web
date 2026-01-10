@@ -12,4 +12,9 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'auto',
   },
+  // Performance: Prefetch pages when links enter viewport
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport', // Prefetch when link is visible (faster than hover)
+  },
 });
