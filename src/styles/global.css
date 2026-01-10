@@ -452,7 +452,8 @@ main {
 .header__container {
   display: flex;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.3rem 0;
+  /* Reduced padding for slimmer navbar */
   gap: var(--spacing-2xl);
 }
 
@@ -1345,4 +1346,61 @@ html.js [data-animate].is-visible {
     transition: none !important;
     visibility: visible !important;
   } */
+}
+
+/* ============================================
+   RESPONSIVE - Service Pages (Global Override)
+   ============================================ */
+/* Fix fixed-width layout breaking on tablets/laptops (150% scale) */
+@media (min-width: 768px) and (max-width: 1350px) {
+  .service-intro__container {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    /* 2 Columns */
+    height: auto !important;
+    max-width: 100% !important;
+    gap: 2rem !important;
+    align-items: start !important;
+  }
+
+  /* Image: Left Col */
+  .service-intro__col-img {
+    width: 100% !important;
+  }
+
+  .service-intro__col-img img {
+    height: 400px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Description: Right Col */
+  .service-intro__col-desc {
+    height: auto !important;
+    padding: 0 !important;
+  }
+
+  /* Benefits: Bottom Full Width */
+  .service-intro__col-benefits {
+    grid-column: 1 / -1 !important;
+    height: auto !important;
+    width: 100% !important;
+    flex-direction: row !important;
+    /* Horizontal benefits */
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    justify-content: flex-start !important;
+    background: white !important;
+    padding: 2rem !important;
+    border-radius: 1.5rem !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
+    margin-top: 1rem !important;
+  }
+
+  .service-intro__col-benefits ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 1rem;
+  }
 }

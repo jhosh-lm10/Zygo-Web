@@ -115,25 +115,9 @@ function isActive(href: string) {
       </div>
 
       <div class="header__mobile-actions">
-        <!-- Social Icons for Mobile (only FB and TikTok for space) -->
-        <div class="header__mobile-social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61564505164182" target="_blank" rel="noopener" aria-label="Facebook" style="color: #1877F2 !important;">
-                <!-- Facebook -->
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24V15.563H7.078V12.073H10.125V9.429C10.125 6.42 11.917 4.761 14.658 4.761C15.97 4.761 17.344 4.996 17.344 4.996V7.948H15.83C14.34 7.948 13.875 8.873 13.875 9.822V12.073H17.203L16.67 15.563H13.875V24C19.613 23.094 24 18.1 24 12.073Z" fill="#1877F2"/>
-                  <path d="M16.671 15.563L17.204 12.073H13.876V9.822C13.876 8.873 14.341 7.948 15.831 7.948H17.345V4.996C17.345 4.996 15.971 4.761 14.659 4.761C11.918 4.761 10.126 6.42 10.126 9.429V12.073H7.079V15.563H10.126V24C10.75 24.1 11.373 24.151 12.001 24.151C12.629 24.151 13.252 24.1 13.876 24V15.563H16.671Z" fill="white"/>
-                </svg>
-            </a>
-            <a href="https://www.tiktok.com/@zygo.go" target="_blank" rel="noopener" aria-label="TikTok" style="color: #000000 !important;">
-               <!-- TikTok -->
-               <svg width="28" height="28" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                 <circle cx="12" cy="12" r="12" fill="#000000"/>
-                 <path d="M12.525 5.2c.03 1.08.51 2.12 1.32 2.87a4.1 4.1 0 0 0 2.76 1.13v1.84a5.88 5.88 0 0 1-2.76-.72v4.66a4.54 4.54 0 0 1-1.33 3.23 4.5 4.5 0 0 1-3.23 1.34 4.54 4.54 0 0 1-3.23-1.34A4.5 4.5 0 0 1 4.7 15a4.54 4.54 0 0 1 1.33-3.23 4.5 4.5 0 0 1 3.23-1.34c.3 0 .6.03.89.09v1.88a2.66 2.66 0 0 0-.89-.15 2.66 2.66 0 0 0-1.9.79A2.66 2.66 0 0 0 6.57 15c0 .71.28 1.39.79 1.9a2.66 2.66 0 0 0 1.9.79 2.66 2.66 0 0 0 1.9-.79 2.66 2.66 0 0 0 .79-1.9V5.2h1.53z" fill="#25F4EE" transform="translate(-0.8, 0)"/>
-                 <path d="M12.525 5.2c.03 1.08.51 2.12 1.32 2.87a4.1 4.1 0 0 0 2.76 1.13v1.84a5.88 5.88 0 0 1-2.76-.72v4.66a4.54 4.54 0 0 1-1.33 3.23 4.5 4.5 0 0 1-3.23 1.34 4.54 4.54 0 0 1-3.23-1.34A4.5 4.5 0 0 1 4.7 15a4.54 4.54 0 0 1 1.33-3.23 4.5 4.5 0 0 1 3.23-1.34c.3 0 .6.03.89.09v1.88a2.66 2.66 0 0 0-.89-.15 2.66 2.66 0 0 0-1.9.79A2.66 2.66 0 0 0 6.57 15c0 .71.28 1.39.79 1.9a2.66 2.66 0 0 0 1.9.79 2.66 2.66 0 0 0 1.9-.79 2.66 2.66 0 0 0 .79-1.9V5.2h1.53z" fill="#FE2C55" transform="translate(0.8, 0)"/>
-                 <path d="M12.525 5.2c.03 1.08.51 2.12 1.32 2.87a4.1 4.1 0 0 0 2.76 1.13v1.84a5.88 5.88 0 0 1-2.76-.72v4.66a4.54 4.54 0 0 1-1.33 3.23 4.5 4.5 0 0 1-3.23 1.34 4.54 4.54 0 0 1-3.23-1.34A4.5 4.5 0 0 1 4.7 15a4.54 4.54 0 0 1 1.33-3.23 4.5 4.5 0 0 1 3.23-1.34c.3 0 .6.03.89.09v1.88a2.66 2.66 0 0 0-.89-.15 2.66 2.66 0 0 0-1.9.79A2.66 2.66 0 0 0 6.57 15c0 .71.28 1.39.79 1.9a2.66 2.66 0 0 0 1.9.79 2.66 2.66 0 0 0 1.9-.79 2.66 2.66 0 0 0 .79-1.9V5.2h1.53z" fill="#FFFFFF"/>
-               </svg>
-            </a>
-        </div>
+        <!-- Social Icons Removed for Mobile as per user request -->
+
+        <!-- Mobile Toggle (Hamburger) - Moved to right side -->
 
 
         <!-- Mobile Toggle (Hamburger) - Moved to right side -->
@@ -236,6 +220,8 @@ function isActive(href: string) {
     color: #E40345; /* Brand Red */
     display: none; /* Hidden on desktop */
     align-items: center;
+    margin-right: 0;
+    padding-right: 0;
   }
 
   .header__mobile-social-icons {
@@ -378,19 +364,21 @@ function isActive(href: string) {
 
   .logo-main {
     font-size: 2.5rem; /* Increased from 2.2rem */
-    font-weight: 800;
+    font-weight: 700; /* Reduced from 800 to be less "fat" */
     letter-spacing: -0.02em;
     display: flex;
   }
 
   .logo-sub {
-    font-size: 0.75rem; /* Reduced from 0.9rem */
+    font-family: var(--font-secondary); /* Manrope for tagline */
+    font-size: 0.7rem; /* Slightly smaller for elegance */
     color: #E40345;
-    font-weight: 700;
-    letter-spacing: 0.1em;
+    font-weight: 500; /* Medium weight, not Bold */
+    letter-spacing: 0.2em; /* Increased letter spacing */
     display: block; 
-    margin-top: -6px; 
+    margin-top: 2px; /* Positive margin to detach from ZYGO */
     white-space: nowrap;
+    text-transform: uppercase;
   }
 
   .text-zy {

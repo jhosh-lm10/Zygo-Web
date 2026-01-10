@@ -40,8 +40,16 @@
     gap: 1.5rem;
   }
 
+  /* Tablet: 2 Columns */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .floating-cards__container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
   /* Desktop: 3 Columns */
-  @media (min-width: 768px) {
+  @media (min-width: 1025px) {
     .floating-cards__container {
       grid-template-columns: repeat(3, 1fr);
       gap: 2.5rem;
