@@ -311,6 +311,7 @@ function isActive(href: string) {
   }
 
   /* Mobile menu - hidden by default */
+  /* Mobile menu - hidden by default */
   .header__mobile-menu {
     display: none;
     position: absolute;
@@ -323,8 +324,10 @@ function isActive(href: string) {
     padding: 0; /* Reset padding to use flex container */
     z-index: 999;
     border-top: 1px solid rgba(255, 255, 255, 0.5);
-    height: calc(100vh - 80px); /* Full height minus header */
+    height: calc(100vh - 70px); /* Fallback */
+    height: calc(100dvh - 70px); /* Dynamic viewport height adjusted for slimmer header */
     overflow-y: auto;
+    padding-bottom: env(safe-area-inset-bottom); /* Safe area for newer iPhones */
   }
 
   /* Content Wrapper */
@@ -332,8 +335,9 @@ function isActive(href: string) {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100%;
+    min-height: 100%; /* Ensure it fills at least the container */
     padding: 2rem;
+    padding-bottom: 4rem; /* Extra padding at bottom to ensure visibility */
   }
 
   .header__mobile-links {
