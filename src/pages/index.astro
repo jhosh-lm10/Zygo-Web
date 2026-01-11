@@ -15,7 +15,7 @@ const reviewsHome = [
   {
     initial: 'M',
     name: 'María G.',
-    review: 'La atención fue increíble. Me sentí escuchada y respetada en todo momento. ¡Gracias Zygo!'
+    review: 'Después de meses con molestias, aquí encontré la solución.'
   },
   {
     initial: 'L',
@@ -54,115 +54,21 @@ const reviewsHome = [
   <main>
     <!-- Hero Section -->
     <HeroModern
-      title="Cuidamos tu salud femenina, sexual y reproductiva"
+      title="Tu salud íntima no es un tema menor. Mereces atención médica experta y respetuosa."
       subtitle="#1 CLÍNICA DE SALUD INTEGRAL"
-      description="Atención ginecológica y obstétrica experta. Te acompañamos en cada etapa de tu vida con un enfoque humano, tecnología moderna y el respeto que mereces."
+      description="Especialistas en infecciones vaginales, ITS, VPH, chequeos femeninos y cuidado ginecológico integral. Atención humana, confidencial y profesional."
       ctaText="Agenda tu Cita"
       ctaLink="/contacto"
       badge="TU BIENESTAR ES NUESTRA PRIORIDAD"
+      socialProof="👉 Más de 1000 mujeres atendidas"
     >
       <span slot="title">
-        Cuidamos tu salud <span class="hero-modern__title-accent">femenina</span>, <span class="hero-modern__title-accent">sexual</span> y reproductiva
+        Tu salud <span class="hero-modern__title-accent">íntima</span> no es un tema menor. Mereces atención médica <span class="hero-modern__title-accent">experta</span> y respetuosa.
       </span>
     </HeroModern>
 
     <!-- Floating Cards -->
     <FloatingCards />
-
-    <!-- About Section: Tus socias de confianza - Con Scrollytelling GSAP -->
-    <div class="scrollytelling-wrapper" id="scrollytellingWrapper" style="background: var(--white);">
-      <div class="scrollytelling-container" id="scrollytellingContainer">
-        <!-- Palabras animadas que aparecen con el scroll -->
-        <div class="scrollytelling-words-container">
-          <div class="scrollytelling-word" id="word-0">Confianza</div>
-          <div class="scrollytelling-word" id="word-1">Atención</div>
-          <div class="scrollytelling-word" id="word-2">Cuidado</div>
-          <div class="scrollytelling-word" id="word-3">Expertas</div>
-        </div>
-
-        <!-- Contenido real de la sección (oculto inicialmente) -->
-        <div class="scrollytelling-content" id="scrollytellingContent" style="padding: clamp(2rem, 5vw, 4rem) 0;">
-          <div class="container">
-            <!-- VISTA ESCRITORIO (Original) -->
-            <div class="split-section desktop-view">
-              <!-- Columna Izquierda: Texto -->
-              <div>
-                <span style="display: inline-block; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-color); margin-bottom: 1.5rem; padding: 0.5rem 1rem; background: rgba(114, 47, 55, 0.08); border-radius: 2rem;">
-                  # SOBRE NOSOTROS
-                </span>
-                <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: var(--font-size-3xl); font-weight: 700; color: var(--primary-color); margin-bottom: 1.5rem; line-height: 1.2;">
-                  Tus aliadas en salud integral femenina
-                </h2>
-                <p style="font-size: 1.25rem; color: var(--text-light); line-height: 1.75; margin-bottom: 2.5rem;">
-                  En Zygo, entendemos que la salud de la mujer va más allá de la maternidad. Ofrecemos un espacio seguro y confidencial para el cuidado de tu salud sexual, reproductiva y ginecológica. Nuestro equipo combina experiencia médica con una atención cálida y libre de juicios.
-                </p>
-                <a href="/equipo" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; border-radius: 9999px;">
-                  Conoce al equipo
-                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
-                    <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </a>
-              </div>
-
-              <!-- Columna Derecha: Imagen -->
-              <div style="position: relative; padding: 2rem 1rem;">
-                <!-- Decoración: Línea curva diagonal simple -->
-                <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;" viewBox="0 0 500 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-                  <path d="M 50 50 Q 200 250, 450 550" stroke="var(--primary-color)" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
-                  <path d="M 40 60 Q 190 260, 440 560" stroke="var(--cta-color)" stroke-width="2" stroke-linecap="round" opacity="0.2"/>
-                </svg>
-                
-                <div style="position: relative; z-index: 1; transform: perspective(1000px) rotateY(-2deg);">
-                  <img 
-                    src="/img/SegundaImg.webp" 
-                    alt="Obstetras y ginecólogas especializadas del equipo Zygo en Lima"
-                    loading="lazy"
-                    decoding="async"
-                    style="
-                      width: 95%; 
-                      height: auto; 
-                      display: block;
-                      margin: 0 auto;
-                      filter: drop-shadow(20px 25px 35px rgba(114, 47, 55, 0.25)) 
-                              drop-shadow(10px 15px 20px rgba(114, 47, 55, 0.15))
-                              drop-shadow(5px 8px 10px rgba(0, 0, 0, 0.1));
-                      position: relative;
-                      z-index: 2;
-                    "
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- VISTA MÓVIL (Flip Card) -->
-            <div class="mobile-flip-scene">
-              <div class="mobile-flip-card">
-                <!-- Frente: Imagen -->
-                <div class="mobile-flip-face mobile-flip-front">
-                  <img src="/img/SegundaImg.webp" alt="Equipo médico de Zygo" class="mobile-flip-image" loading="lazy" decoding="async" />
-                </div>
-                
-                <!-- Dorso: Contenido -->
-                <div class="mobile-flip-face mobile-flip-back">
-                  <div class="flip-content">
-                    <span class="badges-small"># SOBRE NOSOTROS</span>
-                    <h3 class="flip-title">Tus aliadas en salud</h3>
-                    <p class="flip-desc">
-                      Cuidado integral de tu salud femenina, sexual y reproductiva. Un espacio seguro, confidencial y sin juicios para ti.
-                    </p>
-                    <a href="/equipo" class="btn btn--white btn--sm">
-                      Conoce al equipo
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-<!-- Scrollytelling is now initialized from BaseLayout via scrollytelling.ts -->
 
     <!-- Cuidado Ginecológico Integral Section -->
     <section class="section" style="background: var(--white);">
@@ -265,7 +171,7 @@ const reviewsHome = [
             <!-- Tarjeta flotante con testimonio (desbordada) -->
             <div class="testimonio-flotante">
               <blockquote style="font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.1rem; margin-bottom: 1rem; line-height: 1.5;">
-                "Mejor experiencia obstétrica de mi vida. Personal amigable y atención sin dolor."
+                "Después de meses con molestias, aquí encontré la solución."
               </blockquote>
               <cite style="font-size: 0.95rem; font-weight: 600; font-style: normal;">
                 — María G.
@@ -354,6 +260,101 @@ const reviewsHome = [
 
     <!-- Sabías Que Section - Datos Curiosos -->
     <SabiasQueCarousel />
+
+    <!-- About Section: Tus socias de confianza - Con Scrollytelling GSAP -->
+    <div class="scrollytelling-wrapper" id="scrollytellingWrapper" style="background: var(--white);">
+      <div class="scrollytelling-container" id="scrollytellingContainer">
+        <!-- Palabras animadas que aparecen con el scroll -->
+        <div class="scrollytelling-words-container">
+          <div class="scrollytelling-word" id="word-0">Confianza</div>
+          <div class="scrollytelling-word" id="word-1">Atención</div>
+          <div class="scrollytelling-word" id="word-2">Cuidado</div>
+          <div class="scrollytelling-word" id="word-3">Expertas</div>
+        </div>
+
+        <!-- Contenido real de la sección (oculto inicialmente) -->
+        <div class="scrollytelling-content" id="scrollytellingContent" style="padding: clamp(2rem, 5vw, 4rem) 0;">
+          <div class="container">
+            <!-- VISTA ESCRITORIO (Original) -->
+            <div class="split-section desktop-view">
+              <!-- Columna Izquierda: Texto -->
+              <div>
+                <span style="display: inline-block; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary-color); margin-bottom: 1.5rem; padding: 0.5rem 1rem; background: rgba(114, 47, 55, 0.08); border-radius: 2rem;">
+                  # SOBRE NOSOTROS
+                </span>
+                <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: var(--font-size-3xl); font-weight: 700; color: var(--primary-color); margin-bottom: 1.5rem; line-height: 1.2;">
+                  Tus aliadas en salud integral femenina
+                </h2>
+                <p style="font-size: 1.25rem; color: var(--text-light); line-height: 1.75; margin-bottom: 2.5rem;">
+                  En Zygo, entendemos que la salud de la mujer va más allá de la maternidad. Ofrecemos un espacio seguro y confidencial para el cuidado de tu salud sexual, reproductiva y ginecológica. Nuestro equipo combina experiencia médica con una atención cálida y libre de juicios.
+                </p>
+                <a href="/equipo" class="btn btn--primary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; border-radius: 9999px;">
+                  Conoce al equipo
+                  <svg width="20" height="20" viewBox="0 0 16 16" fill="none">
+                    <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Columna Derecha: Imagen -->
+              <div style="position: relative; padding: 2rem 1rem;">
+                <!-- Decoración: Línea curva diagonal simple -->
+                <svg style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;" viewBox="0 0 500 600" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                  <path d="M 50 50 Q 200 250, 450 550" stroke="var(--primary-color)" stroke-width="2.5" stroke-linecap="round" opacity="0.25"/>
+                  <path d="M 40 60 Q 190 260, 440 560" stroke="var(--cta-color)" stroke-width="2" stroke-linecap="round" opacity="0.2"/>
+                </svg>
+                
+                <div style="position: relative; z-index: 1; transform: perspective(1000px) rotateY(-2deg);">
+                  <img 
+                    src="/img/SegundaImg.webp" 
+                    alt="Obstetras y ginecólogas especializadas del equipo Zygo en Lima"
+                    loading="lazy"
+                    decoding="async"
+                    style="
+                      width: 95%; 
+                      height: auto; 
+                      display: block;
+                      margin: 0 auto;
+                      filter: drop-shadow(20px 25px 35px rgba(114, 47, 55, 0.25)) 
+                              drop-shadow(10px 15px 20px rgba(114, 47, 55, 0.15))
+                              drop-shadow(5px 8px 10px rgba(0, 0, 0, 0.1));
+                      position: relative;
+                      z-index: 2;
+                    "
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- VISTA MÓVIL (Flip Card) -->
+            <div class="mobile-flip-scene">
+              <div class="mobile-flip-card">
+                <!-- Frente: Imagen -->
+                <div class="mobile-flip-face mobile-flip-front">
+                  <img src="/img/SegundaImg.webp" alt="Equipo médico de Zygo" class="mobile-flip-image" loading="lazy" decoding="async" />
+                </div>
+                
+                <!-- Dorso: Contenido -->
+                <div class="mobile-flip-face mobile-flip-back">
+                  <div class="flip-content">
+                    <span class="badges-small"># SOBRE NOSOTROS</span>
+                    <h3 class="flip-title">Tus aliadas en salud</h3>
+                    <p class="flip-desc">
+                      Cuidado integral de tu salud femenina, sexual y reproductiva. Un espacio seguro, confidencial y sin juicios para ti.
+                    </p>
+                    <a href="/equipo" class="btn btn--white btn--sm">
+                      Conoce al equipo
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrollytelling is now initialized from BaseLayout via scrollytelling.ts -->
 
     <!-- Insights Section (Blog) - From ApexCare Adaptation -->
     <Insights />

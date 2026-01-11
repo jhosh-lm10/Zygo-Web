@@ -30,7 +30,7 @@ const schemaOrgData = {
   '@type': 'MedicalBusiness',
   name: 'Zygo',
   description:
-    'Centro especializado en salud femenina, sexual y reproductiva. Cuidado integral y experto en todas las etapas de la vida de la mujer.',
+    'Centro especializado en salud femenina, sexual y reproductiva en Lima y Cusco. Tratamiento de infecciones vaginales, candidiasis, ITS, VPH y consulta ginecológica integral.',
   url: site,
   logo: new URL('/img/Logo.webp', site).toString(),
   image: imageURL.toString(),
@@ -42,14 +42,14 @@ const schemaOrgData = {
       addressLocality: 'Chorrillos',
       addressRegion: 'Lima',
       addressCountry: 'PE',
-      streetAddress: 'Av. Defensores del Morro 611 - Oficina 301',
+      streetAddress: 'Av. Defensores del Morro 611',
     },
     {
       '@type': 'PostalAddress',
-      addressLocality: 'Wanchaq',
+      addressLocality: 'Magisterio',
       addressRegion: 'Cusco',
       addressCountry: 'PE',
-      streetAddress: 'Calle Nueva Nro 478, Segundo piso',
+      streetAddress: 'URB. Quispicanchi K5, Calle Nueva',
     },
   ],
   openingHoursSpecification: [
@@ -92,6 +92,10 @@ const schemaOrgData = {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
+    <meta name="keywords" content="tratamiento candidiasis, infecciones vaginales Cusco, infecciones vaginales Lima, consulta ginecológica, ITS en mujeres, VPH, chequeo femenino, ginecólogo Cusco, ginecólogo Lima, salud femenina" />
+    <meta name="author" content="Zygo Salud Femenina" />
+    <meta name="geo.region" content="PE-CUS" />
+    <meta name="geo.placename" content="Cusco, Lima" />
     <link rel="canonical" href={canonicalURL} />
 
     <!-- Open Graph / Facebook -->
@@ -113,7 +117,7 @@ const schemaOrgData = {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Preload Critical Resources (LCP Optimization) -->
-    <link rel="preload" href="/img/portadasinfondo.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preload" href="/img-original/portadaNueva.png" as="image" type="image/png" fetchpriority="high" />
     <link rel="preload" href="/img/Logo.webp" as="image" type="image/webp" />
     <link rel="dns-prefetch" href="https://wa.me" />
     

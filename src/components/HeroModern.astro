@@ -6,9 +6,10 @@ interface Props {
   ctaText?: string;
   ctaLink?: string;
   badge?: string;
+  socialProof?: string;
 }
 
-const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLink, badge = "TU SALUD ES NUESTRA PRIORIDAD" } = Astro.props;
+const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLink, badge = "TU SALUD ES NUESTRA PRIORIDAD", socialProof } = Astro.props;
 ---
 
 <section class="hero-modern">
@@ -28,6 +29,9 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
             <path d="M1 15L15 1M15 1H5M15 1V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </a>
+      )}
+      {socialProof && (
+        <p class="hero-modern__social-proof" data-hero-animate>{socialProof}</p>
       )}
     </div>
 
@@ -54,7 +58,7 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
         </svg>
       </div>
       <img 
-        src="/img/portadasinfondo.webp" 
+        src="/img-original/portadaNueva.png" 
         alt="Zygo - Atención ginecológica y obstétrica profesional en Lima y Cusco" 
         class="hero-modern__image"
         fetchpriority="high"
@@ -113,7 +117,7 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
     .hero-modern__content {
       align-items: flex-start;
       text-align: left;
-      padding-top: 8rem; /* Balanced mobile padding */
+      padding-top: 10rem; /* Increased to account for fixed header + new longer title */
       padding-left: var(--container-padding);
       padding-bottom: 0; /* Remove excess space on mobile */
     }
@@ -136,9 +140,9 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
 
   .hero-modern__title {
     font-family: 'Playfair Display', 'Georgia', serif;
-    /* Slightly larger: Mobile 2.25rem -> Desktop 5rem */
-    font-size: clamp(2.25rem, 5.5vw + 1rem, 5rem); 
-    line-height: 1.1;
+    /* Reduced for longer title: Mobile 1.8rem -> Desktop 3.5rem */
+    font-size: clamp(1.8rem, 4vw + 0.8rem, 3.5rem); 
+    line-height: 1.15;
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: var(--spacing-lg);
@@ -186,6 +190,16 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
 
   .hero-modern__cta:hover svg {
     transform: translate(3px, -3px);
+  }
+
+  .hero-modern__social-proof {
+    margin-top: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .hero-modern__image-container {
