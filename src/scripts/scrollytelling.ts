@@ -92,7 +92,8 @@ export function initScrollytelling() {
   let total = contentFadeDuration + flipDuration + flipHold + fullCycles + lastWordTime;
 
   // Smaller multiplier = less scroll needed = faster animation
-  const scrollMultiplier = isMobile ? 20 : 50;
+  // Increased mobile from 20 to 26 for 30% slower animation
+  const scrollMultiplier = isMobile ? 26 : 50;
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -107,8 +108,22 @@ export function initScrollytelling() {
       onEnter: () => {
         wordsContainer.style.opacity = '1';
       },
+      onLeave: () => {
+        // CRITICAL: Hide ALL words when scrolling past the section
+        // Without this, position:fixed words persist on screen
+        wordsContainer.style.opacity = '0';
+        words.forEach(word => {
+          if (word) {
+            gsap.set(word, { autoAlpha: 0, visibility: 'hidden' });
+          }
+        });
+      },
       onLeaveBack: () => {
         wordsContainer.style.opacity = '0';
+      },
+      onEnterBack: () => {
+        // Re-enable words container when scrolling back up
+        wordsContainer.style.opacity = '1';
       }
     }
   });
@@ -184,7 +199,7 @@ export function initScrollytelling() {
       duration: hold
     }, start + enter);
 
-    // Exit - SKIP for last word
+    // Exit - SKIP for last word (stays visible until section unpins)
     if (!isLastWord) {
       tl.to(word, {
         autoAlpha: 0,

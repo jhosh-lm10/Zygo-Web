@@ -1231,6 +1231,10 @@ html.js [data-animate].is-visible {
   position: relative;
   width: 100%;
   background: var(--white);
+  overflow: hidden;
+  /* Prevent content from bleeding outside */
+  z-index: 1;
+  /* Layer control */
 }
 
 .scrollytelling-container {
@@ -1246,6 +1250,8 @@ html.js [data-animate].is-visible {
   /* Prevent flicker on pin/unpin */
   transform: translateZ(0);
   /* Force GPU layer */
+  z-index: 2;
+  /* Above wrapper, below words */
 }
 
 .scrollytelling-words-container {
@@ -1286,6 +1292,8 @@ html.js [data-animate].is-visible {
   /* Start hidden - GSAP controls visibility */
   visibility: hidden;
   /* NO opacity here - let GSAP control it to avoid specificity conflicts */
+  z-index: 100;
+  /* Ensure words appear above content during animation */
 }
 
 /* .scrollytelling-word.is-active removed to prevent flash */
