@@ -92,8 +92,9 @@ export function initScrollytelling() {
   let total = contentFadeDuration + flipDuration + flipHold + fullCycles + lastWordTime;
 
   // Smaller multiplier = less scroll needed = faster animation
-  // Increased mobile from 20 to 26 for 30% slower animation
-  const scrollMultiplier = isMobile ? 26 : 50;
+  // Smaller multiplier = less scroll needed = faster animation
+  // Adjusted mobile from 26 down to 22 to reduce excessive scrolling
+  const scrollMultiplier = isMobile ? 22 : 50;
 
   const tl = gsap.timeline({
     scrollTrigger: {
@@ -111,24 +112,11 @@ export function initScrollytelling() {
         wordsContainer.style.visibility = 'visible';
       },
       onLeave: () => {
-        // CRITICAL: Hide ALL words when scrolling past the section
-        // Without this, position:fixed words persist on screen
-        wordsContainer.style.opacity = '0';
-        wordsContainer.style.visibility = 'hidden';
-        words.forEach(word => {
-          if (word) {
-            gsap.set(word, { autoAlpha: 0, visibility: 'hidden' });
-          }
-        });
+        // Removed manual hiding - Position absolute ensures words scroll up naturally
+        // This prevents the "disappear and reappear" ghosting effect
       },
       onLeaveBack: () => {
-        wordsContainer.style.opacity = '0';
-        wordsContainer.style.visibility = 'hidden';
-        words.forEach(word => {
-          if (word) {
-            gsap.set(word, { autoAlpha: 0, visibility: 'hidden' });
-          }
-        });
+        // Removed manual hiding
       },
       onEnterBack: () => {
         // Re-enable words container when scrolling back up

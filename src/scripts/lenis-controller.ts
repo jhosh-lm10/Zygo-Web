@@ -13,8 +13,16 @@ export class LenisSystem {
     /**
      * Initialize Lenis and bind it to GSAP's ticker.
      * CALL THIS on 'astro:page-load'.
+     * NOTE: Disabled on mobile/tablet (< 1024px) for better touch scroll performance.
      */
     public static init(): void {
+        // Skip Lenis on mobile and tablet - use native scroll
+        const isMobileOrTablet = window.innerWidth < 1024;
+        if (isMobileOrTablet) {
+            console.log('[LenisSystem] Skipped on mobile/tablet. Using native scroll.');
+            return;
+        }
+
         if (this.isInitialized || this.instance) {
             console.warn('[LenisSystem] Already initialized. Skipping.');
             return;
