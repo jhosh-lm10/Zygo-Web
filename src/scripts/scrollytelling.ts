@@ -105,13 +105,16 @@ export function initScrollytelling() {
       pin: container,
       anticipatePin: 1,
       pinSpacing: true,
+      invalidateOnRefresh: true, // Recalculate on resize/refresh
       onEnter: () => {
         wordsContainer.style.opacity = '1';
+        wordsContainer.style.visibility = 'visible';
       },
       onLeave: () => {
         // CRITICAL: Hide ALL words when scrolling past the section
         // Without this, position:fixed words persist on screen
         wordsContainer.style.opacity = '0';
+        wordsContainer.style.visibility = 'hidden';
         words.forEach(word => {
           if (word) {
             gsap.set(word, { autoAlpha: 0, visibility: 'hidden' });
@@ -120,10 +123,17 @@ export function initScrollytelling() {
       },
       onLeaveBack: () => {
         wordsContainer.style.opacity = '0';
+        wordsContainer.style.visibility = 'hidden';
+        words.forEach(word => {
+          if (word) {
+            gsap.set(word, { autoAlpha: 0, visibility: 'hidden' });
+          }
+        });
       },
       onEnterBack: () => {
         // Re-enable words container when scrolling back up
         wordsContainer.style.opacity = '1';
+        wordsContainer.style.visibility = 'visible';
       }
     }
   });
