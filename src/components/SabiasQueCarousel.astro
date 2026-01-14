@@ -436,7 +436,11 @@ const imagesSet2 = [
         dragStartX = e.touches[0].clientX;
       }
       dragStartRotation = getCurrentRotation();
-      e.preventDefault();
+      
+      // Fix for [Intervention] Ignored attempt to cancel a touchstart event
+      if (e.cancelable) {
+        e.preventDefault();
+      }
     }
 
     function handleDragMove(e: MouseEvent | TouchEvent) {

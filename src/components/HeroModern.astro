@@ -58,7 +58,7 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
         </svg>
       </div>
       <img 
-        src="/img-original/portadaNueva.png" 
+        src="/img/ambas.webp" 
         alt="Zygo - Atención especializada y profesional en Lima y Cusco" 
         class="hero-modern__image"
         fetchpriority="high"
@@ -216,10 +216,13 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
     width: auto;
     max-width: 100%;
     height: auto;
-    max-height: 55vh; /* Mobile max height */
+    max-height: 55vh; /* Reverted to original */
     object-fit: contain;
     object-position: bottom center;
     filter: drop-shadow(0 10px 30px rgba(114, 47, 55, 0.2));
+    /* Móvil: Tamaño original, bajada ligeramente (20px) */
+    transform: scale(1) translateY(20px); 
+    transform-origin: bottom center;
   }
 
   @media (min-width: 1281px) {
@@ -230,9 +233,12 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
     }
 
     .hero-modern__image {
-      max-width: 122%; /* Slightly increased */
-      height: 92vh; /* Slightly increased */
+      max-width: 122%;
+      height: 92vh;
       max-height: none;
+      /* Desktop: Más pequeña y abajo */
+      transform: scale(0.88) translateY(80px); 
+      transform-origin: bottom center;
     }
   }
 
@@ -356,32 +362,47 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
     // Safety check - if components aren't present, don't animate
     if (!badge || !image) return;
 
-    // Faster, snappier timeline
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    // Responsive animations using MatchMedia
+    let mm = gsap.matchMedia();
 
-    // Initial states set via JS to avoid FOUC
+    // 1. Setup shared initial states
     gsap.set('[data-hero-animate]', { autoAlpha: 0, y: 20 });
     gsap.set(badge, { scale: 0, autoAlpha: 0 });
-    gsap.set(image, { opacity: 0, scale: 0.98, transformOrigin: "bottom center" });
+    
+    // Image initial state is same for both, but target differs
+    gsap.set(image, { opacity: 0, scale: 0.95, transformOrigin: "bottom center" });
 
-    tl.to('[data-hero-animate]', {
-      y: 0,
-      autoAlpha: 1,
-      duration: 0.6,
-      stagger: 0.08,
-      delay: 0.1
-    })
-    .to(image, {
-      opacity: 1,
-      scale: 1,
-      duration: 0.8,
-      ease: "back.out(1.2)"
-    }, "<0.2")
-    .to(badge, {
-      scale: 1,
-      autoAlpha: 1,
-      duration: 0.6,
-      ease: "elastic.out(1, 0.75)"
-    }, "<0.4");
+    // 2. Define animation functionality
+    mm.add({
+      isDesktop: "(min-width: 1281px)",
+      isMobile: "(max-width: 1280px)",
+    }, (context) => {
+      let { isDesktop } = context.conditions;
+
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+      tl.to('[data-hero-animate]', {
+        y: 0,
+        autoAlpha: 1,
+        duration: 0.6,
+        stagger: 0.08,
+        delay: 0.1
+      })
+      .to(image, {
+        opacity: 1,
+        // Desktop: Shrink and lower (0.9 scale, 80px down)
+        // Mobile:  Full size (1.0 scale, 20px down)
+        scale: isDesktop ? 0.9 : 1, 
+        y: isDesktop ? 80 : 20, 
+        duration: 0.8,
+        ease: "back.out(1.2)"
+      }, "<0.2")
+      .to(badge, {
+        scale: 1,
+        autoAlpha: 1,
+        duration: 0.6,
+        ease: "elastic.out(1, 0.75)"
+      }, "<0.4");
+    });
   });
 </script>

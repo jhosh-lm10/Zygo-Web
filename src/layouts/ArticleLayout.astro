@@ -1,0 +1,217 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+  title: string;
+  publishDate: string;
+  category: string;
+  description?: string;
+  image?: string;
+}
+
+const { title, publishDate, category, description, image } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Zygo Blog`} description={description || title}>
+  <Header />
+
+  <main class="article-page">
+    <!-- Hero del Artículo -->
+    <header class="article-header">
+      <div class="container skin">
+        <div class="meta-tags">
+          <span class="category-tag">{category}</span>
+          <span class="date">{publishDate}</span>
+        </div>
+        <h1 class="article-title">{title}</h1>
+        <div class="divider"></div>
+      </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <article class="article-content container skin">
+      <slot />
+    </article>
+
+    <!-- CTA Final -->
+    <section class="article-cta">
+      <div class="container skin">
+        <div class="cta-box">
+          <h3>¿Tienes dudas sobre este tema?</h3>
+          <p>Nuestras especialistas están listas para escucharte y guiarte.</p>
+          <a href="https://wa.me/51958693762?text=Hola%20Zygo,%20leí%20su%20artículo%20y%20quisiera%20agendar%20una%20cita" class="btn-primary" target="_blank">
+            Hablar con una especialista
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .article-page {
+    padding-top: 140px; /* Header space */
+    background-color: #fff;
+  }
+
+  .container.skin {
+    max-width: 800px; /* Ancho de lectura óptimo */
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  /* Header Styles */
+  .article-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 2rem 0;
+  }
+
+  .meta-tags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-light);
+  }
+
+  .category-tag {
+    background-color: rgba(114, 47, 55, 0.08); /* Primary color ultra light */
+    color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    color: var(--primary-color);
+    line-height: 1.15;
+    margin-bottom: 2rem;
+  }
+
+  .divider {
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+
+  /* Content Styles */
+  .article-content {
+    font-family: 'Manrope', sans-serif;
+    font-size: 1.125rem; /* 18px text */
+    line-height: 1.8;
+    color: #4a4a4a; /* Soft black for reading */
+    margin-bottom: 6rem;
+  }
+
+  /* Global styles for content slots */
+  .article-content :global(h2) {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    color: var(--primary-color);
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content :global(h3) {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #333;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .article-content :global(p) {
+    margin-bottom: 1.5rem;
+  }
+
+  .article-content :global(ul), .article-content :global(ol) {
+    margin-bottom: 2rem;
+    padding-left: 1.5rem;
+  }
+
+  .article-content :global(li) {
+    margin-bottom: 0.75rem;
+  }
+
+  .article-content :global(.highlight-box) {
+    background: linear-gradient(135deg, #fdfbfb 0%, #f6e6e9 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    border-left: 4px solid var(--primary-color);
+    margin: 3rem 0;
+    font-style: italic;
+    color: #555;
+  }
+
+  /* CTA Section */
+  .article-cta {
+    background-color: #fafafa;
+    padding: 5rem 0;
+    margin-top: 4rem;
+    border-top: 1px solid #eee;
+  }
+
+  .cta-box {
+    text-align: center;
+    background: white;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .cta-box h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+  }
+
+  .cta-box p {
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 100px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(114, 47, 55, 0.2);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(114, 47, 55, 0.3);
+    background-color: #5c252c;
+  }
+
+  @media (max-width: 768px) {
+    .article-page {
+      padding-top: 100px;
+    }
+    .article-title {
+      font-size: 2rem;
+    }
+    .cta-box {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>
