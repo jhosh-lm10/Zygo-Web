@@ -112,14 +112,28 @@ export function initScrollytelling() {
         wordsContainer.style.visibility = 'visible';
       },
       onLeave: () => {
-        // Removed manual hiding - Position absolute ensures words scroll up naturally
-        // This prevents the "disappear and reappear" ghosting effect
+        // CRITICAL FIX: Hide words container AND all words when section unpins
+        // This prevents the "ghost Expertas section" appearing after scrollytelling ends
+        wordsContainer.style.opacity = '0';
+        wordsContainer.style.visibility = 'hidden';
+        words.forEach(word => {
+          if (word) {
+            gsap.set(word, { autoAlpha: 0, visibility: 'hidden' });
+          }
+        });
       },
       onLeaveBack: () => {
-        // Removed manual hiding
+        // Also hide when scrolling back up past the trigger start
+        wordsContainer.style.opacity = '0';
+        wordsContainer.style.visibility = 'hidden';
+        words.forEach(word => {
+          if (word) {
+            gsap.set(word, { autoAlpha: 0, visibility: 'hidden' });
+          }
+        });
       },
       onEnterBack: () => {
-        // Re-enable words container when scrolling back up
+        // Re-enable words container when scrolling back into section
         wordsContainer.style.opacity = '1';
         wordsContainer.style.visibility = 'visible';
       }

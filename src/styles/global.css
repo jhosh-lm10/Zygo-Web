@@ -1239,9 +1239,12 @@ html.js [data-animate].is-visible {
 
 .scrollytelling-container {
   position: relative;
-  height: 100svh;
-  /* Usar svh para evitar saltos en móvil al scrollear */
-  /* IMPORTANTE: Centrado perfecto desde el inicio para evitar saltos */
+  /* MOBILE FIX: Use dvh (dynamic) which updates in real-time as browser chrome changes */
+  height: 100vh;
+  /* Fallback for older browsers */
+  height: 100dvh;
+  /* Dynamic viewport height - prevents jump on mobile */
+  /* IMPORTANT: Perfect centering from start to avoid jumps */
   display: flex;
   align-items: center;
   justify-content: center;
