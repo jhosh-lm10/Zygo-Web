@@ -6,5 +6,5 @@ bio: "Médico especializado con enfoque en ginecología y obstetricia de alto ri
 order: 2
 ---
 
-Médico especializado en el cuidado de embarazos de alto riesgo y patologías ginecológicas complejas.
+Médico especializado en el cuidado de embarazos de alto riesgo y patologías especializadas complejas.
 
