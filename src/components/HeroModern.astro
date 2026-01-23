@@ -245,7 +245,7 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
   .hero-modern__badge {
     position: absolute;
     top: 38%; /* Lower: was 30% */
-    left: -8%; /* More centered: was -12% */
+    left: -12%; /* More to left: was -8% */
     width: clamp(140px, 20vw, 200px);
     height: clamp(140px, 20vw, 200px);
     display: flex;
@@ -255,12 +255,12 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
     animation: float 3.5s ease-in-out infinite; /* Faster: was 6s */
   }
 
-  /* Fix for mobile badge clipping */
+  /* Fix for mobile badge - smaller and lower */
   @media (max-width: 1280px) {
     .hero-modern__badge {
       left: 0;
-      top: 25%;
-      transform: scale(0.9);
+      top: 50%; /* Moved lower from 25% */
+      transform: scale(0.55); /* Smaller from 0.65 */
     }
   }
 
@@ -398,7 +398,7 @@ const { title, subtitle = "#1 CLÍNICA OBSTÉTRICA", description, ctaText, ctaLi
         ease: "back.out(1.2)"
       }, "<0.2")
       .to(badge, {
-        scale: 1,
+        scale: isDesktop ? 1 : 0.55,
         autoAlpha: 1,
         duration: 0.6,
         ease: "elastic.out(1, 0.75)"
