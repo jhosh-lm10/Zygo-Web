@@ -2,14 +2,65 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import ServicesWheel from '../../components/ServicesWheel.astro';
-// Footer removed (in BaseLayout)
 
+const site = Astro.site || 'https://zygo.space';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué causa las infecciones vaginales?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Las infecciones vaginales pueden ser causadas por hongos (candidiasis), bacterias (vaginosis bacteriana) o parásitos (tricomoniasis). Factores como el uso de antibióticos, cambios hormonales, estrés y ropa ajustada pueden alterar la flora vaginal y facilitar su aparición.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cuáles son los síntomas de una infección vaginal?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Los síntomas más comunes incluyen flujo vaginal anormal (en color, olor o cantidad), picazón, ardor al orinar, dolor durante las relaciones sexuales e irritación en la zona íntima. Si presentas alguno de estos síntomas, es importante acudir a una especialista.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cómo se diagnostican las infecciones vaginales en Zygo?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'En Zygo realizamos un examen clínico detallado y tomamos muestras para cultivo de secreción vaginal. Esto nos permite identificar el tipo exacto de infección y recetar el tratamiento más efectivo para tu caso.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿La candidiasis se puede curar definitivamente?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sí, la candidiasis tiene tratamiento efectivo. En casos recurrentes, nuestras especialistas diseñan un protocolo personalizado que incluye tratamiento antifúngico y recomendaciones de prevención para evitar que vuelva a aparecer.',
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: site.toString() },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: new URL('/servicios', site).toString() },
+    { '@type': 'ListItem', position: 3, name: 'Infecciones Vaginales', item: new URL('/servicios/card5', site).toString() },
+  ],
+};
 ---
 
 <BaseLayout 
-  title="Infecciones Vaginales | Zygo" 
+  title="Infecciones Vaginales Cusco | Zygo" 
   description="Diagnóstico preciso y tratamiento efectivo para candidiasis, vaginosis y otras infecciones íntimas."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <Header />
 
   <main class="service-detail-page">
@@ -27,7 +78,7 @@ import ServicesWheel from '../../components/ServicesWheel.astro';
       <div class="service-intro__container">
         <!-- Col 1: Image -->
         <div class="service-intro__col-img" data-animate="scale">
-          <img src="/img/Infecciones.webp" alt="Infecciones Vaginales Zygo" />
+          <img src="/img/Infecciones.webp" alt="Tratamiento de infecciones vaginales en Cusco - Zygo" />
         </div>
 
         <!-- Col 2: Description -->
@@ -81,7 +132,7 @@ import ServicesWheel from '../../components/ServicesWheel.astro';
           <a href="/contacto" class="btn-book">Agendar Chequeo</a>
         </div>
         <div class="service-block__col-img" data-animate="scale">
-           <img src="/img/prevencion-ecografia-ginecologica.webp" alt="Ecografía Especializada" />
+           <img src="/img/prevencion-ecografia-ginecologica.webp" alt="Ecografía ginecológica especializada en Cusco" />
         </div>
       </div>
 
@@ -96,7 +147,7 @@ import ServicesWheel from '../../components/ServicesWheel.astro';
           <a href="/contacto" class="btn-book">Agendar Examen</a>
         </div>
         <div class="service-block__col-img" data-animate="scale">
-           <img src="/img/salud-mamaria-ecografia-mamas.webp" alt="Ecografía de Mamas" />
+           <img src="/img/salud-mamaria-ecografia-mamas.webp" alt="Ecografía mamaria para detección temprana en Cusco" />
         </div>
       </div>
 
@@ -111,7 +162,7 @@ import ServicesWheel from '../../components/ServicesWheel.astro';
           <a href="/contacto" class="btn-book">Ver Paquetes</a>
         </div>
         <div class="service-block__col-img" data-animate="scale">
-           <img src="/img/SegundaImg.webp" alt="Ecografía 5D" />
+           <img src="/img/SegundaImg.webp" alt="Ecografía 5D prenatal en Cusco - Zygo" />
         </div>
       </div>
 

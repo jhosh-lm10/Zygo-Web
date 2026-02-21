@@ -20,17 +20,17 @@ const {
   canonical,
 } = Astro.props;
 
-const site = Astro.site || 'https://zygo.com';
+const site = Astro.site || 'https://zygo.space';
 const canonicalURL = canonical ? new URL(canonical, site) : new URL(Astro.url.pathname, site);
 const imageURL = new URL(image, site);
 
 // Schema.org structured data for MedicalBusiness
 const schemaOrgData = {
   '@context': 'https://schema.org',
-  '@type': 'MedicalBusiness',
-  name: 'Zygo',
+  '@type': 'MedicalClinic',
+  name: 'Zygo Salud Femenina',
   description:
-    'Centro especializado en salud femenina, sexual y reproductiva en Lima y Cusco. Tratamiento de infecciones vaginales, candidiasis, ITS, VPH y consulta especializada integral.',
+    'Clínica especializada en salud femenina, sexual y reproductiva. Ginecología, fertilidad y prevención.',
   url: site,
   logo: new URL('/img/Logo.webp', site).toString(),
   image: imageURL.toString(),
@@ -71,7 +71,7 @@ const schemaOrgData = {
     'https://www.instagram.com/zygo.go/',
     'https://www.tiktok.com/@zygo.go',
   ],
-  medicalSpecialty: 'Obstetrics',
+  medicalSpecialty: 'Gynecology',
   priceRange: '$$',
 };
 ---
@@ -92,7 +92,7 @@ const schemaOrgData = {
     <title>{title}</title>
     <meta name="title" content={title} />
     <meta name="description" content={description} />
-    <meta name="keywords" content="tratamiento candidiasis, infecciones vaginales Cusco, infecciones vaginales Lima, consulta especializada, ITS en mujeres, VPH, chequeo femenino, especialista Cusco, especialista Lima, salud femenina" />
+    <meta name="keywords" content="ginecología Cusco, ginecología Perú, ginecóloga Cusco, atención femenina Cusco, candidiasis tratamiento, vaginosis bacteriana, flujo vaginal, infección vaginal, VPH virus papiloma humano, salud reproductiva Cusco, fertilidad Cusco, salud femenina Perú, clínica ginecológica Cusco, Zygo salud femenina" />
     <meta name="author" content="Zygo Salud Femenina" />
     <meta name="geo.region" content="PE-CUS" />
     <meta name="geo.placename" content="Cusco, Lima" />
@@ -114,7 +114,8 @@ const schemaOrgData = {
     <meta property="twitter:image" content={imageURL} />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/webp" href="/img/Logo.webp" />
+    <link rel="apple-touch-icon" href="/img/Logo.webp" />
 
     <!-- Preload Critical Resources (LCP Optimization) -->
     <link rel="preload" href="/img/ambas.webp" as="image" type="image/webp" fetchpriority="high" />
@@ -131,7 +132,12 @@ const schemaOrgData = {
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Manrope:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600;1,700&display=swap"
       rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
     />
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Manrope:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,600;1,700&display=swap" rel="stylesheet" />
+    </noscript>
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrgData)} />

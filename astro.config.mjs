@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://zygo.com',
+  site: 'https://zygo.space',
   integrations: [sitemap()],
   image: {
     domains: ['lh3.googleusercontent.com'],

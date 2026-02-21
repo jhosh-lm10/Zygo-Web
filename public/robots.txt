@@ -1,5 +1,5 @@
 # Zygo - robots.txt
-# https://zygo.com
+# https://zygo.space
 
 # Allow all search engines
 User-agent: *
@@ -20,4 +20,4 @@ User-agent: CCBot
 Disallow: /
 
 # Sitemap location
-Sitemap: https://zygo.com/sitemap-index.xml
+Sitemap: https://zygo.space/sitemap-index.xml

@@ -2,14 +2,65 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import ServicesWheel from '../../components/ServicesWheel.astro';
-// Footer removed (in BaseLayout)
 
+const site = Astro.site || 'https://zygo.space';
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '¿Qué es el VPH y cómo se contagia?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'El Virus del Papiloma Humano (VPH) es la infección de transmisión sexual más común. Se transmite por contacto piel a piel durante relaciones sexuales. Existen más de 200 genotipos; los de alto riesgo (16 y 18) pueden causar cáncer cervical.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Qué detecta la prueba molecular de VPH?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'La prueba molecular detecta la presencia del ADN del virus en las células cervicales, identificando genotipos de alto riesgo antes de que causen lesiones. Es más sensible que el Papanicolaou tradicional para la prevención del cáncer cervical.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿Cada cuánto debo hacerme la prueba de VPH?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Se recomienda realizar la prueba molecular de VPH cada 3 a 5 años a partir de los 30 años, o antes si existen factores de riesgo. En Zygo evaluamos tu caso particular para definir la frecuencia ideal de seguimiento.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: '¿El VPH tiene cura?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No existe una cura directa para el VPH, pero el sistema inmunológico puede eliminarlo naturalmente en la mayoría de los casos. Lo más importante es detectar y tratar las lesiones que el virus puede causar. En Zygo ofrecemos seguimiento y tratamientos como Papilocare para ayudar a controlar el virus.',
+      },
+    },
+  ],
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Inicio', item: site.toString() },
+    { '@type': 'ListItem', position: 2, name: 'Servicios', item: new URL('/servicios', site).toString() },
+    { '@type': 'ListItem', position: 3, name: 'Prueba Molecular VPH', item: new URL('/servicios/card7', site).toString() },
+  ],
+};
 ---
 
 <BaseLayout 
-  title="Prueba Molecular de VPH | Zygo" 
+  title="Prueba Molecular VPH Cusco | Zygo" 
   description="Detección avanzada del Virus del Papiloma Humano con tecnología molecular de última generación."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <Header />
 
   <main class="service-detail-page">
@@ -27,7 +78,7 @@ import ServicesWheel from '../../components/ServicesWheel.astro';
       <div class="service-intro__container">
         <!-- Col 1: Image -->
         <div class="service-intro__col-img" data-animate="scale">
-          <img src="/img/prueba-molecular-vph.webp" alt="Prueba Molecular VPH Zygo" />
+          <img src="/img/prueba-molecular-vph.webp" alt="Prueba molecular de VPH en Cusco - Zygo" />
         </div>
 
         <!-- Col 2: Description -->
@@ -79,7 +130,7 @@ import ServicesWheel from '../../components/ServicesWheel.astro';
           <a href="/contacto" class="btn-book">Consultar Opciones</a>
         </div>
         <div class="service-block__col-img" data-animate="scale">
-          <img src="/img/bienestar-manejo-sintomas.webp" alt="Manejo de Síntomas" />
+          <img src="/img/bienestar-manejo-sintomas.webp" alt="Manejo de síntomas ginecológicos en Cusco" />
         </div>
       </div>
 
@@ -94,7 +145,7 @@ import ServicesWheel from '../../components/ServicesWheel.astro';
           <a href="/contacto" class="btn-book">Chequeo Integral</a>
         </div>
         <div class="service-block__col-img" data-animate="scale">
-          <img src="/img/prevencion-salud-osea-metabolica.webp" alt="Salud Ósea y Metabólica" />
+          <img src="/img/prevencion-salud-osea-metabolica.webp" alt="Prevención salud ósea y metabólica para mujeres" />
         </div>
       </div>
 
@@ -109,7 +160,7 @@ import ServicesWheel from '../../components/ServicesWheel.astro';
           <a href="/contacto" class="btn-book">Agendar Cita</a>
         </div>
         <div class="service-block__col-img" data-animate="scale">
-          <img src="/img/emociones-bienestar-emocional.webp" alt="Bienestar Emocional" />
+          <img src="/img/emociones-bienestar-emocional.webp" alt="Bienestar emocional femenino en Cusco" />
         </div>
       </div>
 

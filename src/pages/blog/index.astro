@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+---
+
+<BaseLayout 
+  title="Blog de Salud Femenina | Zygo Cusco"
+  description="Artículos sobre ginecología, VPH, candidiasis, anticonceptivos y salud reproductiva. Información confiable de especialistas en Cusco."
+>
+  <Header />
+
+  <main class="blog-index">
+    
+    <section class="blog-header">
+      <div class="blog-header__container">
+        <span class="blog-header__pill">#BLOG</span>
+        <h1 class="blog-header__title">Consejos de Salud Femenina</h1>
+        <p class="blog-header__subtitle">Artículos escritos por nuestras especialistas para informarte y empoderarte.</p>
+      </div>
+    </section>
+
+    <section class="blog-grid">
+      <div class="blog-grid__container">
+
+        <a href="/blog/its-silenciosas" class="blog-card" data-animate="soft-slide">
+          <div class="blog-card__category">ITS</div>
+          <h2 class="blog-card__title">ITS silenciosas: infecciones que no muestran síntomas</h2>
+          <p class="blog-card__excerpt">Muchas ITS no presentan síntomas. Conoce cuáles son, cómo detectarlas y por qué el despistaje regular es esencial.</p>
+          <div class="blog-card__meta">
+            <span>25 Ene, 2025</span>
+          </div>
+        </a>
+
+        <a href="/blog/flujo-vaginal-cuando-preocuparse" class="blog-card" data-animate="soft-slide" data-animate-delay="0.1">
+          <div class="blog-card__category">Salud Íntima</div>
+          <h2 class="blog-card__title">Flujo vaginal: ¿cuándo es normal y cuándo preocuparte?</h2>
+          <p class="blog-card__excerpt">Aprende a identificar los tipos de flujo vaginal, cuándo son normales y cuándo indican una infección que necesita atención.</p>
+          <div class="blog-card__meta">
+            <span>15 Ene, 2025</span>
+          </div>
+        </a>
+
+        <a href="/blog/sintomas-vph-mujeres" class="blog-card" data-animate="soft-slide" data-animate-delay="0.1">
+          <div class="blog-card__category">VPH</div>
+          <h2 class="blog-card__title">Síntomas del VPH en mujeres: lo que debes saber</h2>
+          <p class="blog-card__excerpt">El VPH suele ser silencioso. Conoce los síntomas, factores de riesgo y cómo detectarlo a tiempo.</p>
+          <div class="blog-card__meta">
+            <span>20 Dic, 2024</span>
+          </div>
+        </a>
+
+        <a href="/blog/candidiasis-recurrente" class="blog-card" data-animate="soft-slide" data-animate-delay="0.2">
+          <div class="blog-card__category">Infecciones</div>
+          <h2 class="blog-card__title">Candidiasis recurrente: causas y cómo tratarla</h2>
+          <p class="blog-card__excerpt">¿Sufres de candidiasis que vuelve una y otra vez? Descubre las causas reales y el protocolo para eliminarla.</p>
+          <div class="blog-card__meta">
+            <span>05 Dic, 2024</span>
+          </div>
+        </a>
+
+        <a href="/blog/mitos-anticonceptivos" class="blog-card" data-animate="soft-slide">
+          <div class="blog-card__category">Salud Sexual</div>
+          <h2 class="blog-card__title">Mitos y verdades sobre anticonceptivos</h2>
+          <p class="blog-card__excerpt">¿Engordan? ¿Causan infertilidad? Despejamos tus dudas para que elijas el método ideal para ti.</p>
+          <div class="blog-card__meta">
+            <span>28 Nov, 2024</span>
+          </div>
+        </a>
+
+        <a href="/blog/importancia-papanicolau" class="blog-card" data-animate="soft-slide" data-animate-delay="0.1">
+          <div class="blog-card__category">Salud Preventiva</div>
+          <h2 class="blog-card__title">La importancia de tu Papanicolau anual</h2>
+          <p class="blog-card__excerpt">Descubre por qué el Papanicolau es el mejor aliado de tu salud íntima y cómo puede salvar vidas.</p>
+          <div class="blog-card__meta">
+            <span>12 Oct, 2024</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="blog-cta">
+      <div class="blog-cta__container" data-animate="soft-slide">
+        <h2>¿Tienes preguntas sobre tu salud?</h2>
+        <p>Nuestras especialistas están listas para ayudarte. Agenda una consulta personalizada.</p>
+        <a href="/contacto" class="btn-cta">Agendar Consulta</a>
+      </div>
+    </section>
+
+  </main>
+</BaseLayout>
+
+<style>
+  .blog-index {
+    background: #F8F9FA;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .blog-header {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #E8EFFD 0%, #F5E8EA 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+  }
+
+  .blog-header__container {
+    max-width: 800px;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .blog-header__pill {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--zygo-guinda);
+    text-transform: uppercase;
+  }
+
+  .blog-header__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-top: 1rem;
+  }
+
+  .blog-header__subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-top: 1rem;
+    line-height: 1.6;
+  }
+
+  /* GRID */
+  .blog-grid {
+    padding: 4rem 1.5rem;
+  }
+
+  .blog-grid__container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .blog-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+  }
+
+  .blog-card__category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--zygo-guinda);
+  }
+
+  .blog-card__title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--primary-color);
+    line-height: 1.3;
+  }
+
+  .blog-card__excerpt {
+    font-size: 0.95rem;
+    color: var(--text-gray);
+    line-height: 1.6;
+    flex-grow: 1;
+  }
+
+  .blog-card__meta {
+    font-size: 0.8rem;
+    color: #999;
+    padding-top: 0.5rem;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  /* CTA */
+  .blog-cta {
+    padding: 4rem 1.5rem 6rem;
+  }
+
+  .blog-cta__container {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    background: linear-gradient(180deg, #FCE3F2 0%, #FCA4BD 100%);
+    padding: 4rem 3rem;
+    border-radius: 24px;
+    color: var(--primary-color);
+  }
+
+  .blog-cta__container h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+  }
+
+  .blog-cta__container p {
+    font-size: 1.1rem;
+    color: #4A1A2E;
+    margin-bottom: 2rem;
+  }
+
+  .btn-cta {
+    display: inline-block;
+    padding: 0.9rem 2.5rem;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+
+  @media (max-width: 768px) {
+    .blog-header__title {
+      font-size: 2.5rem;
+    }
+
+    .blog-grid__container {
+      grid-template-columns: 1fr;
+    }
+
+    .blog-cta__container {
+      padding: 3rem 2rem;
+    }
+  }
+</style>
